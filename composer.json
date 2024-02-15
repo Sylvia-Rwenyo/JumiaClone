@@ -1,0 +1,6 @@
+{
+    "require": {
+        "kabangi/mpesa": "^3.0",
+        "nesbot/carbon": "^3.0"
+    }
+}

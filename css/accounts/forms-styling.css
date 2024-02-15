@@ -1,0 +1,63 @@
+.account-form-body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* height: 90vh; */
+    overflow: hidden;
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+}
+
+.btn {
+    width: 40%;
+    height: 3em;
+    border-radius: 2px;
+    margin-top: 2em;
+}
+.account-welcome-div{
+    padding-top: 2.5%;
+    text-align: center;
+}
+.account-welcome-div h5{
+    font-size: 1.15em;
+}
+.account-welcome-div p{
+    font-size: 0.9em;
+    color: gray;
+}
+.account-form-body form{
+    width: 40%;
+    height: 20vh;
+    display: grid;
+    grid-template-rows: 45% 45%;
+    row-gap: 10%;
+    margin-bottom: 5%;
+}
+.account-form-body form input, .account-form-body form button{
+    width: 100%;
+    height: 2em;
+    padding: 0.5em;
+}
+
+.account-form-body form button{
+    height: 3em;
+    background-color: rgba(255, 165, 0, 0.85);
+    color: white;
+    border: none;
+    /* box-shadow: 0 0 0 2px  rgba(169, 169, 169, 0.25); */
+    border-radius: 2px;
+}
+.account-form-body form input{
+    width: 95%;
+}
+.lg-passkeys{
+    color: rgba(255, 165, 0, 0.85);
+    border: 2px solid rgba(255, 165, 0, 0.85);
+    background: transparent;
+}
+.lg-facebook{
+    color: white;
+    border: none;
+    background-color: rgba(0, 0, 255, 0.75);
+}
