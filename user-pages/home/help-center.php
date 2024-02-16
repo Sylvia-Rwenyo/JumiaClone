@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="products_page.css">
     <title>K-Shan</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

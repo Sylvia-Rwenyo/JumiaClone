@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     // redirect to checkout.php
-    echo "<script>window.location.href = 'checkout.php';</script>";
+    echo "<script>window.location.href = 'checkout.php#delivery-info';</script>";
     exit(); 
 }
 ?>

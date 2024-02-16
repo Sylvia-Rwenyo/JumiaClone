@@ -12,10 +12,9 @@
 </head>
 <body class="account-form-body">
         <!-- logo w Company name-->
-        <img src="" alt="Kshan Logo"/>
+        <img src="../../../images/logo.jpeg" style="width: 3em; height: 3em;" alt="Kshan Logo"/>
     <!-- welcome message with input prompt -->
     <div class="account-welcome-div">
-        <i class="fa fa-star"></i>
         <h5>Welcome to K-Shan Shop </h5>
         <p>Type your email address or phone number to sign up or create an account.</p>
     </div>
@@ -36,14 +35,15 @@
     ?>
 
     <!-- sign up form -->
-            <form method="POST" action="processing.php">
+            <form method="POST" action="processing.php" style=" margin-bottom: 3em">
                 <input placeholder="Email address or phone number" name="accInput" type="text" value="<?php echo $_SESSION["emailAddress"];?>"/>
                 <input placeholder="Password" name="password" type="password"/>
                 <input placeholder="Confirm Password" name="confirmPassword" type="password"/>
                 <button type="submit" name="signup">Continue</button>
             </form>
+            <br><br><br>
     <!--other sign up options -->
-    <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i>sign up with Facebook</button>
+    <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i>  sign up with Facebook</button>
     <p class="msg">For further support you may visit out Help Center or contact our customer service team</p>
 
     <!-- logo w Company name-->

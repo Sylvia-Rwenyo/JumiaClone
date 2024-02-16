@@ -9,7 +9,7 @@ session_destroy();
 
 echo '
 <script>
-window.location.href = "../login/";
+window.location.href = "../../";
 </script>
 ';
 exit();

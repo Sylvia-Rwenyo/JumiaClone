@@ -30,3 +30,13 @@
     padding-left: 5%;
     padding-right: 35%;
 }
+.dropdown .btn-secondary.dropdown-toggle{
+    background:  transparent;
+    color: black;
+    border: none;
+}
+.dropdown .btn-secondary.dropdown-toggle:focus{
+    outline: none;
+    box-shadow: none;
+    color: #f68b1e;
+}

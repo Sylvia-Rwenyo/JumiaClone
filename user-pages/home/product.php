@@ -9,32 +9,18 @@ if(isset($_GET['id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home_page.css">
     <link rel="stylesheet" href="products_page.css">
+    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="user_pages.css">
     <title>K-Shan</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<style>
-        #shop-now-carousel img{
-            width: 100%; 
-            height: auto; 
-        }
-        .logo{
-            height: 100%;
-            width: 4em;
-            align-self: center;
-        }
-        .logo img{
-            height: 100%;
-            width: 100%;
-        }
-        .dropdown-menu{
-           left: -20px;
-        }
-        .dropdown .btn-secondary.dropdown-toggle{
+<body class="home-page-body">
+    <style>
+         .dropdown .btn-secondary.dropdown-toggle{
             background:  transparent;
             color: black;
             border: none;
@@ -44,196 +30,7 @@ if(isset($_GET['id'])){
             box-shadow: none;
             color: #f68b1e;
         }
-        .list-group-item {
-            border: none;
-            padding: 0.2em;
-            font-size: 0.85em;
-        }
-        .list-group-item:hover, .header-band span:hover{
-            color: #f68b1e;
-        }
-        .delivery-CTA{
-            height: 70%;
-            margin-bottom: 1em;
-        }
-        .delivery-CTA ul{
-            padding: 1em;
-            height: 100%;
-            width: 100%;
-            display:grid;
-            grid-template-rows: auto auto auto;
-            font-size: 1.1em;
-            font-weight: 700;
-        }
-        .delivery-CTA ul li{
-            display: grid;
-            grid-template-columns: 17.5% 80%;
-            column-gap: 2.5%;
-        }
-        .delivery-CTA ul li i{
-            font-size: 1.3em;
-            margin-top: 0.25em;
-            color: #f68b1e;
-        }
-        .delivery-CTA ul p{
-            font-size: 0.8em;
-            font-weight: initial;
-        }
-        .delivery-CTA ul  .list-group-item:hover{
-            color: black;
-        }
-        .call-CTA{
-            height: 45%;
-            width: 100%;
-            padding: 1em;
-            padding-top: 3em;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 1.1em;
-            font-weight: 400;
-            
-        }
-        .call-CTA p:nth-child(2){
-            font-weight: 700;
-        }
-        .product-cards{
-            padding: 1em;
-        }
-        .product-cards .header-band{
-            padding: 0.5em;
-            padding-left: 2.5%;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        .header-band span{
-            width: 7%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-size: 1em;
-        }
-        .header-band span:hover{
-            color: #f68b1e;
-        }
-        .header-band i{
-            margin-top: 0.25em;
-        }
-        .product-cards .carousel-inner{
-            width: 100%;
-            height:16em ;
-        }
-        .product-cards .carousel-item, .product-cards .carousel-item .row{
-            width: 100%;
-            height: 95%;
-        }
-        .carousel-item {
-            /* transition: transform 0.2s ease-in-out; */
-            transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        .product-cards .card{
-            border: none;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .product-cards .card img{
-            width: 90%;
-            height: 80%;
-        }
-        .product-cards .card p:nth-child(1){
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .product-cards .card p:nth-child(2){
-            margin-top: 0rem;
-            margin-bottom: 0.5rem;
-        }
-        .product-cards .carousel-control-next-icon, .product-cards .carousel-control-prev-icon{
-            margin-bottom: 2em;
-            background-color: lightgray;
-            border-radius: 50%;
-
-        }
-        .product-cards .carousel-control-prev-icon{
-            padding-left: 0;
-        }
-        .product-cards .carousel-control-prev, .product-cards .carousel-control-next{
-            height:fit-content;
-            top: 130px;
-        }
-        .carousel-indicators li {
-            border-radius: 50%; 
-            width: 10px; 
-            height: 10px;
-            margin: 0 4px;
-            cursor: pointer;
-        }
-        footer{
-            margin-top: 2.5em;
-            padding: 2em;
-            color: white;
-            background-color: #000;
-            padding-left: 0;
-            padding-right: 0;
-
-        }
-        footer .container:nth-child(1) .row{
-            height: 10em;
-        }
-        .download-prompt h5{
-            font-size: 0.8em;
-        }
-        .download-prompt{
-            display: grid;
-            grid-template-columns: 20% 75%;
-            column-gap: 5%;
-            margin-bottom: 1.5em;
-            color: white;
-        }
-        .download-prompt-btns{
-            display: grid;
-            grid-template-columns: auto auto;
-            column-gap: 5%;
-        }
-        .download-prompt-btns .btn{
-            display: grid;
-            grid-template-columns: 30% 70%;
-            font-size: 0.8em;
-            border: 1px solid white;
-            text-align: left;
-            color: white;
-        }
-        .download-prompt-btns .btn i{
-            font-size:2.25em;
-        }
-        .newsletter-prompt .btn{
-            border: 1px solid white;
-            text-align: left;
-            color: white;
-            width: 100%;
-        }
-        .newsletter-prompt .input-group{
-            width: 90%;
-            height: 3em;
-            display: grid;
-            grid-template-columns: 55% 17.5% 17.5%;
-            column-gap: 3%;
-        }
-        .newsletter-prompt .input-group .form-control{
-            height: 100%;
-            width: 100%;
-        }
-        .input-group .form-control,
-        .input-group .btn, .card {
-            border-radius: 2px;
-        }
-
-    </style>
-<body class="home-page-body">
+        </style>
 
 <!-- delivery banner -->
 <!-- <div class="delivery-banner">
@@ -260,7 +57,7 @@ if(isset($_GET['id'])){
 <?php  include_once 'nav.php';?> 
 
 <!-- main-body-elements container -->
-<section class="container" style="margin-top: 6em;">
+<section class="container" style="margin-top: 12em;">
 
     <!-- CTA -->
     <div class="show-product row">
@@ -284,27 +81,25 @@ if(isset($_GET['id'])){
             ?>
         <!--  product details -->
         <div class="col-9" style= "background-color: white;  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
-            <div class="row single-product-card">
+            <div class="row" style="padding: 2em; height: 80%">
                 <div class="col-6">
-                <div class="product-images">
-                    <div class="focused-img">
+                <div class="product-images" style=" height: 80%">
+                    <div class="focused-img" style=" height: 100%">
                         <img src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
                     </div>
+                    <?php
+                        if($imageResult->num_rows > 1){
+                    ?>
                     <div class="all-images row carousel slide" id="single-productCarousel" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
+                            <?php
+                                while($image = $imageResult->fetch_assoc() ){
+                            ?>
                                 <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
-                                <img src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
+                            <?php
+                                }
+                            ?>
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#single-productCarousel" role="button" data-slide="prev">
@@ -316,16 +111,19 @@ if(isset($_GET['id'])){
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
+                    <?php
+                        }
+                    ?>
                     </div>
                     <h6 style="padding-top: 1em; border-top: 1px solid-gray;">Share this product</h6>
                     <ul class="share-links list-group" style="border-radius: none; display: flex; flex-direction: row; ">
-                        <li class="list-group-item"><a href="" style="text-decoration: none; color: black;"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li class="list-group-item"><a href="" style="text-decoration: none; color: black;"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li class="list-group-item" style="border:none"><a href="" style="text-decoration: none; color: black;"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li class="list-group-item" style="border:none"><a href="" style="text-decoration: none; color: black;"><i class="fa-brands fa-twitter"></i></a></li>
                     </ul>
             </div>
-                <div class="product-details col-6">
+                <div class="product-details col-6" style=" height: 80%">
                     <div style="border-bottom: 1px solid lightgray; padding-bottom: 1em; margin-bottom: 1em;">
-                        <p><?php echo $product['name']; ?></p>
+                        <p><?php echo $product['name'] .' '.$product['description']; ?></p>
                         <p ><?php echo $product['price']; ?></p>
                     </div>
                     <a href="add_to_cart.php?id=<?php echo $product_id; ?>" class="btn"> <i class="fa-solid fa-cart-plus"></i> Add to cart</a>
@@ -344,9 +142,9 @@ if(isset($_GET['id'])){
         <div class="col-3" >
             <div class="card delivery-CTA"  style= " border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
             <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500; padding: 0.5em ">Deliveries & Returns</h5>
-            <p>Choose your location</p>
+            <p style="margin: 0.5em">Choose your location</p>
             <div class="input-group mb-3">
-                <select class="custom-select" id="inputGroupSelectLocation" name="location">
+                <select class="custom-select" id="inputGroupSelectLocation" name="location" style="margin: 0.5em">
                     <option value="Nairobi">Nairobi</option>
                     <option value="Mombasa">Mombasa</option>
                     <option value="Kisumu">Kisumu</option>
@@ -394,14 +192,14 @@ if(isset($_GET['id'])){
                     <option value="Tana River">Tana River</option>
                 </select>
             </div>
-            <div class="input-group mb-3" id="subLocationGroup" style="display:none;">
+            <!-- <div class="input-group mb-3" id="subLocationGroup" style="display:none;">
                 <select class="custom-select" id="inputGroupSelectSubLocation" name="sub_location">
                 </select>
-            </div>
+            </div> -->
 
                 <ul class="list-group">
-                    <li class="list-group-item"><i class="fa-solid fa-boxes-packing"></i><span>Pick Up Station <a href="" style="text-decoration: none; color: darkblue; font-size: 0.75em;">details</a><p>Delivery Fees Kes 70</p></span></li>
-                    <li class="list-group-item"><i class="fa-solid fa-truck-fast"></i><span>Door Delivery <a href="" style="text-decoration: none; color: darkblue; font-size: 0.75em;">details</a><p>Delivery Fees Kes 70</p></span></li>
+                    <li class="list-group-item"><i class="fa-solid fa-boxes-packing"></i>&nbsp;&nbsp;<span>Pick Up Station <a href="" style="text-decoration: none; color: darkblue; font-size: 0.75em;">details</a><p>Delivery Fees Kes 70</p></span></li>
+                    <li class="list-group-item"><i class="fa-solid fa-truck-fast"></i>&nbsp;&nbsp;<span>Door Delivery <a href="" style="text-decoration: none; color: darkblue; font-size: 0.75em;">details</a><p>Delivery Fees Kes 70</p></span></li>
                     <li class="list-group-item" style="border-top: 0.5px solid lightgray; padding-bottom: 0.5em; margin-bottom: 0.5em;"><i class="fa-solid fa-money-bill-trend-up"></i>
                     <span>Return Policy<p> Easy Return, Quick Refund. <a href="" style="text-decoration: none; color: darkblue; font-size: 0.75em;">details</a></p></span></li>
                 </ul>   
@@ -414,10 +212,10 @@ if(isset($_GET['id'])){
         </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
                 <h5>Product Details</h5>
 
-            </div>
+            </div> -->
 
     <!-- products row -->
         <?php

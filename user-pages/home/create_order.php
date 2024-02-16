@@ -149,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 unset($_SESSION['cart']);
                                 unset($_SESSION['total_amount']);
                                 // Redirect to a success page or display a success message
-                                header("Location: checkout.php?ordersuccess=1");
+                                header("Location: existing_orders.php");
                                 exit();
                             } else {
                                 // Handle empty cart case

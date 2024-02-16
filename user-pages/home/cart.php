@@ -6,8 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="products_page.css">
+    <link rel="stylesheet" href="home_page.css">
     <title>K-Shan</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -256,11 +257,11 @@
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
 
-<section class="container" style="margin-top: 6em;">
+<section class="container" style="margin-top: 12em;">
 
     <!-- Display products in the cart -->
-    <div class="show-product row">
-        <div class="col-9" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); height: fit-content;">
+    <div class="show-product row" style="height: 15em;">
+        <div class="col-9" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; height: 100%;">
         <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500;">
             Cart <?php echo isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 ? '(' . count($_SESSION['cart']) . ')' : ''; ?>
         </h5>
@@ -298,14 +299,14 @@
 
                         // Display product details
                         ?>
-                        <div class="row single-product-card" style="height: 10em;">
-                            <div class="col-2">
+                        <div class="row " style="height: 10em;">
+                            <div class="col-3">
                                 <div class="focused-img" style="width: 100%; height: 80%; padding: 1em;">
                                     <img style="width: 100%; height: 100%;" src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
                                 </div>
                                 <a href="remove_from_cart.php?id=<?php echo $product['id']; ?>" style="text-decoration: none; color: #f68b1e"><i class="fa-solid fa-trash"></i></a>
                             </div>
-                            <div class="product-details col-6" style="padding: 1em;">
+                            <div class="product-details col-5" style="padding: 1em;">
                                 <div style=" padding: 1em; margin-bottom: 1em; ">
                                     <p><?php echo $product['name']; ?></p>
                                 </div>
@@ -332,7 +333,7 @@
         </div>
 
         <!-- Display cart summary -->
-        <div class="col-3"  style="height: 100% ;border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); ">
+        <div class="col-3"  style="height: 100% ;border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; ">
             <div class="card total-card" style="border: none; padding: 1em"  >
                 <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500;">Cart Summary</h5>
                 <p>Sub Total: <span><?php echo $totalPrice; ?></span></p>

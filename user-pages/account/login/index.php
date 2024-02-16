@@ -12,10 +12,9 @@
 </head>
 <body class="account-form-body">
         <!-- logo w Company name-->
-        <img src="" alt="Kshan Logo"/>
+        <img src="../../../images/logo.jpeg" style="width: 3em; height: 3em;" alt="Kshan Logo"/>
     <!-- welcome message with input prompt -->
     <div class="account-welcome-div">
-        <i class="fa fa-star"></i>
         <h5>Welcome to K-Shan Shop </h5>
         <p>Type your email address or phone number to log in or create an account.</p>
     </div>
@@ -67,8 +66,8 @@
     ?>
 
     <!--other log in options -->
-    <button class="btn lg-passkeys">Log in with Passkeys</button>
-    <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i>Log in with Facebook</button>
+    <!-- <button class="btn lg-passkeys">Log in with Passkeys</button> -->
+    <button  class="btn lg-facebook"><i class="fa fa-facebook"></i>  Log in with Facebook</button>
 
     <p class="msg">For further support you may visit out Help Center or contact our customer service team</p>
 

@@ -1,12 +1,17 @@
 <?php
 @session_start();
+if(!isset( $_SESSION["emailAddress"])){
+    echo '
+        <script>window.location.href = "../account/login/"</script>
+    ';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="products_page.css">
     <title>K-Shan</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -291,28 +296,28 @@
             <input type="text" class="form-control"  placeholder="additional information" aria-label="additional information" name="additional_info" aria-describedby="user-additional-information">
         </div>
         <div class="input-group mb-3" >
-            <input type="text" class="form-control"  placeholder="Region" aria-label="Region" aria-describedby="user-region" name="region">
-            <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="City" aria-label="City" aria-describedby="user-city" name="city">
+            <input type="text" class="form-control"  placeholder="City" aria-label="Region" aria-describedby="user-region" name="region">
+            <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="Area" aria-label="City" aria-describedby="user-city" name="city">
         </div>
         <div class="input-group mb-3">
             <button type="submit" id="submit-client-info" class="btn" style="background-color: #f68b1e; color: white;">Save Info</button>
         </div>
 </form>
     </form>
-    <div class="row">
+    <div class="row" id="delivery-info">
         <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em; display: flex; flex-direction: row; justify-content: space-between">
         2. &nbsp;&nbsp;Delivery Details <a>Change <i class="fa fa-angle-right"></i></a></h6>
 
         <div style="margin-bottom: 1em;">
             <p style="margin-block-start: 0.25em;margin-block-end: 0.25em;">Door Delivery</p>
-            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.9em; font-weight: 400;">Delivery scheduled on <strong>14 February</strong></p>
+            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.9em; font-weight: 400;">Delivery scheduled on <strong>19 February</strong></p>
         </div>
         <div style="padding: 1em; border: 0.5px solid lightgray; border-radius: 5px; margin-bottom: 1em;">
             <div>
                 <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: bolder; display: flex; flex-direction: row; justify-content: space-between">
-                    Switch to a pickup station starting from KSh 138 <a id="changeDelivery">Change <i class="fa fa-angle-right"></i></a></p>
+                    Switch to a pickup station starting from KSh 140 <a id="changeDelivery">Change <i class="fa fa-angle-right"></i></a></p>
                 <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
-                    Delivery scheduled on <strong>14 February</strong></p>
+                    Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div>
         <div style="display: flex; flex-direction: row;" class="shipping-options">
@@ -321,7 +326,7 @@
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Pick-up Station</strong>(Ksh 100)</p>
                 <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
-                Delivery scheduled on <strong>14 February</strong></p>
+                Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div>
         <div style="padding: 1em; border: 0.5px solid lightgray; border-radius: 5px; margin-bottom: 1em;" class="shipping-options">
@@ -344,7 +349,7 @@
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Door Delivery</strong></p>
                 <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
-                Delivery scheduled on <strong>14 February</strong></p>
+                Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div>
 
@@ -352,16 +357,17 @@
         <div style="padding: 1em; border: 0.5px solid lightgray; border-radius: 5px; margin-bottom: 1em;" >
             <p style="margin-bottom: 0; display: flex; flex-direction: row; justify-content: space-between">
            <strong>Door Delivery</strong></p>
-            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">Delivery scheduled on 14 February</p>
+            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">Delivery scheduled on 19 February</p>
             <div>
             <?php
-            include_once '../../controls/conn.php';  
+            include_once '../../controls/conn.php';
+            $totalPrice = 0;  
             // Check if the cart session variable exists and is not empty
             if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                 // Fetch all products from the cart session variable
-                $product_ids = implode(",", $_SESSION['cart']); // Get comma-separated product IDs
-                $product_id = 0;
-                $productSql = "SELECT * FROM products WHERE id IN ($product_ids)";
+                foreach ($_SESSION['cart'] as $productId => $quantity) {
+                    // Fetch product details from the database
+                    $productSql = "SELECT * FROM products WHERE id = '$productId'";
                 $productResult = $conn->query($productSql);
 
                 // Loop through each product in the cart and display its details
@@ -375,9 +381,13 @@
                         $imageUrl = $image['file_path'];
                     }
                     $product_id = $product['id'];
+
+                    $totalPrice += $product['price'] * intval($quantity);
+
+                    $_SESSION['total_amount'] = $totalPrice;
             ?>
         <!-- Product details -->
-            <div class="row single-product-card" style="height: 5em; box-shadow: none; border-top: 0.25px solid lightgray">
+            <div class="row" style=" padding-top: 2em;height: 8em; box-shadow: none; border-top: 0.25px solid lightgray">
                 <div class="col-2">
                     <div class="focused-img" style="width: 100%; height:100%;">
                         <img style="width: 100%; height: 100%;" src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
@@ -386,12 +396,13 @@
                 <div class="product-details col-6" style="padding: 1em; font-size: 0.75em;">
                     <div style="padding: 1em; padding-top:2em; margin-bottom: 1em; ">
                         <p><?php echo $product['name']; ?></p>
-                        <p>QTY 1</p>
+                        <p><strong>QTY</strong><?php $quantity; ?></p>
+                        <p><strong>Total price:</strong> Kes <?php echo $totalPrice; ?></p>
                     </div>
                 </div>
             </div>
             <?php
-                }}
+                }}}
             ?>
             </div>
         </div>
@@ -416,7 +427,7 @@
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Pick-up Station</strong>(Ksh 100)</p>
                 <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
-                Delivery scheduled on <strong>14 February</strong></p>
+                Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div> -->
         <a  data-toggle="modal" data-target="#confirm-payment" class="btn" style="background-color:  #f68b1e; width: 30%; align-self: flex-end; color: white;">CONFIRM PAYMENT METHOD</a>
