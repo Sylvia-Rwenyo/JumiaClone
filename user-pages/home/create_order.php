@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $additional_phone_number = $client_info['additional_phone_number'];
             $address = $client_info['address'];
             $additional_info = $client_info['additional_info'];
-            $region = $client_info['region'];
+            $area = $client_info['area'];
             $city = $client_info['city'];
 
 // function lipaNaMpesaPassword()
@@ -104,21 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //    stkPush($_SESSION['total_amount'], $first_name, $last_name, $mpesa_number);
 
-
-
-   
-
-
-            // Insert client information into the database
-            $insert_client_sql = "INSERT INTO clients (first_name, last_name, phone_number, additional_phone_number, address, additional_information, region, city) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            $insert_client_stmt = $conn->prepare($insert_client_sql);
-            
-            if ($insert_client_stmt) {
-                // Bind parameters
-                $insert_client_stmt->bind_param("ssssssss", $first_name, $last_name, $phone_number, $additional_phone_number, $address, $additional_info, $region, $city);
-                
-                // Execute the statement
-                if ($insert_client_stmt->execute()) {
                     foreach ($_SESSION['cart'] as $product_id => $quantity){
                     // Insert the order into the database
                     $insert_order_sql = "INSERT INTO orders (order_id, mpesa_phone_number, client_id) VALUES (?, ?, LAST_INSERT_ID())";
@@ -183,6 +168,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Handle missing M-Pesa number
         echo "M-Pesa number is required";
     }
-}
-}
+
 ?>

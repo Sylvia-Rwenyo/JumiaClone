@@ -1,5 +1,10 @@
 <?php
-@session_start();
+    @session_start();
+        if(!isset( $_SESSION["user"])){
+            echo '
+                <script>window.location.href = "../account/login/"</script>
+            ';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +15,8 @@
     <link rel="stylesheet" href="home_page.css">
     <link rel="stylesheet" href="user_pages.css">
     <title>K-Shan</title>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="home-page-body">
@@ -256,10 +260,12 @@
 <?php include_once 'footer.php'; ?>
 
 <!-- Scripts -->
-<script src="../../js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="../../js/fontawesome.js" crossorigin="anonymous"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="nav_script.js"></script>
 <script>
 $(document).ready(function(){
     $('#productCarousel').carousel();

@@ -314,9 +314,9 @@
                             <div class="product-details col-4" style="padding: 1em;">
                                 <div style="padding: 1em; margin-bottom: 1em;">
                                     <p><?php echo $product['price']; ?></p>
-                                    <div style="display: flex; flex-direction: row; justify-content: space-evenly; font-size: 1.15em; margin-right: 20%; align-items: flex-start">
-                                        <i class="fa-regular fa-square-minus minus-quantity" data-productid="<?php echo $product['id']; ?>" style="color: #f68b1e; font-size: 1.25em"></i>
-                                        <span><?php echo $quantity; ?></span>
+                                    <div style="display: flex; flex-direction: row; justify-content: space-between; font-size: 1.15em; width: 50%; margin-right: 20%; align-items: flex-start">
+                                        <i class="fa-solid fa-square-minus minus-quantity" data-productid="<?php echo $product['id']; ?>" style="color: #f68b1e; border-radius: 10px; font-size: 1.25em"></i>
+                                        <span id="quantity-text"><?php echo $quantity; ?></span>
                                         <i class="fa-solid fa-square-plus add-quantity" data-productid="<?php echo $product['id']; ?>" style="color: #f68b1e; font-size: 1.25em"></i>
                                     </div>
                                 </div>
@@ -444,11 +444,11 @@ $(document).ready(function(){
     // Handle click event for adding quantity
     $('.add-quantity').on('click', function() {
         var productId = $(this).data('productid');
-        var quantitySpan = $(this).next('span');
-        var quantityText = quantitySpan.text().trim(); // Trim whitespace
-        var quantity = quantityText; // Check if text contains only digits, if not, default to 0
+        var quantitySpan = document.getElementById('quantity-text');
+        var quantityText = quantitySpan.textContent.trim(); // Use textContent and trim() to get the text without whitespace
+        var quantity = parseInt(quantityText); 
         quantity++;
-        quantitySpan.text(quantity);
+        quantitySpan.textContent = quantity; // Update the text content
 
         // Update cart session variable with new quantity
         updateCart(productId, quantity);
@@ -457,13 +457,13 @@ $(document).ready(function(){
     // Handle click event for reducing quantity
     $('.minus-quantity').on('click', function() {
         var productId = $(this).data('productid');
-        var quantitySpan = $(this).prev('span');
-        var quantityText = quantitySpan.text().trim(); // Trim whitespace
-        var quantity = quantityText; // Check if text contains only digits, if not, default to 0
+        var quantitySpan = document.getElementById('quantity-text');
+        var quantityText = quantitySpan.textContent.trim(); // Use textContent and trim() to get the text without whitespace
+        var quantity = parseInt(quantityText); 
 
         if (quantity > 1) {
             quantity--;
-            quantitySpan.text(quantity);
+            quantitySpan.textContent = quantity; // Update the text content
 
             // Update cart session variable with new quantity
             updateCart(productId, quantity);
@@ -485,6 +485,7 @@ $(document).ready(function(){
         });
     }
 });
+
 
 
 

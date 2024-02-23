@@ -1,5 +1,6 @@
     <?php
     @session_start();
+    include_once '../../controls/conn.php';
 
     $items_count = 0;
 
@@ -44,13 +45,42 @@
         </div>  
         <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Account
+            <?php
+                $username = '';
+                if(isset($_SESSION['user'])){
+                    $user_id =   $_SESSION["user_id"];
+                    $sql_a=mysqli_query($conn,"SELECT * FROM endusers where id = $user_id");
+                    if(mysqli_num_rows($sql_a)>0)
+                    {
+                        $row  = mysqli_fetch_array($sql_a);
+                        if(is_array($row)){
+                          $username = $row['firstName'];
+                            }}}
+                            if($username != ''){
+                                echo '<i class="fa-solid fa-user-check"></i> Hi, '. $username;
+                            }else{
+            ?>    
+            Account
+            <?php } ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <?php
+                if(!isset($_SESSION['user'])){
+                ?>
                 <div class="dropdown-item dp-btn"><a class="btn" href="../account/login/">SIGN IN</a></div>
-                <a class="dropdown-item dp-link" href="../account/settings/"><i class="fa-regular fa-user"></i>My Account</a>
+                <?php
+                }?>
+                <a class="dropdown-item dp-link" href="user-account.php"><i class="fa-regular fa-user"></i>My Account</a>
                 <a class="dropdown-item dp-link" href="existing_orders.php"><i class="ic-mrm fas fa-envelope"></i>Orders</a>
                 <a class="dropdown-item dp-link" href=""><i class="fa-regular fa-heart"></i>Saved Items</a>
+                <?php
+                if(isset($_SESSION['user'])){
+                ?>
+                <a class="dropdown-item dp-link" href=""><i class="fa-solid fa-ticket"></i>Vouchers</a>
+                <a class="dropdown-item dp-link" style="color: #f68b1e; border-bottom: none; border-top: 4px solid lightgray; padding: 1em; padding-bottom: 2em; text-align: center;" href="../account/settings/logout.php">Log Out</a>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <div class="dropdown show">

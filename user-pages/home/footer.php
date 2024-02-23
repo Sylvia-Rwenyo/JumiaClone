@@ -41,6 +41,9 @@
                         <li><a href="">Contact us</a></li>
                     </ul>
                 </div>
+                <br>
+                <br>
+                <br>
                 <div>
                     <h6 style="font-size: 0.8em">USEFUL LINKS?</h6>
                     <ul>

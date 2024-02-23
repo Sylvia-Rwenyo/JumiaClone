@@ -32,11 +32,20 @@ if(isset($_POST['signup']))
             $_SESSION["user"] = true;
             $_SESSION["user_password"] = $password;
 
+            $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress='$accInput' && password = '$password'");
+            if(mysqli_num_rows($sql_a)>0)
+            {
+                $row  = mysqli_fetch_array($sql_a);
+                if(is_array($row)){
+                    $_SESSION["user"] = true;
+                    $_SESSION["user_id"] = $row['id'];
+                    $_SESSION["user_password"] = $password;
+
                 
             echo '<script> 
             window.location.href = "../../home/"
             </script>';
-        }else{
+        }}}else{
             echo '<script> 
             window.location.href = "index.php?e=2"
             </script>';

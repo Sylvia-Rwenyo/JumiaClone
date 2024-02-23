@@ -12,8 +12,11 @@ return array(
     'Symfony\\Contracts\\Translation\\' => array($vendorDir . '/symfony/translation-contracts'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Clock\\' => array($vendorDir . '/symfony/clock'),
+    'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
     'Psr\\Clock\\' => array($vendorDir . '/psr/clock/src'),
     'Kabangi\\Mpesa\\' => array($vendorDir . '/kabangi/mpesa/src/Mpesa'),
     'Carbon\\Doctrine\\' => array($vendorDir . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
+    'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
 );

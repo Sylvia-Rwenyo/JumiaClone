@@ -1,10 +1,10 @@
 <?php
-@session_start();
-if(!isset( $_SESSION["emailAddress"])){
-    echo '
-        <script>window.location.href = "../account/login/"</script>
-    ';
-}
+    @session_start();
+        if(!isset( $_SESSION["user"])){
+            echo '
+                <script>window.location.href = "../account/login/"</script>
+            ';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +14,8 @@ if(!isset( $_SESSION["emailAddress"])){
     <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="products_page.css">
     <title>K-Shan</title>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
@@ -243,27 +242,6 @@ if(!isset( $_SESSION["emailAddress"])){
     </style>
 <body class="home-page-body">
 
-<!-- delivery banner -->
-<!-- <div class="delivery-banner">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <p>FREE DELIVERY</p>
-            </div>
-            <div class="carousel-item">
-                <p>On orders above Ksh 1,999</p>
-            </div>
-            <div class="carousel-item">
-                <p>Terms and Conditions apply</p>
-            </div>
-        </div>
-    </div>
-    <div class="delivery-call-prompt">
-        <p>Call Whatsapp to Order</p>
-        <p><i class="fab fa-whatsapp"></i>0711 222 333</p>
-    </div>
-</div> -->
-
 <!-- nav bar -->
 <?php include_once 'nav.php';
 ?>
@@ -273,37 +251,65 @@ if(!isset( $_SESSION["emailAddress"])){
 
     <!-- get client info -->
     <div class="col-10" style="height: fit-content">
-        <form class="row" method="POST" action="save-client-info.php">
-        <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em;">1. &nbsp;&nbsp;Customer Address</h6>
-        <div class="input-group mb-3" >
-            <input type="text" class="form-control"  placeholder="First name" aria-label="First name" aria-describedby="user-first-name" name="first_name">
-            <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="Last Name" aria-label="Last Name" name="last_name" aria-describedby="user-last-name">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
-                <span class="input-group-text" id="basic-addon2"> +254</span>
+            <?php
+                    $client_id = $_SESSION['user_id'];
+
+                    // Prepare the SQL statement with a parameterized query
+                    $usersSql = "SELECT * FROM client_addresses WHERE client_id = ?";
+                    $stmt = $conn->prepare($usersSql);
+                    $row = [];
+                    
+                    // Bind the parameter and execute the statement
+                    $stmt->bind_param("i", $client_id);
+                    $stmt->execute();
+                    
+                    // Get the result
+                    $usersResult = $stmt->get_result();
+                    
+                    if ($usersResult->num_rows > 0) {
+                        // Fetch the row from the result set
+                        $row = $usersResult->fetch_assoc();   
+                    }                 
+                ?>  
+        <form class="row" method="POST" action="save-client-info.php" style="padding: 1em;">
+            <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em;">1. &nbsp;&nbsp;Customer Address</h6>
+            <div class="input-group mb-3" >
+                <input type="text" class="form-control"  placeholder="<?php echo isset($row['first_name']) ? $row['first_name'] : 'First name'; ?>" 
+                    value="<?php echo isset($row['first_name']) ? $row['first_name'] : ''; ?>" aria-label="First name" aria-describedby="user-first-name" 
+                name="first_name">
+                <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="<?php echo isset($row['last_name']) ? $row['last_name'] : 'Last name'; ?>" 
+                    value="<?php echo isset($row['last_name']) ? $row['last_name'] : ''; ?>"  aria-label="Last Name" name="last_name" aria-describedby="user-last-name">
             </div>
-            <input type="number" class="form-control" placeholder="phone number" aria-label="phone number" aria-describedby="phone number" name="phone_number">
-            <div class="input-group-append" style="background: transparent; margin-left: 20px;border-left-radius: 5px;">
-                <span class="input-group-text" id="basic-addon2"> +254</span>
+            <div class="input-group mb-3">
+                <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
+                    <span class="input-group-text" id="basic-addon2"> +254</span>
+                </div>
+                <input type="number" class="form-control" placeholder="<?php echo isset($row['phone_number']) ? $row['phone_number'] : 'Phone number'; ?>" 
+                    value="<?php echo isset($row['phone_number']) ? $row['phone_number'] : ''; ?>"  aria-label="phone number" aria-describedby="phone number" name="phone_number">
+                <div class="input-group-append" style="background: transparent; margin-left: 20px;border-left-radius: 5px;">
+                    <span class="input-group-text" id="basic-addon2"> +254</span>
+                </div>
+                <input type="number" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
+                    value="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : ''; ?>"  aria-label="Additional phone number" name="additional_phone_number" aria-describedby="additional phone number">
             </div>
-            <input type="number" class="form-control" placeholder="Additional phone number" aria-label="Additional phone number" name="additional_phone_number" aria-describedby="additional phone number">
-        </div>
-        <div class="input-group mb-3" >
-            <input type="text" class="form-control"  placeholder="address" aria-label="address" aria-describedby="user-address" name="address">
-        </div>
-        <div class="input-group mb-3" >
-            <input type="text" class="form-control"  placeholder="additional information" aria-label="additional information" name="additional_info" aria-describedby="user-additional-information">
-        </div>
-        <div class="input-group mb-3" >
-            <input type="text" class="form-control"  placeholder="City" aria-label="Region" aria-describedby="user-region" name="region">
-            <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="Area" aria-label="City" aria-describedby="user-city" name="city">
-        </div>
-        <div class="input-group mb-3">
-            <button type="submit" id="submit-client-info" class="btn" style="background-color: #f68b1e; color: white;">Save Info</button>
-        </div>
-</form>
-    </form>
+            <div class="input-group mb-3" >
+                <input type="text" class="form-control"  placeholder="<?php echo isset($row['address']) ? $row['address'] : 'Address'; ?>" 
+                    value="<?php echo isset($row['address']) ? $row['address'] : ''; ?>" aria-label="address" aria-describedby="user-address" name="address">
+            </div>
+            <div class="input-group mb-3" >
+                <input type="text" class="form-control"  placeholder="<?php echo isset($row['additional_information']) ? $row['additional_information'] : 'Additional information'; ?>" 
+                    value="<?php echo isset($row['additional_information']) ? $row['additional_information'] : ''; ?>"  aria-label="additional information" name="additional_info" aria-describedby="user-additional-information">
+            </div>
+            <div class="input-group mb-3" >
+                <input type="text" class="form-control" placeholder="<?php echo isset($row['city']) ? $row['city'] : 'City'; ?>" 
+                    value="<?php echo isset($row['city']) ? $row['city'] : ''; ?>"  aria-label="city" aria-describedby="user-city" name="city">
+                <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="<?php echo isset($row['area']) ? $row['area'] : 'Area'; ?>" 
+                    value="<?php echo isset($row['area']) ? $row['area'] : ''; ?>"  aria-label="area" aria-describedby="user-area" name="area">
+            </div>
+            <div class="input-group mb-3">
+                <button type="submit" id="submit-client-info" class="btn" style="background-color: #f68b1e; color: white;">Save Info</button>
+            </div>
+        </form>
     <div class="row" id="delivery-info">
         <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em; display: flex; flex-direction: row; justify-content: space-between">
         2. &nbsp;&nbsp;Delivery Details <a>Change <i class="fa fa-angle-right"></i></a></h6>
@@ -501,10 +507,12 @@ if(!isset( $_SESSION["emailAddress"])){
  
 
 <!-- Scripts -->
-<script src="../../js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="../../js/fontawesome.js" crossorigin="anonymous"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="nav_script.js"></script>
 <script>
 $(document).ready(function(){
     $('#productCarousel').carousel();
@@ -558,7 +566,7 @@ $(document).ready(function(){
     //              '&additional_phone_number=' + encodeURIComponent(additionalPhoneNumber) +
     //              '&address=' + encodeURIComponent(address) +
     //              '&additional_info=' + encodeURIComponent(additionalInfo) +
-    //              '&region=' + encodeURIComponent(region) +
+    //              '&area=' + encodeURIComponent(area) +
     //              '&city=' + encodeURIComponent(city));
     // });
     

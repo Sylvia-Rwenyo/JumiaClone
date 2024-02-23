@@ -1,3 +1,11 @@
+<?php
+    @session_start();
+        if(!isset( $_SESSION["user"])){
+            echo '
+                <script>window.location.href = "../account/login/"</script>
+            ';
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +15,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="home_page.css">
-    <link rel="stylesheet" href="user_pages.css">
+    <link rel="stylesheet" href="home_page.css"/>
+    <link rel="stylesheet" href="user_pages.css"/>
+    <link rel="stylesheet" href="user-account.css"/>
 </head>
-<body class="product-page-body">
+<body class="user-page-body">
 
 <!-- nav bar -->
 <?php include_once 'nav.php' ?>
@@ -18,91 +27,105 @@
 <!-- main-body-elements container -->
 <section class="container main-container">
 
-    <!-- CTA -->
-    <div class="CTA row">
-        <!-- categories list -->
-        <div class="col-2  card categories-list" >
+   
+    <div class="account-info CTA row" style="height: 40em; column-gap: 5%;">
+        <!-- account links -->
+        <div class="col-3  card" style="height: 100%; padding: 0;" >
             <ul class="list-group">
-                <li class="list-group-item show"><i class="fa-solid fa-bag-shopping"></i>Official Stores</li>
-                <li class="list-group-item show"><i class="fa-solid fa-mobile-screen"></i>Phone & Tablets</li>
-                <li class="list-group-item show"><i class="fa-solid fa-tv"></i>TVs & Audio</li>
-                <li class="list-group-item show"><i class="fa-solid fa-blender"></i>Appliances</li>
-                <li class="list-group-item show"><i class="fa-solid fa-bottle-droplet"></i>Health & Beauty</li>
-                <li class="list-group-item show"><i class="fa-solid fa-blender"></i>Home & Office</li>
-                <li class="list-group-item show"><i class="fa-solid fa-shirt"></i>Fashion</li>
-                <li class="list-group-item show"><i class="fa-solid fa-computer"></i>Computing</li>
-                <li class="list-group-item show"><i class="fa-solid fa-apple-whole"></i>Supermarket</li>
-                <li class="list-group-item show"><i class="fa-solid fa-baby-carriage"></i>Baby Products</li>
-                <li class="list-group-item show"><i class="fa-solid fa-dumbbell"></i>Sporting Goods</li>
-                <li class="list-group-item collapse collapsed-items">Automobile</li>
-                <li class="list-group-item collapse collapsed-items">Garden and Outdoors</li>
-                <li class="list-group-item collapse collapsed-items">Books, Music and Movies</li>
-                <li class="list-group-item collapse collapsed-items">Industrial and Scientific</li>
-                <li class="list-group-item collapse collapsed-items">Livestock</li>
-                <li class="list-group-item collapse collapsed-items">Pet Supplies</li>
-                <li class="list-group-item collapse collapsed-items">Musical Instruments</li>
-                <li class="list-group-item collapse collapsed-items">Services</li>
-                <li class="list-group-item collapse collapsed-items">Toys and Games</li>
-                <li class="list-group-item collapse collapsed-items">Miscellaneous</li>
-                <li class="list-group-item" data-toggle="collapse" data-target=".collapsed-items">
-                    <i class="fa-solid fa-ellipsis" style="padding: 0.15em; border: 1px solid black; border-radius: 30%"></i>More categories
-                </li>
+                <li class="list-group-item"><a href="">My Account</a></li>
+                <li class="list-group-item"><a href="existing_orders.php">Orders</a></li>
+                <li class="list-group-item"><a href="">Inbox</a></li>
+                <li class="list-group-item"><a href="">Pending Reviews</a></li>
+                <li class="list-group-item"><a href="">Vouchers</a></li>
+                <li class="list-group-item"><a href="">Saved Items</a></li>
+                <li class="list-group-item"><a href="">Followed Sellers</a></li>
+                <li class="list-group-item"><a href="">Recently Viewed</a></li>
+                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a href="">Account Management</a></li>
+                <li class="list-group-item"><a href="address_book.php">Address Book</a></li>
+                <li class="list-group-item"><a href="">Newsletter Preferences</a></li>
+                <li class="list-group-item"><a href="">Close Account</a></li>
+                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a style="color:#f68b1e; align-items:center; width: 100%; height: 100%" href="../account/settings/logout.php">LOGOUT</a></li>
             </ul>
         </div>
 
-        <!-- promo carousel -->
-        <div class="col-8 shop-now-carousel-div">
-            <div id="shop-now-carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#shop-now-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#shop-now-carousel" data-slide-to="1"></li>
-                    <li data-target="#shop-now-carousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img  src="../../admin/product-upload/uploads/65c0c97ea9cac.jpg" alt="">
-                    </div>
-                    <div class="carousel-item">
-                        <img  src="../../admin/product-upload/uploads/65c0c97ece69d.jpg" alt="">
-                    </div>
-                    <div class="carousel-item">
-                        <img  src="../../admin/product-upload/uploads/65c55188b6d35.jpg" alt="">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#shop-now-carousel" role="button" data-slide="prev" style="height: 3em; top: 40%">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#shop-now-carousel" role="button" data-slide="next" style="height: 3em; top: 40%">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <a href="index.php#product-rows" class="shop-now-CTA">Shop now  <i class="fa fa-angle-right"></i></a>
-        </div>
+        <!-- user info -->
+        <div class="col-8 card" style="height: 100%; padding: 0;"> 
+        <h5 style="border-bottom: 2px solid lightgray; padding: 0.5em">Account Overview</h5>
+        <div class="account-info-cards" style="padding: 1em;">
+            <div class="card">
+                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Account Overview</h6>
+                <?php
+                   $user_mail = $_SESSION['emailAddress'];
+                   $client_id = $_SESSION['user_id'];
 
-        <!-- call and help CTA -->
-        <div class="col-2" >
-            <div class="card call-help-CTA">
-                <ul class="list-group">
-                    <li class="list-group-item"><i class='fa fa-question-circle-o'></i> <span style="font-size: 0.85em">HELP CENTER<p> Guide To Customer Care</p></span></li>
-                    <li class="list-group-item"><i class="fa-solid fa-boxes-packing"></i> <span style="font-size: 0.85em">EASY RETURN<p> Quick Refund</p></span></li>
-                    <li class="list-group-item"><i class="fa-solid fa-money-bill-trend-up"></i><span style="font-size: 0.85em">SELL ON KSHAN<p>Millions Of Visitors</p></span></li>
-                </ul>   
+                   // Prepare the SQL statement with a parameterized query
+                   $usersSql = "SELECT * FROM endusers WHERE emailAddress = ?";
+                   $stmt = $conn->prepare($usersSql);
+                   
+                   // Bind the parameter and execute the statement
+                   $stmt->bind_param("s", $user_mail);
+                   $stmt->execute();
+                   
+                   // Get the result
+                   $usersResult = $stmt->get_result();
+                   
+                   if ($usersResult->num_rows > 0) {
+                       // Fetch the row from the result set
+                       $row = $usersResult->fetch_assoc();
+                       $client_id = $row['id'];
+                       // Output the emailAddress column from the fetched row
+                       echo "<p>" . $row['emailAddress'] . "</p>";
+                   }
+                   
+                ?>
             </div>
-            <div class="card call-CTA">
-                <p>Call or Whatsapp</p>
-                <p>0711 222 333</p> 
-                <p>TO ORDER</p>
+            <div class="card">
+                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Address Book</h6>
+                <?php
+                   $user_mail = $_SESSION['emailAddress'];
+
+                   // Prepare the SQL statement with a parameterized query
+                   $usersSql = "SELECT * FROM client_addresses WHERE client_id = ?";
+                   $stmt = $conn->prepare($usersSql);
+                   
+                   // Bind the parameter and execute the statement
+                   $stmt->bind_param("i", $client_id);
+                   $stmt->execute();
+                   
+                   // Get the result
+                   $usersResult = $stmt->get_result();
+                   
+                   if ($usersResult->num_rows > 0) {
+                       // Fetch the row from the result set
+                       $row = $usersResult->fetch_assoc();
+                       // Output the data column from the fetched row
+                       echo "<p><strong>Your default shipping address:</strong></p>
+                            <p>" . $row['first_name'] ." " .  $row['last_name']."</p>";
+                       echo "<p>" . $row['area'] ."</p>";
+                       echo "<p>" . $row['city'] ."</p>";
+                       echo "<p>" . $row['address'] ."</p>";
+                       echo "<p>+254 " . $row['phone_number'] . " / +254 ". $row['additional_phone_number'] ."</p>";                       
+                   }else{
+                        echo '<a href="address_book.php?edit=1" style="text-decoration: none; color:#f68b1e";>Add an address</a>';
+                   }
+                   
+                ?>
+            </div>
+            <div class="card">
+                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Kshan Store Credit</h6>
+                <p><strong>Balance:</strong> 0</p>
+            </div>
+            <div class="card">
+                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Newsletter Preferences</h6>
+                <p>You are currently not subscribed to any of our newsletters.</p>
+                <a href="" style="text-decoration: none; color:#f68b1e; align-items:center; width: 100%; height: 100%">EDIT NEWSLETTER PREFERENCES</a>
             </div>
         </div>
-    </div>
-
+        </div>
+</div>
     <!-- products row -->
     <div id="product-rows">
         <?php
-            include_once '../../controls/conn.php';
-
             // Fetch distinct categories from the products table
             $categorySql = "SELECT DISTINCT category FROM products"; 
             $categoryResult = $conn->query($categorySql);
@@ -207,7 +230,6 @@
 <script>
 $(document).ready(function(){
     $('#productCarousel').carousel();
-    $('#shop-now-carousel').carousel();
 
     // Toggle collapse state of additional categories when "More categories" is clicked
     $('[data-toggle="collapse"]').on('click', function() {
