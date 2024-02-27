@@ -119,7 +119,7 @@ if(isset($_SESSION['user'])){
     <div class="col-3  card" style="height: 10em; padding: 0;" >
             <h6 class="mgmt-links-header"><i class="fa-solid fa-circle-user"></i>Account Details</h6>
             <ul class="list-group">
-                <li class="list-group-item"><a href="">Basic Details</a></li>
+                <li class="list-group-item"><a href="basic_details.php">Basic Details</a></li>
                 <li class="list-group-item"><a href="">Edit Phone number</a></li>
             </ul>
         </div>

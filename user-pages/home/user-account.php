@@ -40,7 +40,7 @@
                 <li class="list-group-item"><a href="">Saved Items</a></li>
                 <li class="list-group-item"><a href="">Followed Sellers</a></li>
                 <li class="list-group-item"><a href="">Recently Viewed</a></li>
-                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a href="">Account Management</a></li>
+                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a href="" target="_blank">Account Management</a></li>
                 <li class="list-group-item"><a href="address_book.php">Address Book</a></li>
                 <li class="list-group-item"><a href="">Newsletter Preferences</a></li>
                 <li class="list-group-item"><a href="">Close Account</a></li>
@@ -73,32 +73,29 @@
                        // Fetch the row from the result set
                        $row = $usersResult->fetch_assoc();
                        $client_id = $row['id'];
-                       // Output the emailAddress column from the fetched row
                        echo "<p>" . $row['emailAddress'] . "</p>";
                    }
                    
                 ?>
             </div>
             <div class="card">
-                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Address Book</h6>
+                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em; display: flex; flex-direction: row; justify-content: space-between;">
+                    Address Book 
+                    <a href="address_book.php?edit=1" style="text-decoration: none; color:#f68b1e";><i class="fa-solid fa-pen"></i></a>
+                </h6>
                 <?php
                    $user_mail = $_SESSION['emailAddress'];
 
-                   // Prepare the SQL statement with a parameterized query
                    $usersSql = "SELECT * FROM client_addresses WHERE client_id = ?";
                    $stmt = $conn->prepare($usersSql);
                    
-                   // Bind the parameter and execute the statement
                    $stmt->bind_param("i", $client_id);
                    $stmt->execute();
                    
-                   // Get the result
                    $usersResult = $stmt->get_result();
                    
                    if ($usersResult->num_rows > 0) {
-                       // Fetch the row from the result set
                        $row = $usersResult->fetch_assoc();
-                       // Output the data column from the fetched row
                        echo "<p><strong>Your default shipping address:</strong></p>
                             <p>" . $row['first_name'] ." " .  $row['last_name']."</p>";
                        echo "<p>" . $row['area'] ."</p>";

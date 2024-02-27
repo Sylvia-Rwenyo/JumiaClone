@@ -33,7 +33,7 @@
         <!-- account links -->
         <div class="col-3  card" style="height: 100%; padding: 0;" >
             <ul class="list-group">
-                <li class="list-group-item"><a href="">My Account</a></li>
+                <li class="list-group-item"><a href="user-account.php">My Account</a></li>
                 <li class="list-group-item"><a href="existing_orders.php">Orders</a></li>
                 <li class="list-group-item"><a href="">Inbox</a></li>
                 <li class="list-group-item"><a href="">Pending Reviews</a></li>
@@ -41,7 +41,7 @@
                 <li class="list-group-item"><a href="">Saved Items</a></li>
                 <li class="list-group-item"><a href="">Followed Sellers</a></li>
                 <li class="list-group-item"><a href="">Recently Viewed</a></li>
-                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a href="account_management.php">Account Management</a></li>
+                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a href="account_management.php" target="_blank">Account Management</a></li>
                 <li class="list-group-item active"><a href="address_book.php">Address Book</a></li>
                 <li class="list-group-item"><a href="">Newsletter Preferences</a></li>
                 <li class="list-group-item"><a href="">Close Account</a></li>
