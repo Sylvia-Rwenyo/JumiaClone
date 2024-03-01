@@ -1,5 +1,6 @@
 <?php
-session_start(); // Start the session to access session variables
+//start_session
+ @session_start(); 
 
 // Check if the product ID is provided in the URL
 if(isset($_GET['id'])) {

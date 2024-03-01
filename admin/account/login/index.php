@@ -55,7 +55,7 @@
         ?>
 
     <form method="POST" action="processing.php">
-        <input placeholder="Email address or phone number" name="accInput" type="text"/>
+        <input placeholder="Email address" name="accInput" type="text"/>
         <button type="submit" name="accessAccount">Continue</button>
     </form>
     <?php
@@ -63,11 +63,9 @@
     ?>
 
     <!--other log in options -->
-    <button class="btn lg-passkeys">Log in with Passkeys</button>
     <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i> &nbsp;&nbsp;&nbsp;&nbsp;Log in with Facebook</button>
     <p class="msg">For further support you may contact other admin users.</p>
 
-    <!-- logo w Company name-->
 
 </body>
 </html>

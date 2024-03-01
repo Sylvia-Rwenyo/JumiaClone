@@ -8,6 +8,7 @@ h2 {
     text-align: center;
 }
 
+/* general styling */
 form {
     width: 70%;
     margin-left: 15%;
@@ -33,7 +34,7 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: #0000FF; /* Blue */
+    background-color: #0000FF; 
     color: white;
     padding: 10px 15px;
     border: none;
@@ -43,13 +44,13 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #191970; /* Midnight Blue */
+    background-color: #191970; 
 }
 
 /* Product Display Styling */
 
 h3 {
-    color: #000080; /* Dark Blue */
+    color: #000080; 
     text-align: center;
 }
 
@@ -75,14 +76,14 @@ h3 {
 #file-text {
     display: inline-block;
     padding: 8px 15px;
-    background-color: #4169E1; /* Royal Blue */
+    background-color: #4169E1; 
     color: white;
     cursor: pointer;
     border-radius: 5px;
 }
 
 #file-text:hover {
-    background-color: #1E90FF; /* Dodger Blue */
+    background-color: #1E90FF; 
 }
 
 .cancel-button {
@@ -115,25 +116,27 @@ h3 {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    background: rgba(0, 0, 0, 0.5); 
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 18px;
     cursor: pointer;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth transition effect */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .file-preview-image:hover .cancel-overlay {
-    opacity: 1; /* Show the overlay on hover */
+    opacity: 1;
 }
 
 .form-group-row {
     display: flex;
     align-items: center;
 }
+
+/* nav styling */
 nav {
     background-color: rgba(52, 152, 219, 0.7);
     padding: 10px;

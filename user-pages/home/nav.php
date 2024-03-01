@@ -1,6 +1,8 @@
     <?php
-    @session_start();
-    include_once '../../controls/conn.php';
+//start_session
+ @session_start();
+ //database connection
+include_once '../../controls/conn.php';
 
     $items_count = 0;
 
@@ -35,14 +37,20 @@
             <p><i class="fab fa-whatsapp"></i>0711 222 333</p>
         </div>
     </div>
+
+    <!-- main nav content -->
     <nav class="nav navbar" style="padding: 1em; height: 6em; top: 3em; padding-top:0 ;">
+    <!-- logo -->
         <div class="logo" style="margin-left: 2em; height: 2em; width: 2em;">
             <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
         </div>
+    <!-- search bar -->
         <div class="input-group">
             <input type="search" class="form-control rounded" placeholder="Search products, brands and categories" aria-label="Search" aria-describedby="search-addon" />
             <button type="button" class="btn" data-mdb-ripple-init>search</button>
-        </div>  
+        </div> 
+        
+        <!-- dropdown for account links -->
         <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php
@@ -83,6 +91,8 @@
                 ?>
             </div>
         </div>
+
+        <!-- dropdown for orders info, help, chat, payment and refunds -->
         <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class='fa fa-question-circle-o'></i> Help
@@ -99,6 +109,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- cart link -->
         <a href="cart.php" style="padding-right: 2em;" class="cart"><span>
             <i class="fa-solid fa-cart-shopping"></i><span class="badge"><?php echo $items_count ?></span></span> Cart</a>
     </nav>

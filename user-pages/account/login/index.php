@@ -1,4 +1,5 @@
 <?php
+//start_session
 @session_start();
 ?>
 <!DOCTYPE html>
@@ -66,12 +67,9 @@
     ?>
 
     <!--other log in options -->
-    <!-- <button class="btn lg-passkeys">Log in with Passkeys</button> -->
     <button  class="btn lg-facebook"><i class="fa fa-facebook"></i>  Log in with Facebook</button>
 
     <p class="msg">For further support you may visit out Help Center or contact our customer service team</p>
-
-    <!-- logo w Company name-->
 
 </body>
 </html>

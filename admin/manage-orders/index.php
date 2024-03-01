@@ -1,5 +1,6 @@
-<?php
-session_start();
+<?php 
+//start_session
+ @session_start();
 
 // Check if the user is logged in as admin
 if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
@@ -11,6 +12,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
     exit();
 }
 
+//database connection
 include_once '../../controls/conn.php';
 
 // Retrieve order data with product name, quantity, and total price from the database
@@ -58,8 +60,8 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="container">
-        <nav>
-            <h2>Manage Orders</h2>
+         <!-- navigation bar -->
+    <nav>        <h2>Manage Orders</h2>
             <a href="../../user-pages/home/">Shop</a>
             <a href='../manage-products/'>Products</a>
             <a href='#'>Orders</a>
@@ -67,7 +69,7 @@ $result = $conn->query($sql);
         </nav>
 
         <h3>All Orders</h3>
-
+        <!-- show order info in a table -->
         <?php
         if ($result->num_rows > 0) {
             echo "<table>";
@@ -99,7 +101,8 @@ $result = $conn->query($sql);
             echo "No orders found.";
         }
 
-        $conn->close();
+        //close database connection 
+    $conn->close();
         ?>
 
     </div>

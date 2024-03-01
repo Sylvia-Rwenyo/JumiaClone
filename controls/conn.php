@@ -1,4 +1,5 @@
 <?php
+// define variables
 	$servername = "localhost";
 	$username = "root";
 	$password = "";

@@ -1,10 +1,12 @@
 <?php
+//start_session
+@session_start();
+
 // Check if the product ID is provided in the URL
 if(isset($_GET['id'])) {
     $product_id = $_GET['id'];
     $quantity = 1;
 
-    session_start();
     if(!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
     }

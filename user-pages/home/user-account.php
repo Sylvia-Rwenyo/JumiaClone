@@ -1,5 +1,7 @@
 <?php
-    @session_start();
+//start_session
+ @session_start();
+//  redirect user if not logged in
         if(!isset( $_SESSION["user"])){
             echo '
                 <script>window.location.href = "../account/login/"</script>
@@ -11,7 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Shan</title>
+    <title>My K-Shan Account</title>
+    <!-- stylesheet files and CDN links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,9 +28,7 @@
 <?php include_once 'nav.php' ?>
 
 <!-- main-body-elements container -->
-<section class="container main-container">
-
-   
+<section class="container main-container">   
     <div class="account-info CTA row" style="height: 40em; column-gap: 5%;">
         <!-- account links -->
         <div class="col-3  card" style="height: 100%; padding: 0;" >
@@ -40,7 +41,7 @@
                 <li class="list-group-item"><a href="">Saved Items</a></li>
                 <li class="list-group-item"><a href="">Followed Sellers</a></li>
                 <li class="list-group-item"><a href="">Recently Viewed</a></li>
-                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a href="" target="_blank">Account Management</a></li>
+                <li class="list-group-item" style="border-top: 1px solid lightgray;"><a href="account_management.php" target="_blank">Account Management</a></li>
                 <li class="list-group-item"><a href="address_book.php">Address Book</a></li>
                 <li class="list-group-item"><a href="">Newsletter Preferences</a></li>
                 <li class="list-group-item"><a href="">Close Account</a></li>
@@ -78,6 +79,7 @@
                    
                 ?>
             </div>
+            <!-- address card -->
             <div class="card">
                 <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em; display: flex; flex-direction: row; justify-content: space-between;">
                     Address Book 
@@ -108,10 +110,13 @@
                    
                 ?>
             </div>
+            <!-- credit info card -->
             <div class="card">
                 <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Kshan Store Credit</h6>
                 <p><strong>Balance:</strong> 0</p>
             </div>
+
+            <!-- newsletter preferences card -->
             <div class="card">
                 <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Newsletter Preferences</h6>
                 <p>You are currently not subscribed to any of our newsletters.</p>
@@ -119,7 +124,7 @@
             </div>
         </div>
         </div>
-</div>
+    </div>
     <!-- products row -->
     <div id="product-rows">
         <?php
@@ -211,13 +216,13 @@
             }
         ?>
     </div>
-
-
 </section>
+
 <!-- Footer -->
 <?php include_once 'footer.php'; ?>
+</body>
 
-<!-- Scripts -->
+<!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
@@ -239,5 +244,4 @@ function showDetails(product_id){
     window.location.href = 'product.php?id=' + product_id;
 }
 </script>
-</body>
 </html>

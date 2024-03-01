@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
 </head>
 <body>
+     <!-- navigation bar -->
     <nav>
         <h2>Admin Settings</h2>
         <a href="../index.php">Shop</a>
@@ -16,6 +17,7 @@
         <a href='#'>Account Settings</a>
     </nav>
     <div class="container">
+        <!-- edit admin Credentials -->
         <h3>Edit Admin Credentials</h3>
         <form action="edit_credentials.php" method="post">
             <label for="emailAddress">Email Address:</label>
@@ -30,6 +32,7 @@
             <input type="submit" value="Save Changes">
         </form>
 
+        <!-- create new admin -->
         <h3>Add New Admin</h3>
         <form action="add_admin.php" method="post">
 
@@ -51,6 +54,7 @@
             <input type="submit" value="Add Admin">
         </form>
 
+        <!-- other account actions -->
         <h3>Account Actions</h3>
         <a href="logout.php"><button>Logout</button></a>
         <a href="delete_account.php"><button>Delete Account</button></a>

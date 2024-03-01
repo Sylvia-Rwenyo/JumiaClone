@@ -1,11 +1,14 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
+            <!-- logo column -->
             <div class="col-2">
                 <div class="logo" style="height: 4em;">
                     <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
                 </div>
             </div>
+
+            <!-- newsletter prompt column -->
             <div class="col-6 newsletter-prompt">
                 <h6>NEW TO KSHAN SHOP?</h6>
                 <p>Subscribe to our newsletter to get updates on our latest offers!</p>
@@ -15,6 +18,7 @@
                     <button type="button" class="btn" data-mdb-ripple-init>FEMALE</button>
                 </div> 
             </div>
+            <!-- download app prompts -->
                 <div class="col-4">
                     <div class="download-prompt">
                         <div class="logo" style="height: 4em;">
@@ -31,6 +35,8 @@
                     </div>
                 </div>
         </div>
+
+        <!-- other links -->
         <div class="row">
             <div class="col-4">
                 <div>
@@ -103,8 +109,6 @@
                 <h6>PAYMENT METHODS</h6>
                 <ul>
                     <li><a href="">MPESA</a></li>
-                    <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
                 </ul>
             </div> -->
         </div>

@@ -1,3 +1,4 @@
+/* account info styling */
 .account-info .list-group-item a {
     text-decoration: none;
     color: black;
@@ -6,8 +7,8 @@
     padding: calc((40em / number_of_a_elements) * 0.2);
     box-sizing: border-box;
     font-size: 1em;
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically center the text */
+    display: flex;
+    align-items: center; 
     padding-left: 2em;
 }
 

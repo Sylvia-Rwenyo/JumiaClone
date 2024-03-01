@@ -101,6 +101,7 @@
     <!-- products row -->
     <div id="product-rows">
         <?php
+            //database connection
             include_once '../../controls/conn.php';
 
             // Fetch distinct categories from the products table
@@ -194,10 +195,12 @@
 
 
 </section>
-<!-- Footer -->
+
+<!-- footer -->
 <?php include_once 'footer.php'; ?>
 
-<!-- Scripts -->
+</body>
+<!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
@@ -220,5 +223,4 @@ function showDetails(product_id){
     window.location.href = 'product.php?id=' + product_id;
 }
 </script>
-</body>
 </html>

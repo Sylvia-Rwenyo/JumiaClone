@@ -1,5 +1,7 @@
 <?php
-    @session_start();
+//start_session
+@session_start();
+// redirect user if they're not logged in
         if(!isset( $_SESSION["user"])){
             echo '
                 <script>window.location.href = "../account/login/"</script>
@@ -11,10 +13,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Shan</title>
+    <!-- stylesheet files and CDN links -->
     <link rel="stylesheet" href="products_page.css">
     <link rel="stylesheet" href="home_page.css">
     <link rel="stylesheet" href="user_pages.css">
-    <title>K-Shan</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,27 +37,6 @@
         }
         </style>
 
-<!-- delivery banner -->
-<!-- <div class="delivery-banner">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <p>FREE DELIVERY</p>
-            </div>
-            <div class="carousel-item">
-                <p>On orders above Ksh 1,999</p>
-            </div>
-            <div class="carousel-item">
-                <p>Terms and Conditions apply</p>
-            </div>
-        </div>
-    </div>
-    <div class="delivery-call-prompt">
-        <p>Call Whatsapp to Order</p>
-        <p><i class="fab fa-whatsapp"></i>0711 222 333</p>
-    </div>
-</div> -->
-
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
 
@@ -65,6 +47,7 @@
     <div class="col-12" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); height: 100%; overflow-y: scroll;">
         <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500; padding: 1em;">Your Orders</h5>
         <?php
+        //database connection
         include_once '../../controls/conn.php';
 
         $totalPrice = 0;
@@ -103,10 +86,6 @@
                                 $imageUrl = $image['file_path'];
                             }
 
-                            // Calculate total price
-                            // $totalPrice += $product['price'] * intval($quantity);
-
-                            // Display product details
                             ?>
                             <div class="row" style="height: 8em; margin-bottom: 3em">
                                 <div class="col-2">
@@ -161,19 +140,6 @@
             </div>
         </div>
     </div>
-
-        <!-- Display cart summary -->
-        <!-- <div class="col-3"  style="height: 100% ;border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); ">
-            <div class="card total-card" style="border: none; padding: 1em"  >
-                <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500;">Cart Summary</h5>
-                <p>Sub Total: <span><?php
-                //  echo $totalPrice; 
-                ?></span></p>
-                <a href="checkout.php" class="btn"> Check Out (Ksh <?php 
-                // echo $totalPrice; 
-                ?>)</a>
-            </div>
-        </div> -->
     </div>
 
     <!-- Display product categories and products -->
@@ -257,9 +223,10 @@
     ?>
 </section>
 
+<!-- footer -->
 <?php include_once 'footer.php'; ?>
-
-<!-- Scripts -->
+</body>
+<!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
@@ -328,5 +295,4 @@ function showDetails(product_id){
     window.location.href = 'product.php?id=' + product_id;
 }
 </script>
-</body>
 </html>

@@ -1,14 +1,10 @@
 <?php
-session_start();
+//start_session
+ @session_start();
+//database connection
 include_once '../../controls/conn.php';
-
-use Ramsey\Uuid\UuidFactory;
-
 // Include the Composer autoload file
 require_once '../../vendor/autoload.php';
-
-// Create an instance of the UuidFactory
-$factory = new UuidFactory();
 
 // Retrieve the form data and store it in variables
 $firstName = $_POST['first_name'];
@@ -32,10 +28,7 @@ $_SESSION['client_info'] = array(
     'city' => $city
 );
 
-// Generate a UUID for the address_id
-$uuid = $factory->uuid4();
-
-$address_id = $uuid->toString();
+$address_id = uniqid('ADDRESS');
 
 $client_id = $_SESSION['user_id'];
 

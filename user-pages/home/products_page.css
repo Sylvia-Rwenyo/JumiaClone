@@ -1,4 +1,4 @@
-
+/* product stying */
 .single-product-card{
     height: 75%
 }
@@ -30,6 +30,8 @@
     padding-left: 5%;
     padding-right: 35%;
 }
+
+/* dropdown styling */
 .dropdown .btn-secondary.dropdown-toggle{
     background:  transparent;
     color: black;

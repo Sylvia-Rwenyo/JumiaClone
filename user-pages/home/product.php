@@ -1,5 +1,6 @@
 <?php
-@session_start();
+//start_session
+ @session_start();
 
 if(isset($_GET['id'])){
     $product_id =  $_GET['id'];
@@ -9,10 +10,11 @@ if(isset($_GET['id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Shan</title>
+    <!-- stylesheets and CDN links -->
     <link rel="stylesheet" href="products_page.css">
     <link rel="stylesheet" href="home_page.css">
     <link rel="stylesheet" href="user_pages.css">
-    <title>K-Shan</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -32,26 +34,7 @@ if(isset($_GET['id'])){
         }
         </style>
 
-<!-- delivery banner -->
-<!-- <div class="delivery-banner">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <p>FREE DELIVERY</p>
-            </div>
-            <div class="carousel-item">
-                <p>On orders above Ksh 1,999</p>
-            </div>
-            <div class="carousel-item">
-                <p>Terms and Conditions apply</p>
-            </div>
-        </div>
-    </div>
-    <div class="delivery-call-prompt">
-        <p>Call Whatsapp to Order</p>
-        <p><i class="fab fa-whatsapp"></i>0711 222 333</p>
-    </div>
-</div> -->
+
 
 <!-- nav bar -->
 <?php  include_once 'nav.php';?> 
@@ -63,7 +46,8 @@ if(isset($_GET['id'])){
     <div class="show-product row">
 
     <?php
-            include_once '../../controls/conn.php';
+        //database connection
+        include_once '../../controls/conn.php';
 
             // Fetch product with the given ID
             $productSql = "SELECT * FROM products WHERE id = '$product_id'";
@@ -293,12 +277,12 @@ if(isset($_GET['id'])){
                 }
             }
 ?>
-
-
 </section>
-<!-- Footer -->
+
+<!-- footer -->
 <?php include_once 'footer.php'; ?>
-<!-- Scripts -->
+</body>
+<!-- scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -399,7 +383,6 @@ function showDetails(product_id){
     window.location.href = 'product.php?id=' + product_id;
 }
 </script>
-</body>
 </html>
 <?php
 }else{

@@ -1,5 +1,6 @@
 <?php
-    @session_start();
+//start_session
+ @session_start();
         if(!isset( $_SESSION["user"])){
             echo '
                 <script>window.location.href = "../account/login/"</script>
@@ -11,9 +12,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Shan</title>
+    <!-- stylesheet files and CDN links -->
     <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="products_page.css">
-    <title>K-Shan</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -133,30 +135,30 @@
             justify-content: space-evenly;
             margin-bottom: 20px;
         }
-         /* Add custom styles here */
+        
          .icon-container {
-            position: relative; /* Make the container position relative */
-            display: inline-block; /* Ensure inline display */
+            position: relative; 
+            display: inline-block; 
         }
         
         .badge {
-            position: absolute; /* Position the badge absolutely */
-            top: 0; /* Adjust top position */
-            right: 0; /* Adjust right position */
-            background-color: white; /* Set badge background color */
-            color: black; /* Set badge text color */
-            width: 15px; /* Set badge width */
-            height: 15px; /* Set badge height */
-            border-radius: 50%; /* Make the badge circular */
-            display: flex; /* Use flexbox for centering */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            font-size: 10px; /* Set badge font size */
+            position: absolute; 
+            top: 0;
+            right: 0; 
+            background-color: white; 
+            color: black; 
+            width: 15px; 
+            height: 15px; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            font-size: 10px;
             padding: 0.25em
         }
         
         .icon {
-            font-size: 60px; /* Set icon size */
+            font-size: 60px;
         }
         
         .col-2 i{
@@ -173,7 +175,7 @@
 .order-info {
     display: flex;
     flex-direction: row;
-    justify-content: space-around; /* Adjust as needed */
+    justify-content: space-around; 
     position: relative;
     top: 15px;
 }
@@ -188,33 +190,12 @@
     font-size: 1.5em;
     width: 7em;
     padding: 0.5em;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
 }
 
 
     </style>
 <body class="home-page-body">
-
-<!-- delivery banner -->
-<!-- <div class="delivery-banner">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <p>FREE DELIVERY</p>
-            </div>
-            <div class="carousel-item">
-                <p>On orders above Ksh 1,999</p>
-            </div>
-            <div class="carousel-item">
-                <p>Terms and Conditions apply</p>
-            </div>
-        </div>
-    </div>
-    <div class="delivery-call-prompt">
-        <p>Call Whatsapp to Order</p>
-        <p><i class="fab fa-whatsapp"></i>0711 222 333</p>
-    </div>
-</div> -->
 
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
@@ -223,6 +204,7 @@
 <section class="container" style="margin-top: 6em;">
 
 <div class="order-info-container" style="background-color: #f68b1e; opacity: 0.75; padding: 1em">
+<!-- hep center info cards -->
     <div class="help-center-top">
         <H5>Help Center</H5>
         <p>Hi, how can we help you?</p>
@@ -269,8 +251,8 @@
 <!-- footer -->
 <?php include_once 'footer.php'; ?>
  
-
-<!-- Scripts -->
+</body>
+<!-- scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -289,8 +271,6 @@ $(document).ready(function(){
     function showDetails(product_id){
         window.location.href = 'product.php?id=' + product_id;
     }
-});
-    
+});   
 </script>
-</body>
 </html>

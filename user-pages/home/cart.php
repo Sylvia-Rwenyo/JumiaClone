@@ -1,4 +1,5 @@
 <?php
+//start_session
 @session_start();
 ?>
 <!DOCTYPE html>
@@ -128,7 +129,6 @@
             height: 95%;
         }
         .carousel-item {
-            /* transition: transform 0.2s ease-in-out; */
             transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .product-cards .card{
@@ -233,27 +233,6 @@
     </style>
 <body class="home-page-body">
 
-<!-- delivery banner -->
-<!-- <div class="delivery-banner">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <p>FREE DELIVERY</p>
-            </div>
-            <div class="carousel-item">
-                <p>On orders above Ksh 1,999</p>
-            </div>
-            <div class="carousel-item">
-                <p>Terms and Conditions apply</p>
-            </div>
-        </div>
-    </div>
-    <div class="delivery-call-prompt">
-        <p>Call Whatsapp to Order</p>
-        <p><i class="fab fa-whatsapp"></i>0711 222 333</p>
-    </div>
-</div> -->
-
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
 
@@ -266,6 +245,7 @@
             Cart <?php echo isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 ? '(' . count($_SESSION['cart']) . ')' : ''; ?>
         </h5>
             <?php
+            //database connection
             include_once '../../controls/conn.php';
 
             $totalPrice = 0;
@@ -425,7 +405,7 @@
 
 <?php include_once 'footer.php'; ?>
 
-<!-- Scripts -->
+<!-- scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -437,15 +417,21 @@ $(document).ready(function(){
 
     // Toggle collapse state of additional categories when "More categories" is clicked
     $('[data-toggle="collapse"]').on('click', function() {
-        $('.collapsed-items').removeClass('collapse');
-        $('.categories-list').css('height', 'fit-content');
+        if($('.collapsed-items').classList.contains('collapse')){
+            $('.collapsed-items').classList.remove('collapse');
+            $('.collapsed-items').classList.add('show');
+            $('.categories-list').css('height', 'fit-content');
+        }else{
+            $('.collapsed-items').classList.remove('show');
+            $('.collapsed-items').classList.add('collapse');
+        }
     });
    
     // Handle click event for adding quantity
     $('.add-quantity').on('click', function() {
         var productId = $(this).data('productid');
         var quantitySpan = document.getElementById('quantity-text');
-        var quantityText = quantitySpan.textContent.trim(); // Use textContent and trim() to get the text without whitespace
+        var quantityText = quantitySpan.textContent.trim(); 
         var quantity = parseInt(quantityText); 
         quantity++;
         quantitySpan.textContent = quantity; // Update the text content
@@ -458,7 +444,7 @@ $(document).ready(function(){
     $('.minus-quantity').on('click', function() {
         var productId = $(this).data('productid');
         var quantitySpan = document.getElementById('quantity-text');
-        var quantityText = quantitySpan.textContent.trim(); // Use textContent and trim() to get the text without whitespace
+        var quantityText = quantitySpan.textContent.trim(); 
         var quantity = parseInt(quantityText); 
 
         if (quantity > 1) {
@@ -474,21 +460,17 @@ $(document).ready(function(){
         // Send AJAX request to update cart session variable
         $.ajax({
             type: 'POST',
-            url: 'update_cart.php', // Replace 'update_cart.php' with the actual file handling cart updates
+            url: 'update_cart.php',
             data: { productId: productId, quantity: quantity },
             success: function(response) {
-                // Handle success response
             },
             error: function(xhr, status, error) {
-                // Handle error
             }
         });
     }
 });
 
-
-
-
+// redirect user to view a single product's details
 function showDetails(product_id){
     window.location.href = 'product.php?id=' + product_id;
 }

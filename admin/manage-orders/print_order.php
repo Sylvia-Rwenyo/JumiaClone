@@ -1,8 +1,8 @@
 <?php
-// print-order.php
+//start_session
+ @session_start();
 
-session_start();
-
+//database connection
 include_once '../../controls/conn.php';
 
 // Check if an order ID is provided in the URL
@@ -96,6 +96,7 @@ if (isset($_GET['id'])) {
 </head>
 <body>
     <h2>Order Details</h2>
+    <!-- show order details form the database -->
     <?php
     if ($result->num_rows > 0) {
         ?>
@@ -127,6 +128,8 @@ if (isset($_GET['id'])) {
             } while ($row = $result->fetch_assoc());
             ?>
         </table>
+
+        <!-- print order when button is clicked -->
         <div class="print-button">
             <button onclick="window.print()" style="background-color: #f68b1e; color: white">Print Order</button>
         </div>
@@ -144,6 +147,7 @@ if (isset($_GET['id'])) {
         echo "No order found.";
     }
 
+    //close database connection 
     $conn->close();
 } else {
     echo "Order ID not provided.";

@@ -1,16 +1,17 @@
 <?php
-session_start();
+//start_session
+ @session_start();
 
-// Check if the user is logged in as admin
+// Check if the user is logged in as admin, if not redirect them to login
 if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
     echo '
         <script>
         window.location.href = "../logIn/";
         </script>
         ';
-    exit();
 }
 
+//database connection
 include_once '../../controls/conn.php';
 
 // Check if product ID is provided
@@ -35,13 +36,14 @@ if (isset($_GET["id"])) {
             unlink($filePath);
         }
 
+        // redirect admin to products display page
         echo '
         <script>
         window.location.href = "index.php";
         </script>
         ';
-        exit();
     } else {
+        // show error if it occurred
         echo "Error deleting product: " . $conn->error;
     }
 } else {
@@ -49,6 +51,7 @@ if (isset($_GET["id"])) {
     exit();
 }
 
-$conn->close();
+//close database connection 
+    $conn->close();
 
 ?>

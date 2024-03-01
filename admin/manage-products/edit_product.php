@@ -1,5 +1,6 @@
 <?php
-session_start();
+//start_session
+@session_start();
 
 // Check if the user is logged in as admin
 if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
@@ -8,9 +9,9 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             window.location.href = "../logIn/";
             </script>
             ';
-    exit();
 }
 
+//database connection
 include_once '../../controls/conn.php';
 
 
@@ -98,15 +99,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
-        // Redirect after processing
+        // Redirect user after processing
         echo '<script>window.location.href = "index.php";</script>';
-        exit();
     } else {
         echo "Error updating product: " . $conn->error;
     }
 }
 
-$conn->close();
+//close database connection 
+    $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +121,8 @@ $conn->close();
 </head>
 <body>
     <div class="container">
-        <nav>
+     <!-- navigation bar -->
+        <nav>        
             <h2>Manage Products</h2>
             <a href='index.php'>Products</a>
             <a href='../manage-orders/'>Orders</a>
@@ -129,6 +131,7 @@ $conn->close();
 
         <h3 >Edit Product Details</h3>
 
+        <!-- show edit product form with values of product to be edited being autofilled -->
         <form action="edit_product.php?id=<?php echo $productId; ?>" method="post" enctype="multipart/form-data">
             <label for="name">Name:</label>
             <input type="text" name="name" value="<?php echo $product['name']; ?>" required><br>
@@ -162,6 +165,8 @@ $conn->close();
             <input type="submit" value="Update Product">
         </form>
     </div>
+
+        <!-- external js scripts -->
     <script src="../product-upload/script.js"></script>
 
 </body>

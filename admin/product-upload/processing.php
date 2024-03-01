@@ -1,4 +1,5 @@
 <?php
+//database connection
 include_once '../../controls/conn.php';
 
 // Process form data
@@ -65,5 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 
-$conn->close();
+//close database connection 
+    $conn->close();
 ?>

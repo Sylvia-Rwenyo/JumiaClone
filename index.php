@@ -1,9 +1,10 @@
 <?php
-session_start();
+//start_session
+ @session_start();
 if(isset($_SESSION['admin'])){
     echo '
     <script>
-    window.location.href = "admin/account/manage-products";
+    window.location.href = "admin/manage-products";
     </script>
     ';
 }else{

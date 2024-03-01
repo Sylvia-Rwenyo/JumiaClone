@@ -1,10 +1,11 @@
 <?php
-    @session_start();
-        if(!isset( $_SESSION["user"])){
-            echo '
-                <script>window.location.href = "../account/login/"</script>
-            ';
-    }
+//start_session
+@session_start();
+    if(!isset( $_SESSION["user"])){
+        echo '
+            <script>window.location.href = "../account/login/"</script>
+        ';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -269,7 +270,8 @@
                     if ($usersResult->num_rows > 0) {
                         // Fetch the row from the result set
                         $row = $usersResult->fetch_assoc();   
-                    }                 
+                    }   
+                    // auto fill with client info   
                 ?>  
         <form class="row" method="POST" action="save-client-info.php" style="padding: 1em;">
             <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em;">1. &nbsp;&nbsp;Customer Address</h6>
@@ -310,6 +312,8 @@
                 <button type="submit" id="submit-client-info" class="btn" style="background-color: #f68b1e; color: white;">Save Info</button>
             </div>
         </form>
+
+        <!-- delivery details -->
     <div class="row" id="delivery-info">
         <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em; display: flex; flex-direction: row; justify-content: space-between">
         2. &nbsp;&nbsp;Delivery Details <a>Change <i class="fa fa-angle-right"></i></a></h6>
@@ -366,6 +370,7 @@
             <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">Delivery scheduled on 19 February</p>
             <div>
             <?php
+            //database connection
             include_once '../../controls/conn.php';
             $totalPrice = 0;  
             // Check if the cart session variable exists and is not empty
@@ -416,10 +421,10 @@
 
     </div>
 
+    <!-- payment method -->
     <div class="row">
         <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em; display: flex; flex-direction: row; justify-content: space-between">
         3. &nbsp;&nbsp;PAYMENT METHOD 
-        <!-- <a>Change <i class="fa fa-angle-right"></i></a> -->
     </h6>
 
         <div style="margin-bottom: 1em;">
@@ -498,15 +503,9 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 </section>
- 
-
-<!-- Scripts -->
+</body>
+<!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
@@ -697,5 +696,4 @@ $(document).ready(function(){
     }
     
 </script>
-</body>
 </html>

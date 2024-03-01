@@ -1,13 +1,14 @@
 <?php
-session_start();
-// Check if the user is logged in as admin
+//start_session
+ @session_start();
+
+// Check if the user is logged in as admin. if not redirect them to log in page
 if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
     echo '
             <script>
             window.location.href = "../account/login/";
             </script>
             ';
-    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -21,13 +22,16 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 </head>
 <body>
     
+     <!-- navigation bar -->
     <nav>
-    <h2>Upload Product</h2>
-    <a href="../../user-pages/home/">Shop</a>
-    <a href='../manage-products/'>Products</a>
-    <a href='../manage-orders/'>Orders</a>
-    <a href='../account/settings/'>Account Settings</a>
-        </nav>
+        <h2>Upload Product</h2>
+        <a href="../../user-pages/home/">Shop</a>
+        <a href='../manage-products/'>Products</a>
+        <a href='../manage-orders/'>Orders</a>
+        <a href='../account/settings/'>Account Settings</a>
+    </nav>
+
+    <!-- product upload form -->
     <form action="processing.php" method="post" enctype="multipart/form-data">
         <label for="name">Name:</label>
         <input type="text" name="name" required><br>
@@ -77,6 +81,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
         <input type="submit" value="Upload Product">
     </form>
 
+    <!-- external js scripts -->
     <script src="script.js"></script>
 </body>
 </html>

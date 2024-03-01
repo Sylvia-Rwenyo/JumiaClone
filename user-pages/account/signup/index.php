@@ -1,5 +1,6 @@
 <?php
-@session_start();
+//start_session
+ @session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +47,6 @@
     <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i>  sign up with Facebook</button>
     <p class="msg">For further support you may visit out Help Center or contact our customer service team</p>
 
-    <!-- logo w Company name-->
 
 </body>
 </html>

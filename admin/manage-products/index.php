@@ -1,16 +1,18 @@
 <?php
-session_start();
+//start_session
+ @session_start();
 
 // Check if the user is logged in as admin
 if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
     echo '
             <script>
-            window.location.href = "../logIn/";
+            window.location.href = "../account/logIn/";
             </script>
             ';
     exit();
 }
 
+//database connection
 include_once '../../controls/conn.php';
 
 // Retrieve product data from the database
@@ -79,7 +81,8 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="container">
-        <nav>
+         <!-- navigation bar -->
+         <nav>        
             <h2>Manage Products</h2>
             <a href="../../user-pages/home/">Shop</a>
             <a href='../product-upload/'>Add Products</a>
@@ -88,6 +91,7 @@ $result = $conn->query($sql);
             <a href='../account/settings/'>Account Settings</a>
         </nav>
 
+        <!-- show all products in a table -->
         <h3>All Products</h3>
 
         <?php
@@ -156,7 +160,8 @@ $result = $conn->query($sql);
             echo "No products found.";
         }
 
-        $conn->close();
+        //close database connection 
+    $conn->close();
         ?>
     </div>
 </body>

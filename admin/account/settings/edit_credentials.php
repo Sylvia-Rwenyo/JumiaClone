@@ -1,10 +1,12 @@
 <?php
-session_start();
+//start_session
+ @session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // database connection
     include_once('../../../controls/conn.php');
 
+    // show connection error if it occured
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -44,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Invalid old password.";
     }
 
+    //close database connection 
     $conn->close();
 }
 ?>

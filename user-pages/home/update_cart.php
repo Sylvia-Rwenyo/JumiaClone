@@ -1,5 +1,6 @@
 <?php
-session_start();
+//start_session
+ @session_start();
 
 // Check if productId and quantity are provided in the POST request
 if(isset($_POST['productId']) && isset($_POST['quantity'])) {
