@@ -52,7 +52,7 @@
     padding: 0.4em;
     font-size: 0.85em;
 }
-.list-group-item:hover, .header-band span:hover{
+.list-group-item:hover, .header-band .categories-link:hover{
     color: #f68b1e;
 }
 .call-help-CTA{
@@ -136,14 +136,16 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.header-band span{
+.header-band .categories-link{
     width: 7%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     font-size: 1em;
+    text-decoration: none;
+    color: black;
 }
-.header-band span:hover{
+.header-band .categories-link:hover{
     color: #f68b1e;
 }
 .header-band i{

@@ -45,11 +45,13 @@ include_once '../../controls/conn.php';
             <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
         </div>
     <!-- search bar -->
-        <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search products, brands and categories" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn" data-mdb-ripple-init>search</button>
-        </div> 
-        
+    <form action="search_results.php" method="get" style="width: 50%">
+        <div class="input-group" style="width: 100%">
+            <input type="search" name="query" class="form-control rounded" style="width: 80%"placeholder="Search products, brands and categories" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn" data-mdb-ripple-init>Search</button>
+        </div>
+    </form>
+
         <!-- dropdown for account links -->
         <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

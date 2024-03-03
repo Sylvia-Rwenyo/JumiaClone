@@ -1,0 +1,53 @@
+form{
+    height: fit-content;
+}
+.mb-3{
+    position: relative;
+    margin-top: 1em;
+}
+.form-control{
+    padding-top: 0.5em;
+}
+
+.acc-details .form-control , .acc-details select{
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    outline: none;
+}
+
+.form-group input:focus , .form-group:focus{
+    outline: none;
+    border: none;
+    resize: none;
+}
+.edit-details-form .form-control:focus {
+    outline: none; 
+}
+.edit-details-form .form-control {
+    resize: none;
+}
+
+.form-control:focus, input:focus{
+    outline: none;
+    border: 1px solid gray;
+}
+    .form-control:disabled {
+    background-color: transparent;
+}
+.single-char-input{
+    margin-right: 1em;
+    border-radius: 2px;
+}
+.floating-label {
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: -10px;
+    transition: all 0.2s ease-out;
+    color: #aaa;
+    font-size: 12px;
+    background-color: white;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}

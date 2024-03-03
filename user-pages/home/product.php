@@ -205,7 +205,7 @@ if(isset($_GET['id'])){
         <?php
 
         // Fetch distinct categories from the products table
-        $categorySql = "SELECT DISTINCT category FROM products"; // Assuming 'category' is the column containing category names
+        $categorySql = "SELECT DISTINCT category FROM products"; 
         $categoryResult = $conn->query($categorySql);
 
         if ($categoryResult->num_rows > 0) {

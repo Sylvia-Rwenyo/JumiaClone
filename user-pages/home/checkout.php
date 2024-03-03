@@ -2,6 +2,8 @@
 //start_session
 @session_start();
     if(!isset( $_SESSION["user"])){
+        // Store the referring page URL in a session variable
+    $_SESSION["referer"] = $_SERVER['HTTP_REFERER'];
         echo '
             <script>window.location.href = "../account/login/"</script>
         ';
@@ -12,9 +14,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Shan</title>
+    <!-- stylesheets and cdn links -->
     <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="products_page.css">
-    <title>K-Shan</title>
+    <link rel="stylesheet" href="home_pages_forms_styling.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -128,7 +132,6 @@
             height: 95%;
         }
         .carousel-item {
-            /* transition: transform 0.2s ease-in-out; */
             transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         .product-cards .card{
@@ -225,8 +228,7 @@
             height: 100%;
             width: 100%;
         }
-        .input-group .form-control,
-        .input-group .btn{
+        .input-group .form-control, .input-group .btn{
             border-radius: 5px;
         }
         .container .row{
@@ -239,7 +241,6 @@
             justify-content: space-evenly;
             margin-bottom: 20px;
         }
-
     </style>
 <body class="home-page-body">
 
@@ -249,6 +250,7 @@
 
 <!-- main-body-elements container -->
 <section class="container" style="margin-top: 6em;">
+<div id="messageContainer"></div>
 
     <!-- get client info -->
     <div class="col-10" style="height: fit-content">
@@ -275,40 +277,64 @@
                 ?>  
         <form class="row" method="POST" action="save-client-info.php" style="padding: 1em;">
             <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em;">1. &nbsp;&nbsp;Customer Address</h6>
-            <div class="input-group mb-3" >
-                <input type="text" class="form-control"  placeholder="<?php echo isset($row['first_name']) ? $row['first_name'] : 'First name'; ?>" 
+            <div class="form-group mb-3" style="position: relative; display: flex;">
+                <div class="input-group">
+                    <input type="text" class="form-control"  placeholder="<?php echo isset($row['first_name']) ? $row['first_name'] : 'First name'; ?>" 
                     value="<?php echo isset($row['first_name']) ? $row['first_name'] : ''; ?>" aria-label="First name" aria-describedby="user-first-name" 
-                name="first_name">
-                <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="<?php echo isset($row['last_name']) ? $row['last_name'] : 'Last name'; ?>" 
-                    value="<?php echo isset($row['last_name']) ? $row['last_name'] : ''; ?>"  aria-label="Last Name" name="last_name" aria-describedby="user-last-name">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
-                    <span class="input-group-text" id="basic-addon2"> +254</span>
+                    name="first_name">
+                    <label class="floating-label">First name*</label>                          
                 </div>
-                <input type="number" class="form-control" placeholder="<?php echo isset($row['phone_number']) ? $row['phone_number'] : 'Phone number'; ?>" 
-                    value="<?php echo isset($row['phone_number']) ? $row['phone_number'] : ''; ?>"  aria-label="phone number" aria-describedby="phone number" name="phone_number">
-                <div class="input-group-append" style="background: transparent; margin-left: 20px;border-left-radius: 5px;">
-                    <span class="input-group-text" id="basic-addon2"> +254</span>
+                <div class="input-group" style="margin-left: 10px">  
+                    <input type="text" class="form-control" style="margin-left: 10px;"  placeholder="<?php echo isset($row['last_name']) ? $row['last_name'] : 'Last name'; ?>" 
+                        value="<?php echo isset($row['last_name']) ? $row['last_name'] : ''; ?>"  aria-label="Last Name" name="last_name" aria-describedby="user-last-name">
+                    <label class="floating-label" style="margin-left: 10px">Last name*</label> 
                 </div>
-                <input type="number" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
-                    value="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : ''; ?>"  aria-label="Additional phone number" name="additional_phone_number" aria-describedby="additional phone number">
             </div>
-            <div class="input-group mb-3" >
-                <input type="text" class="form-control"  placeholder="<?php echo isset($row['address']) ? $row['address'] : 'Address'; ?>" 
-                    value="<?php echo isset($row['address']) ? $row['address'] : ''; ?>" aria-label="address" aria-describedby="user-address" name="address">
+            <div class="form-group mb-3" style="position: relative; display: flex;">
+                <div class="input-group">
+                    <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
+                        <span class="input-group-text" id="basic-addon2"> +254</span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="<?php echo isset($row['phone_number']) ? $row['phone_number'] : 'Phone number'; ?>" 
+                        value="<?php echo isset($row['phone_number']) ? $row['phone_number'] : ''; ?>"  aria-label="phone number" aria-describedby="phone number" name="phone_number">
+                    <label class="floating-label" style="margin-left: 10px">Phone number*</label>
+                </div>
+                <div class="input-group" style="margin-left: 10px">
+                    <div class="input-group-append" style="background: transparent; margin-left: 20px;border-left-radius: 5px;">
+                    <span class="input-group-text" id="basic-addon2"> +254</span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
+                        value="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : ''; ?>"  aria-label="Additional phone number" name="additional_phone_number" aria-describedby="additional phone number">
+                        <label class="floating-label" style="margin-left: 20px">Additional phone number*</label>
+                </div>
             </div>
-            <div class="input-group mb-3" >
-                <input type="text" class="form-control"  placeholder="<?php echo isset($row['additional_information']) ? $row['additional_information'] : 'Additional information'; ?>" 
-                    value="<?php echo isset($row['additional_information']) ? $row['additional_information'] : ''; ?>"  aria-label="additional information" name="additional_info" aria-describedby="user-additional-information">
+            <div class="form-group mb-3" style="position: relative; display: flex;">
+                <div class="input-group">
+                    <input type="text" class="form-control"  placeholder="<?php echo isset($row['address']) ? $row['address'] : 'Address'; ?>" 
+                        value="<?php echo isset($row['address']) ? $row['address'] : ''; ?>" aria-label="address" aria-describedby="user-address" name="address">
+                </div>
+                <label class="floating-label" style="margin-left: 20px">Address*</label>
             </div>
-            <div class="input-group mb-3" >
-                <input type="text" class="form-control" placeholder="<?php echo isset($row['city']) ? $row['city'] : 'City'; ?>" 
-                    value="<?php echo isset($row['city']) ? $row['city'] : ''; ?>"  aria-label="city" aria-describedby="user-city" name="city">
-                <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="<?php echo isset($row['area']) ? $row['area'] : 'Area'; ?>" 
-                    value="<?php echo isset($row['area']) ? $row['area'] : ''; ?>"  aria-label="area" aria-describedby="user-area" name="area">
+             <div class="form-group mb-3" style="position: relative; display: flex;">
+                <div class="input-group" >
+                    <input type="text" class="form-control"  placeholder="<?php echo isset($row['additional_information']) ? $row['additional_information'] : 'Additional information'; ?>" 
+                        value="<?php echo isset($row['additional_information']) ? $row['additional_information'] : ''; ?>"  aria-label="additional information" name="additional_info" aria-describedby="user-additional-information">
+                </div>
+                <label class="floating-label" style="margin-left: 20px">Additional information*</label>
+             </div>
+            <div class="form-group mb-3" style="position: relative; display: flex;">
+                <div class="input-group" >
+                    <input type="text" class="form-control" placeholder="<?php echo isset($row['city']) ? $row['city'] : 'City'; ?>" 
+                        value="<?php echo isset($row['city']) ? $row['city'] : ''; ?>"  aria-label="city" aria-describedby="user-city" name="city">
+                    <label class="floating-label" style="margin-left: 10px">City*</label>
+                </div>
+                <div class="input-group" >  
+                    <input type="text" class="form-control" style="margin-left: 20px;"  placeholder="<?php echo isset($row['area']) ? $row['area'] : 'Area'; ?>" 
+                        value="<?php echo isset($row['area']) ? $row['area'] : ''; ?>"  aria-label="area" aria-describedby="user-area" name="area">
+                    <label class="floating-label" style="margin-left: 20px">Area*</label>
+                </div>
             </div>
-            <div class="input-group mb-3">
+            <div class="form-group mb-3">
                 <button type="submit" id="submit-client-info" class="btn" style="background-color: #f68b1e; color: white;">Save Info</button>
             </div>
         </form>
@@ -325,13 +351,19 @@
         <div style="padding: 1em; border: 0.5px solid lightgray; border-radius: 5px; margin-bottom: 1em;">
             <div>
                 <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: bolder; display: flex; flex-direction: row; justify-content: space-between">
-                    Switch to a pickup station starting from KSh 140 <a id="changeDelivery">Change <i class="fa fa-angle-right"></i></a></p>
+                    Switch to a pickup station starting from KSh 100 <a id="changeDelivery">Change <i class="fa fa-angle-right"></i></a></p>
                 <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
                     Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div>
         <div style="display: flex; flex-direction: row;" class="shipping-options">
-            <input type="radio" name="shippingOption" style="size: 1em;"/>
+            <input type="radio" name="shippingOption" style="size: 1em;" <?php
+            // Check if $_SESSION['pickup_station'] is set and has more than 0 entries
+            if(isset($_SESSION['pickup_station']) && count($_SESSION['pickup_station']) > 0) {
+                echo "checked";
+            }
+            ?>
+            />
             <div style="margin-top: 1.5em; padding-left: 1em">
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Pick-up Station</strong>(Ksh 100)</p>
@@ -354,7 +386,13 @@
         </div>
 
         <div style="display: flex; flex-direction: row;" class="shipping-options">
-            <input type="radio" name="shippingOption" style="size: 1em; background-color: #f68b1e;" checked/>
+            <input type="radio" name="shippingOption" style="size: 1em; background-color: #f68b1e;" 
+            <?php // Check if $_SESSION['pickup_station'] is set and has more than 0 entries
+            if(!isset($_SESSION['pickup_station']) || count($_SESSION['pickup_station']) < 1) {
+                echo "checked";
+            }
+            ?>
+            />
             <div style="margin-top: 1.5em; padding-left: 1em">
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Door Delivery</strong></p>
@@ -363,7 +401,13 @@
             </div>
         </div>
 
-        <p>Shipment 1/1</p>
+        <p>Shipment
+        <?php
+            if(isset($_SESSION['cart'])) {
+                $cartCount = count($_SESSION['cart']);
+                echo " $cartCount/$cartCount";
+            }
+        ?></p>
         <div style="padding: 1em; border: 0.5px solid lightgray; border-radius: 5px; margin-bottom: 1em;" >
             <p style="margin-bottom: 0; display: flex; flex-direction: row; justify-content: space-between">
            <strong>Door Delivery</strong></p>
@@ -408,7 +452,7 @@
                     <div style="padding: 1em; padding-top:2em; margin-bottom: 1em; ">
                         <p><?php echo $product['name']; ?></p>
                         <p><strong>QTY </strong><?php echo $quantity; ?></p>
-                        <p><strong>Total price:</strong> Kes <?php echo $totalPrice; ?></p>
+                        <p><strong>Total price:</strong> Kes <?php echo $product['price']; ?></p>
                     </div>
                 </div>
             </div>
@@ -455,8 +499,8 @@
             </div>
             <div class="modal-body">
                 <!--  pickup station selection form -->
-                <p>Select your pickup station:</p>
-                    <form>
+                <form method="POST" action="save_pickup_station.php">
+                    <p>Select your pickup station:</p>
                         <div class="input-group mb-3">
                             <div>
                             <select class="custom-select" id="inputGroupSelectLocation" name="location">
@@ -466,13 +510,13 @@
                             <select class="custom-select" id="inputGroupSelectSubLocation" name="sub_location" style="margin-left: 20px;">
                             </select>
                         </div>
-                    </div>
-                </form>
+                        </div>
             </div>
             <div class="modal-footer" style="width: 100%; display: flex; flex-direction: row; justify-content: space-between; margin-left: 0;">
                 <button type="button" class="btn btn-secondary" style="width: 48%; color: #f68b1e; border: 1px solid #f68b1e; background: transparent" data-dismiss="modal">CANCEL</button>
-                <button type="button" class="btn" style="width: 48%; color: white; background-color: #f68b1e;">SELECT PICKUP STATION</button>
+                <button type="submit" class="btn select-pickup-station" style="width: 48%; color: white; background-color: #f68b1e;">SELECT PICKUP STATION</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -530,6 +574,48 @@ $(document).ready(function(){
     $("#changeDelivery").click(function(){
         $(".shipping-options").toggle();
     });
+    document.querySelector('.select-pickup-station').addEventListener('click', function() {
+    var location = document.querySelector('#inputGroupSelectLocation').value;
+    var subLocation = document.querySelector('#inputGroupSelectSubLocation').value;
+
+    // Send data to server to save in session variable
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'save_pickup_station.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Check the response from save_pickup_station.php
+            var response = xhr.responseText;
+            showMessage(response, false); // Display success message
+        } else {
+            showMessage('An error occurred while processing your request.', true); // Display error message
+        }
+    };
+    xhr.send('location=' + encodeURIComponent(location) + '&sub_location=' + encodeURIComponent(subLocation));
+});
+
+function showMessage(message, isError) {
+    var messageContainer = document.getElementById("messageContainer");
+    messageContainer.innerHTML = message;
+    messageContainer.style.display = "block";
+    messageContainer.classList.toggle("error", isError);
+
+    if (!isError) {
+        setTimeout(function() {
+            hideMessage();
+        }, 5000);
+    }
+}
+
+function hideMessage() {
+    var messageContainer = document.getElementById("messageContainer");
+    messageContainer.style.display = "none";
+}
+
+document.getElementById("messageContainer").addEventListener("click", function() {
+    hideMessage();
+});
+
 
         // Add event listener to the button
     document.getElementById('confirm-payment-form').addEventListener('click', function(event) {
@@ -543,55 +629,6 @@ $(document).ready(function(){
         form.submit();
     });
 
-
-    // document.getElementById('submit-client-info').addEventListener('click', function() {
-        
-    //     // AJAX request
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('POST', 'save-client-info.php', true);
-    //     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    //     xhr.onload = function() {
-    //         if (xhr.status == 200) {
-    //             // Handle success response
-    //             console.log(xhr.responseText);
-    //         } else {
-    //             // Handle error response
-    //             console.error(xhr.responseText);
-    //         }
-    //     };
-    //     xhr.send('first_name=' + encodeURIComponent(firstName) +
-    //              '&last_name=' + encodeURIComponent(lastName) +
-    //              '&phone_number=' + encodeURIComponent(phoneNumber) +
-    //              '&additional_phone_number=' + encodeURIComponent(additionalPhoneNumber) +
-    //              '&address=' + encodeURIComponent(address) +
-    //              '&additional_info=' + encodeURIComponent(additionalInfo) +
-    //              '&area=' + encodeURIComponent(area) +
-    //              '&city=' + encodeURIComponent(city));
-    // });
-    
-//     document.getElementById('confirm-payment-form').addEventListener('click', function(event) {
-//     // Prevent the default form submission behavior
-//     event.preventDefault();
-
-//     // Get the form data
-//     var formData = new FormData(document.querySelector('.order-form'));
-
-//     // AJAX request
-//     var xhr = new XMLHttpRequest();
-//     xhr.open('POST', 'create_order.php', true);
-//     xhr.onload = function() {
-//         if (xhr.status == 200) {
-//             window.location.href = "checkout.php?success=1";
-
-//             // Handle success response
-//             console.log(xhr.responseText);
-//         } else {
-//             // Handle error response
-//             console.error(xhr.responseText);
-//         }
-//     };
-//     xhr.send(formData);
-// });
 
 
     

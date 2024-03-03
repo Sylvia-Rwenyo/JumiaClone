@@ -34,6 +34,7 @@ if(isset($_SESSION['user'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="home_page.css"/>
     <link rel="stylesheet" href="user_pages.css"/>
+    <link rel="stylesheet" href="home_pages_forms_styling.css"/>
 </head>
 <style>
     .account-info{
@@ -120,47 +121,6 @@ if(isset($_SESSION['user'])){
     }
     .account-info .col-3, .account-info .col-7{
         height: 80vh;
-    }
-    form{
-        height: fit-content;
-    }
-    .mb-3{
-        position: relative;
-        margin-top: 1em;
-    }
-    .form-control{
-        padding-top: 0.5em;
-    }
-
-    .acc-details .form-control , .acc-details select{
-        border: none;
-        border-bottom: 1px solid black;
-        border-radius: 0;
-        outline: none;
-    }
-
-    .form-group input:focus , .form-group:focus{
-        outline: none;
-        border: none;
-        resize: none;
-    }
-    .edit-details-form .form-control:focus {
-        outline: none; 
-    }
-    .edit-details-form .form-control {
-        resize: none;
-    }
-
-    .form-control:focus, input:focus{
-        outline: none;
-        border: 1px solid gray;
-    }
-        .form-control:disabled {
-        background-color: transparent;
-    }
-    .single-char-input{
-        margin-right: 1em;
-        border-radius: 2px;
     }
 </style>
 <body class="account-form-body">        

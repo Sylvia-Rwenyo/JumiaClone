@@ -47,9 +47,15 @@ if(isset($_POST['logIn']))
                     $_SESSION["user_password"] = $hashed_password;
 
                     // redirect user to home page
-                    echo '<script> 
-                    window.location.href = "../../home/"
-                    </script>';
+                    if(isset($_SESSION["referer"])){
+                        echo '<script> 
+                        window.location.href = "../../home'.$_SESSION["referer"] .'"
+                        </script>';
+                    }else{
+                        echo '<script> 
+                        window.location.href = "../../home"
+                        </script>';   
+                    }
                 } else {
                     // show error related to password
                     echo '<script> 

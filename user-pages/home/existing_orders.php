@@ -15,27 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-Shan</title>
     <!-- stylesheet files and CDN links -->
-    <link rel="stylesheet" href="products_page.css">
-    <link rel="stylesheet" href="home_page.css">
-    <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="products_page.css">
+    <link rel="stylesheet" href="user_pages.css">
+    <link rel="stylesheet" href="home_page.css">
 </head>
 <body class="home-page-body">
-
-<style>
-         .dropdown .btn-secondary.dropdown-toggle{
-            background:  transparent;
-            color: black;
-            border: none;
-        }
-        .dropdown .btn-secondary.dropdown-toggle:focus{
-            outline: none;
-            box-shadow: none;
-            color: #f68b1e;
-        }
-        </style>
 
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
@@ -54,6 +41,7 @@
 
         $order_id = 0;
 
+        $client_id = $_SESSION['user_id'];
         $ordersSql = "SELECT * FROM orders WHERE status = 'pending'";
         $orderResult = $conn->query($ordersSql);
 
@@ -88,31 +76,43 @@
 
                             ?>
                             <div class="row" style="height: 8em; margin-bottom: 3em">
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="focused-img" style="width: 100%; height: 80%; padding: 1em;">
                                         <img style="width: 100%; height: 100%;" src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
                                     </div>
-                                    <a data-toggle="modal" data-target="#delete-order"  style="text-decoration: none; color: darkblue;">Cancel order</a>
                                 </div>
-                                <div class="product-details col-2" style="padding: 1em;">
+                                <div class="product-details col-3" style="padding: 1em;">
                                     <div style=" padding: 1em; margin-bottom: 1em; ">
-                                        <p><?php echo $product['name']; ?></p>
+                                        <p><strong>Item: </strong><?php echo   $item['quantity'] .' '.$product['name']; ?></p>
+                                        <p><strong>Cost: </strong> Ksh <?php echo $product['price']; ?></p>
                                     </div>
                                 </div>
                                 <div class="product-details col-3" style="padding: 1em;">
                                     <div style="padding: 1em; margin-bottom: 1em;">
-                                        <p><?php echo $product['price']; ?></p>
-
+                                        <p><strong>Payment: </strong><?php if($order['merchant_rq_id'] == 0){ echo 'on delivery';}else{'completed';}; ?></p>
+                                        <p><strong>Processing status: </strong><?php echo $order['status']; ?></p>
                                     </div>
                                 </div>
-                                <div class="product-details col-5" style="padding: 1em;">
-                                    <div style="padding: 1em; margin-bottom: 1em;">
-                                        <p><strong>Processing status: </strong><?php echo $order['status']; ?></p>
+                                <div class="product-details col-3" style="padding: 1em;">
+                                    <div style="padding: 1em; margin-bottom: 1em">
+                                        <?php
+                                            $client_addressesSql = "SELECT * FROM client_addresses WHERE client_id = '$client_id'";
+                                            $addressResult = $conn->query($client_addressesSql);
 
+                                            if ($addressResult->num_rows > 0) {
+                                                while ($address = $addressResult->fetch_assoc()) {
+                                        ?>
+                                        <p><strong>Delivery date: </strong><?php echo date('Y-m-d', strtotime($order['created_at'] . ' +3 days')); ?></p>
+                                        <p><strong>To address: </strong><?php echo $address['area'] .', '.$address['city']?></p>
+                                        <br><br>
+                                        <?php if($order['status'] !== 'processed'){?>
+                                            <a data-toggle="modal" data-target="#delete-order"  style="text-decoration: none; color: darkblue; width: 100%; text-align:center;">Cancel order</a>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
                             <?php
+                             }}
                         }
                     }
                 }
@@ -141,11 +141,13 @@
         </div>
     </div>
     </div>
+    <br>
+    <br>
 
     <!-- Display product categories and products -->
     <?php
     // Fetch distinct categories from the products table
-    $categorySql = "SELECT DISTINCT category FROM products"; // Assuming 'category' is the column containing category names
+    $categorySql = "SELECT DISTINCT category FROM products"; 
     $categoryResult = $conn->query($categorySql);
 
     if ($categoryResult->num_rows > 0) {
@@ -160,7 +162,7 @@
                 <!-- Display category header -->
                 <div class="header-band">
                     <h4><?php echo $currentCategory; ?></h4>
-                    <span>See all <i class="fa fa-angle-right"></i></span>
+                    <a href="products_by_category.php?category=<?php echo urlencode($currentCategory); ?>" class="categories-link">See all <i class="fa fa-angle-right"></i></a>
                 </div>
                 <div class="carousel-inner">
                     <?php

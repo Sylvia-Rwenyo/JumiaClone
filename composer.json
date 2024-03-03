@@ -2,6 +2,7 @@
     "require": {
         "kabangi/mpesa": "^3.0",
         "nesbot/carbon": "^3.0",
-        "ramsey/uuid": "^4.7"
+        "ramsey/uuid": "^4.7",
+        "safaricom/mpesa": "^1.3"        
     }
 }

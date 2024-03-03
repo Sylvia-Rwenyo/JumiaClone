@@ -239,8 +239,8 @@
 <section class="container" style="margin-top: 12em;">
 
     <!-- Display products in the cart -->
-    <div class="show-product row" style="height: 15em;">
-        <div class="col-9" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; height: 100%;">
+    <div class="show-product row" style="margin-right: 12.5px; margin-left: 12.5px;">
+        <div class="col-8" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; height: 100%;">
         <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500;">
             Cart <?php echo isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 ? '(' . count($_SESSION['cart']) . ')' : ''; ?>
         </h5>
@@ -253,7 +253,7 @@
             // Check if the cart session variable exists and is not empty
             if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                 // Fetch all products from the cart session variable
-                foreach ($_SESSION['cart'] as $productId => $quantity) {
+                foreach ($_SESSION['cart'] as $productId => $quantity){
                     // Fetch product details from the database
                     $productSql = "SELECT * FROM products WHERE id = '$productId'";
                     $productResult = $conn->query($productSql);
@@ -277,9 +277,16 @@
 
                         $_SESSION['total_amount'] = $totalPrice;
 
+                        // style row appropraitely
+                        echo "<style>
+                                .show-product.row{
+                                    height: fit-content;
+                                </style>
+                        ";
+
                         // Display product details
                         ?>
-                        <div class="row " style="height: 10em;">
+                        <div class="row " style="height: 15em;  padding-bottom: 2.5em;">
                             <div class="col-3">
                                 <div class="focused-img" style="width: 100%; height: 80%; padding: 1em;">
                                     <img style="width: 100%; height: 100%;" src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
@@ -303,16 +310,22 @@
                             </div>
                         </div>
                         <?php
-                    }
-                }
-            } else {
+            }}}else {
                 // If the cart is empty, display a message
-                echo "<p>Your cart is empty.</p>";
+                echo "<p>Your cart is empty.</p>
+                        <style>
+                        .show-product.row{
+                            height: 10em;
+                        </style>
+                ";
             }
             ?>
         </div>
 
         <!-- Display cart summary -->
+        <?php
+            if($totalPrice > 0){
+        ?>
         <div class="col-3"  style="height: 100% ;border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; ">
             <div class="card total-card" style="border: none; padding: 1em"  >
                 <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500;">Cart Summary</h5>
@@ -320,12 +333,15 @@
                 <a href="checkout.php" class="btn"> Check Out (Ksh <?php echo $totalPrice; ?>)</a>
             </div>
         </div>
+        <?php
+            }
+        ?>
     </div>
 
     <!-- Display product categories and products -->
     <?php
     // Fetch distinct categories from the products table
-    $categorySql = "SELECT DISTINCT category FROM products"; // Assuming 'category' is the column containing category names
+    $categorySql = "SELECT DISTINCT category FROM products"; 
     $categoryResult = $conn->query($categorySql);
 
     if ($categoryResult->num_rows > 0) {
@@ -463,6 +479,7 @@ $(document).ready(function(){
             url: 'update_cart.php',
             data: { productId: productId, quantity: quantity },
             success: function(response) {
+                location.reload();
             },
             error: function(xhr, status, error) {
             }

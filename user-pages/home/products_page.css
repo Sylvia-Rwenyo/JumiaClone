@@ -19,7 +19,7 @@
 .product-details{
     padding: 2em;
 }
-.product-details .btn, .total-card .btn{
+.product-details .btn, .total-card .btn, .cart-btn{
     background-color: rgba(246, 139, 30, 0.9);
     color: white;
     width: 100%;
@@ -29,6 +29,12 @@
     justify-content: space-between;
     padding-left: 5%;
     padding-right: 35%;
+}
+.cart-btn{
+    background-color: rgba(246, 139, 30, 0.9);
+    color: white;
+    font-size: 0.8em;
+    width: 80%;
 }
 
 /* dropdown styling */
