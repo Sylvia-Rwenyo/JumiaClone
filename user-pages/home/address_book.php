@@ -189,7 +189,7 @@ include_once '../../controls/conn.php';
                 <div class="product-cards row carousel slide" id="productCarousel<?php echo $category_count; ?>" data-ride="carousel" data-interval="false">
                     <div class="header-band">
                         <h4><?php echo $currentCategory; ?></h4>
-                        <span>See all <i class="fa fa-angle-right"></i></span>
+                         <a href="products_by_category.php?category=<?php echo urlencode($currentCategory); ?>" class="categories-link">See all <i class="fa fa-angle-right"></i></a>
                     </div>
                     <div class="carousel-inner">
                         <?php

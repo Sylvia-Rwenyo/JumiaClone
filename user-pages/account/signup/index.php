@@ -44,7 +44,8 @@
             </form>
             <br><br><br>
     <!--other sign up options -->
-    <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i>  sign up with Facebook</button>
+    <!-- <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i>  sign up with Facebook</button> -->
+    <br><br>
     <p class="msg">For further support you may visit out Help Center or contact our customer service team</p>
 
 

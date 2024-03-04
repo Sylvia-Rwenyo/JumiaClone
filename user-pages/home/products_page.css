@@ -30,12 +30,25 @@
     padding-left: 5%;
     padding-right: 35%;
 }
+.product-details-lines{
+    width: 80%;
+}
+.product-details-lines p{
+    width: 100%;
+}
 .cart-btn{
     background-color: rgba(246, 139, 30, 0.9);
     color: white;
-    font-size: 0.8em;
-    width: 80%;
+    font-size: 0.7em;
+    width: 100%;
+    margin-bottom: 1em;
+    display: none;
 }
+
+.single-product-card:hover .cart-btn {
+    display: inline-block; 
+}
+
 
 /* dropdown styling */
 .dropdown .btn-secondary.dropdown-toggle{

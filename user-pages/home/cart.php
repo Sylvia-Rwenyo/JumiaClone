@@ -356,7 +356,7 @@
                 <!-- Display category header -->
                 <div class="header-band">
                     <h4><?php echo $currentCategory; ?></h4>
-                    <span>See all <i class="fa fa-angle-right"></i></span>
+                     <a href="products_by_category.php?category=<?php echo urlencode($currentCategory); ?>" class="categories-link">See all <i class="fa fa-angle-right"></i></a>
                 </div>
                 <div class="carousel-inner">
                     <?php

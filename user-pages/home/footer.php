@@ -3,7 +3,7 @@
         <div class="row">
             <!-- logo column -->
             <div class="col-2">
-                <div class="logo" style="height: 4em;">
+                <div class="logo">
                     <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
                 </div>
             </div>
@@ -21,7 +21,7 @@
             <!-- download app prompts -->
                 <div class="col-4">
                     <div class="download-prompt">
-                        <div class="logo" style="height: 4em;">
+                        <div class="logo">
                             <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
                         </div>
                         <div>

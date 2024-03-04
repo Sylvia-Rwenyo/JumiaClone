@@ -190,7 +190,7 @@ if(isset($_GET['id'])){
             </div>
             <div class="card call-CTA" style= " border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
                 <p>Call or Whatsapp</p>
-                <p>0711 222 333</p> 
+                <p>0745 527 698</p> 
                 <p>TO ORDER</p>
             </div>
         </div>
@@ -219,7 +219,7 @@ if(isset($_GET['id'])){
             <div class="product-cards row carousel slide" id="productCarousel" data-ride="carousel" data-interval="false">
                 <div class="header-band">
                     <h4><?php echo $currentCategory; ?></h4>
-                    <span>See all <i class="fa fa-angle-right"></i></span>
+                     <a href="products_by_category.php?category=<?php echo urlencode($currentCategory); ?>" class="categories-link">See all <i class="fa fa-angle-right"></i></a>
                 </div>
                 <div class="carousel-inner">
                     <?php

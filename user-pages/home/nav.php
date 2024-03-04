@@ -16,6 +16,10 @@ include_once '../../controls/conn.php';
         echo '<style> .cart .badge {display: none;}</style>';
     }
     ?>
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
     <div class="fixed-top">
     <!-- delivery banner -->
     <div class="delivery-banner">
@@ -34,20 +38,20 @@ include_once '../../controls/conn.php';
         </div>
         <div class="delivery-call-prompt">
             <p>Call Whatsapp to Order</p>
-            <p><i class="fab fa-whatsapp"></i>0711 222 333</p>
+            <p><i class="fab fa-whatsapp"></i>0745 527 698</p>
         </div>
     </div>
 
     <!-- main nav content -->
-    <nav class="nav navbar" style="padding: 1em; height: 6em; top: 3em; padding-top:0 ;">
+    <nav class="nav navbar" style="height: 6em; padding-top:0 ;">
     <!-- logo -->
-        <div class="logo" style="margin-left: 2em; height: 2em; width: 2em;">
+        <div class="logo" >
             <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
         </div>
     <!-- search bar -->
-    <form action="search_results.php" method="get" style="width: 50%">
+    <form action="search_results.php" method="get">
         <div class="input-group" style="width: 100%">
-            <input type="search" name="query" class="form-control rounded" style="width: 80%"placeholder="Search products, brands and categories" aria-label="Search" aria-describedby="search-addon" />
+            <input type="search" name="query" class="form-control rounded" placeholder="Search products, brands and categories" aria-label="Search" aria-describedby="search-addon" />
             <button type="submit" class="btn" data-mdb-ripple-init>Search</button>
         </div>
     </form>
@@ -104,8 +108,8 @@ include_once '../../controls/conn.php';
                 <a href="checkout.php" class="dropdown-item dp-link">Place an order</a>
                 <a href="existing_orders.php" class="dropdown-item dp-link">Track your order</a>
                 <a href="existing_orders.php?cancel=1" class="dropdown-item dp-link">Order Cancellation</a>
-                <a href="" class="dropdown-item dp-link">Returns and Refunds</a>
-                <a href="" class="dropdown-item dp-link">Payment and KShan Account</a>
+                <a href="help-center.php?create-return=1" class="dropdown-item dp-link">Returns and Refunds</a>
+                <a href="help-center.php?pay-for-order=1" class="dropdown-item dp-link">Payment and KShan Account</a>
                 <div class="dropdown-item dp-btn" style="border-bottom: none; border-top: 4px solid lightgray; padding-bottom: 1em;">
                     <a class="btn" href="" ><i class="fa-regular fa-message"></i> Live Chat</a>
                 </div>
@@ -113,7 +117,7 @@ include_once '../../controls/conn.php';
         </div>
 
         <!-- cart link -->
-        <a href="cart.php" style="padding-right: 2em;" class="cart"><span>
+        <a href="cart.php" class="cart"><span>
             <i class="fa-solid fa-cart-shopping"></i><span class="badge"><?php echo $items_count ?></span></span> Cart</a>
     </nav>
     </div>

@@ -63,7 +63,7 @@
     ?>
 
     <!--other log in options -->
-    <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i> &nbsp;&nbsp;&nbsp;&nbsp;Log in with Facebook</button>
+    <!-- <button  class="btn lg-facebook"> <i class="fa fa-facebook"></i> &nbsp;&nbsp;&nbsp;&nbsp;Log in with Facebook</button> -->
     <p class="msg">For further support you may contact other admin users.</p>
 
 
