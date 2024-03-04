@@ -10,7 +10,6 @@ Our E-Commerce Website is designed to provide users with an online platform to b
 - Product browsing and searching functionality.
 - Shopping cart management.
 - Admin dashboard with CMS (Content Management System) for managing products.
-- Responsive design for optimal viewing across devices.
 
 ## Technologies Used
 - HTML
@@ -48,10 +47,6 @@ To run the project locally, follow these steps:
 6. **Admin Access:**
    - To access the admin dashboard, navigate to `http://localhost:8000/j-clone/admin/account/login/`log in with the provided admin credentials.
    - Once logged in, you can add, edit, or delete products using the CMS functionality.
-
-
-## License
-This project is licensed under the [MIT License](LICENSE).
 
 ## Get in Touch
 If you have any questions, feedback, or issues, please feel free to send an email [rwenyosylvia@gmail.com](mailto:rwenyosylvia@gmail.com).
