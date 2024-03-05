@@ -42,10 +42,12 @@ To run the project locally, follow these steps:
    Otherwise, configure your server to serve the project files.
 
 5. **Access the Website:**
-   Open your web browser and navigate to `http://localhost:8000/j-clone/` (or the appropriate URL if using a different port or server).
+   Open your web browser and navigate to `http://localhost:8000/Kshan-Ecommerce-site-J/` (or the appropriate URL if using a different port or server).
 
 6. **Admin Access:**
-   - To access the admin dashboard, navigate to `http://localhost:8000/j-clone/admin/account/login/`log in with the provided admin credentials.
+   - To access the admin dashboard, navigate to `http://localhost:8000/Kshan-Ecommerce-site-J/admin/account/login/`log in with these admin credentials:
+        - email address=`newadmin@kshan.com`
+        - password `Newadmin123*`
    - Once logged in, you can add, edit, or delete products using the CMS functionality.
 
 ## Get in Touch
