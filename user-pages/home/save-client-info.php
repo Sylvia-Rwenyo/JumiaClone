@@ -16,6 +16,19 @@ $additionalInfo = $_POST['additional_info'];
 $area = $_POST['area'];
 $city = $_POST['city'];
 
+// Check if $phoneNumber does not begin with '+254'
+if (substr($phoneNumber, 0, 4) !== '+254') {
+    // Prepend '+254' to $phoneNumber
+    $phoneNumber = '+254' . $phoneNumber;
+}
+
+// Check if $additionalPhoneNumber does not begin with '+254'
+if (substr($additionalPhoneNumber, 0, 4) !== '+254') {
+    // Prepend '+254' to $additionalPhoneNumber
+    $additionalPhoneNumber = '+254' . $additionalPhoneNumber;
+}
+
+
 // Store the form data in session variables
 $_SESSION['client_info'] = array(
     'first_name' => $firstName,
@@ -58,7 +71,7 @@ if ($clientAddressResult->num_rows > 0) {
     
     if ($stmt->execute()) {
         // Redirect 
-        header("Location: {$_SERVER['HTTP_REFERER']}#delivery-info");
+        header("Location: {$_SERVER['HTTP_REFERER']}&success=1");
         exit();
     } else {
         // Update failed
@@ -76,7 +89,7 @@ if ($clientAddressResult->num_rows > 0) {
         // Execute the statement
         if ($insertClientStmt->execute()) {
             // Redirect 
-            header("Location: {$_SERVER['HTTP_REFERER']}#delivery-info");
+            header("Location: {$_SERVER['HTTP_REFERER']}&success=1");
             exit();
         } else {
             // Insert failed

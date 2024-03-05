@@ -23,6 +23,7 @@ include_once '../../controls/conn.php';
     <link rel="stylesheet" href="home_page.css"/>
     <link rel="stylesheet" href="user_pages.css"/>
     <link rel="stylesheet" href="user-account.css"/>
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <body class="user-page-body">
 
@@ -55,6 +56,9 @@ include_once '../../controls/conn.php';
             <?php
                 $client_id = $_SESSION['user_id'];
                 if(isset($_GET['edit'])){
+                    if(isset($_GET['success'])){
+                        echo"<script> window.location.href='address_book.php'</script>";
+                    }
             ?>
                     <div class="col-8 card" style="height: 100%; padding: 0;"> 
                     <h5 style="border-bottom: 2px solid lightgray; padding: 0.5em">
@@ -88,15 +92,9 @@ include_once '../../controls/conn.php';
                                 value="<?php echo isset($row['last_name']) ? $row['last_name'] : ''; ?>"  aria-label="Last Name" name="last_name" aria-describedby="user-last-name">
                         </div>
                         <div class="input-group mb-3">
-                            <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
-                                <span class="input-group-text" id="basic-addon2"> +254</span>
-                            </div>
-                            <input type="number" class="form-control" placeholder="<?php echo isset($row['phone_number']) ? $row['phone_number'] : 'Phone number'; ?>" 
+                            <input type="text" class="form-control" placeholder="<?php echo isset($row['phone_number']) ? $row['phone_number'] : 'Phone number'; ?>" 
                                 value="<?php echo isset($row['phone_number']) ? $row['phone_number'] : ''; ?>"  aria-label="phone number" aria-describedby="phone number" name="phone_number">
-                            <div class="input-group-append" style="background: transparent; margin-left: 20px;border-left-radius: 5px;">
-                                <span class="input-group-text" id="basic-addon2"> +254</span>
-                            </div>
-                            <input type="number" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
+                            <input type="text" style="margin-left: 20px;" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
                                 value="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : ''; ?>"  aria-label="Additional phone number" name="additional_phone_number" aria-describedby="additional phone number">
                         </div>
                         <div class="input-group mb-3" >
@@ -147,7 +145,7 @@ include_once '../../controls/conn.php';
                                 echo "<p>" . $row['area'] ."</p>";
                                 echo "<p>" . $row['city'] ."</p>";
                                 echo "<p>" . $row['address'] ."</p>";
-                                echo "<p>+254 " . $row['phone_number'] . " / +254 ". $row['additional_phone_number'] ."</p>";                       
+                                echo "<p>" . $row['phone_number'] . " / ". $row['additional_phone_number'] ."</p>";                       
                             }
                             
                             ?>                

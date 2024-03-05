@@ -35,6 +35,7 @@ if(isset($_SESSION['user'])){
     <link rel="stylesheet" href="home_page.css"/>
     <link rel="stylesheet" href="user_pages.css"/>
     <link rel="stylesheet" href="home_pages_forms_styling.css"/>
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <style>
     .account-info{
@@ -122,6 +123,9 @@ if(isset($_SESSION['user'])){
     .account-info .col-3, .account-info .col-7{
         height: 80vh;
     }
+    .floating-label{
+            font-size: 14px;
+        } 
 </style>
 <body class="account-form-body">        
     <section class="container">
@@ -267,9 +271,6 @@ if(isset($_SESSION['user'])){
                             </div>
                             <div class="form-group mb-3" style="position: relative;">
                             <div class="input-group">
-                                    <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
-                                        <span class="input-group-text" id="basic-addon2"> +254</span>
-                                    </div>
                                     <input type="text" class="form-control" aria-label="phoneNumber" aria-describedby="user-phoneNumber" name="phoneNumber" id="phoneNumber" value="<?php echo isset($row['phoneNumber']) ? $row['phoneNumber'] : ''; ?>">
                                 </div>
                             </div>
@@ -280,6 +281,9 @@ if(isset($_SESSION['user'])){
                         <?php
                         // show form to edit general user account info depending on GET variable
                     }else if(isset($_GET['edit'])){
+                        if(isset($_GET['success'])){
+                            echo"<script> window.location.href='basic_details.php'</script>";
+                        }
                         echo '<style>
                                 .mgmt-links-header-link{
                                     display:none;
@@ -316,9 +320,6 @@ if(isset($_SESSION['user'])){
                         </div>
                         <div class="form-group mb-3" style="position: relative;">
                         <div class="input-group">
-                                <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
-                                    <span class="input-group-text" id="basic-addon2"> +254</span>
-                                </div>
                                 <input type="text" class="form-control" aria-label="phoneNumber" aria-describedby="user-phoneNumber" name="phoneNumber" id="phoneNumber" value="<?php echo isset($row['phoneNumber']) ? $row['phoneNumber'] : ''; ?>">
                             </div>
                             <label class="floating-label">Phone number*</label>
@@ -357,7 +358,7 @@ if(isset($_SESSION['user'])){
                             <label class="floating-label">Birthdate</label>
                         </div>
                         <div class="form-group mb-3" style="position: relative;">
-                            <input disabled type="text" class="form-control" aria-label="phoneNumber" aria-describedby="user-phoneNumber" name="phoneNumber" id="phoneNumber" value="+254 <?php echo isset($row['phoneNumber']) ? $row['phoneNumber'] : ''; ?>">
+                            <input disabled type="text" class="form-control" aria-label="phoneNumber" aria-describedby="user-phoneNumber" name="phoneNumber" id="phoneNumber" value="<?php echo isset($row['phoneNumber']) ? $row['phoneNumber'] : ''; ?>">
                             <label class="floating-label">Phone number</label>
                         </div>
                     </div>
@@ -375,7 +376,11 @@ if(isset($_SESSION['user'])){
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="form_script.js"></script>
 <script>
+    togglePasswordVisibility('currentPW', 'currentPWToggle');
+    togglePasswordVisibility('newPW', 'newPWToggle');
+    togglePasswordVisibility('newPW2', 'newPW2Toggle');
 document.addEventListener("DOMContentLoaded", function() {
     // toggle user account info links
     var securityCredentials = document.getElementById("security-credentials");
@@ -439,81 +444,6 @@ document.addEventListener("DOMContentLoaded", function() {
             angleIcon.classList.add("fa-angle-right");
         });
     });
-
-    // toggle password visibility
-        function togglePasswordVisibility(inputId, toggleId) {
-            var input = document.getElementById(inputId);
-            var toggle = document.getElementById(toggleId);
-
-            toggle.addEventListener('click', function() {
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    toggle.innerHTML = '<i class="fa-solid fa-eye"></i>';
-                } else {
-                    input.type = 'password';
-                    toggle.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
-                }
-            });
-        }
-        togglePasswordVisibility('currentPW', 'currentPWToggle');
-        togglePasswordVisibility('newPW', 'newPWToggle');
-        togglePasswordVisibility('newPW2', 'newPW2Toggle');
-    });
-
-    const inputs = document.querySelectorAll('.single-char-input');
-
-    inputs.forEach((input, index) => {
-        input.addEventListener('input', () => {
-            if (input.value.length > 1) {
-                input.value = input.value.slice(0, 1);
-            }
-            if (input.value.length === 1 && index < inputs.length - 1) {
-                inputs[index + 1].focus();
-            }
-        });
-
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
-                inputs[index - 1].focus();
-            }
-        });
-
-    const newPins = document.querySelectorAll('[name^="newPin[]"]');
-        const confirmNewPins = document.querySelectorAll('[name^="newPin2[]"]');
-        
-        // Function to change input type to password when a character is input
-        function changeInputType(input) {
-            input.type = 'password';
-        }
-
-        // Add event listeners to new pin input fields
-        newPins.forEach(input => {
-            input.addEventListener('input', function() {
-                changeInputType(this);
-            });
-        });
-
-        // Function to check if new pin and confirm new pin match
-        function pinsMatch() {
-            let newPin = '';
-            let confirmNewPin = '';
-
-            newPins.forEach(input => {
-                newPin += input.value;
-            });
-
-            confirmNewPins.forEach(input => {
-                confirmNewPin += input.value;
-            });
-            return newPin === confirmNewPin;
-        }
-
-        // Add event listener to the last confirm new pin input field to trigger form submission
-        confirmNewPins[5].addEventListener('input', function() {
-            if (pinsMatch()) {
-                document.getElementById('pinForm').submit();
-            }
-        });
 });
 
 </script>

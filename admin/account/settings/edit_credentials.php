@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Get the current admin's information from the session
     $adminId = $_SESSION["admin_id"];
-    // $currentEmail = $_SESSION["emailAddress"];
+    // $currentEmail = $_SESSION["accInput"];
     $currentPassword = $_SESSION["admin_password"];
 
     // Validate old password
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($conn->query($updateSql) === TRUE) {
             // Update session variables with new information
-            $_SESSION["emailAddress"] = $email;
+            $_SESSION["accInput"] = $email;
             $_SESSION["admin_password"] = $hashedNewPassword;
 
             echo '

@@ -118,6 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Edit Product</title>
     <link rel="stylesheet" type="text/css" href="../product-upload/style.css">
     <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body>
     <div class="container">

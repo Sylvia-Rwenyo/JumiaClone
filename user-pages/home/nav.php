@@ -17,9 +17,9 @@ include_once '../../controls/conn.php';
     }
     ?>
     <!-- preloader -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div id="loader"></div>
-    </div>
+    </div> -->
     <div class="fixed-top">
     <!-- delivery banner -->
     <div class="delivery-banner">
@@ -38,7 +38,7 @@ include_once '../../controls/conn.php';
         </div>
         <div class="delivery-call-prompt">
             <p>Call Whatsapp to Order</p>
-            <p><i class="fab fa-whatsapp"></i>0745 527 698</p>
+            <a href="https://wa.me/+254745527698" target="_blank"><i class="fab fa-whatsapp"></i>0745 527 698</a>
         </div>
     </div>
 
@@ -62,13 +62,14 @@ include_once '../../controls/conn.php';
             <?php
                 $username = '';
                 if(isset($_SESSION['user'])){
-                    $user_id =   $_SESSION["user_id"];
-                    $sql_a=mysqli_query($conn,"SELECT * FROM endusers where id = $user_id");
+                    $access_value = $_SESSION['accInput'];
+                    $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress || phoneNumber = $access_value");
                     if(mysqli_num_rows($sql_a)>0)
                     {
                         $row  = mysqli_fetch_array($sql_a);
                         if(is_array($row)){
                           $username = $row['firstName'];
+                          $_SESSION["user_id"] = $row['id'] ;
                             }}}
                             if($username != ''){
                                 echo '<i class="fa-solid fa-user-check"></i> Hi, '. $username;

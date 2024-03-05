@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../../css/accounts/forms-styling.css" />
     <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
     <title>Admin Log In</title>
+    <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body class="account-form-body">
         <!-- logo w Company name-->

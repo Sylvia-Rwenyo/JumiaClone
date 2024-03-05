@@ -93,6 +93,7 @@ if (isset($_GET['id'])) {
             background-color: #45a049;
         }
     </style>
+    <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body>
     <h2>Order Details</h2>

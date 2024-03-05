@@ -37,6 +37,7 @@ if(isset($_SESSION['user'])){
     <link rel="stylesheet" href="home_page.css"/>
     <link rel="stylesheet" href="user_pages.css"/>
     <link rel="stylesheet" href="../../css/accounts/forms-styling.css" />
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <style>
     .account-info{

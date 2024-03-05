@@ -57,6 +57,7 @@ $result = $conn->query($sql);
             gap: 10px;
         }
     </style>
+    <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body>
     <div class="container">

@@ -19,6 +19,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
     <title>Product Upload</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body>
     

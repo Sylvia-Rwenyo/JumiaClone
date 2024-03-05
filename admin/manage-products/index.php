@@ -78,6 +78,7 @@ $result = $conn->query($sql);
             color: black;
         }
     </style>
+        <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body>
     <div class="container">

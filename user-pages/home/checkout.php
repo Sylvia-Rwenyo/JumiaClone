@@ -15,24 +15,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-Shan</title>
-    <!-- stylesheets and cdn links -->
-    <link rel="stylesheet" href="user_pages.css">
-    <link rel="stylesheet" href="products_page.css">
-    <link rel="stylesheet" href="home_pages_forms_styling.css">
+    <!-- stylesheet files, favicon and cdn links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="user_pages.css">
+    <link rel="stylesheet" href="products_page.css">
+    <link rel="stylesheet" href="home_pages_forms_styling.css">
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <style>
-        .logo{
-            height: 100%;
-            width: 4em;
-            align-self: center;
-        }
-        .logo img{
-            height: 100%;
-            width: 100%;
-        }
+        
         .dropdown-menu{
            left: -20px;
         }
@@ -241,6 +234,9 @@
             justify-content: space-evenly;
             margin-bottom: 20px;
         }
+        .floating-label{
+            font-size: 14px;
+        } 
     </style>
 <body class="home-page-body">
 
@@ -451,8 +447,8 @@
                 <div class="product-details col-6" style="padding: 1em; font-size: 0.75em;">
                     <div style="padding: 1em; padding-top:2em; margin-bottom: 1em; ">
                         <p><?php echo $product['name']; ?></p>
-                        <p><strong>QTY </strong><?php echo $quantity; ?></p>
-                        <p><strong>Total price:</strong> Kes <?php echo $product['price']; ?></p>
+                        <p><strong>QTY </strong><?php echo $quantity .' @Kes'. $product['price']. '/='; ?></p>
+                        <p><strong>Total price:</strong> Kes <?php echo $totalPrice; ?></p>
                     </div>
                 </div>
             </div>

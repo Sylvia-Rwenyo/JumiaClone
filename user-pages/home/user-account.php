@@ -21,11 +21,12 @@
     <link rel="stylesheet" href="home_page.css"/>
     <link rel="stylesheet" href="user_pages.css"/>
     <link rel="stylesheet" href="user-account.css"/>
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <body class="user-page-body">
-
 <!-- nav bar -->
 <?php include_once 'nav.php' ?>
+>
 
 <!-- main-body-elements container -->
 <section class="container main-container">   
@@ -56,7 +57,7 @@
             <div class="card">
                 <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Account Overview</h6>
                 <?php
-                   $user_mail = $_SESSION['emailAddress'];
+                   $user_access_value = $_SESSION['emailAddress'];
                    $client_id = $_SESSION['user_id'];
 
                    // Prepare the SQL statement with a parameterized query
@@ -64,7 +65,7 @@
                    $stmt = $conn->prepare($usersSql);
                    
                    // Bind the parameter and execute the statement
-                   $stmt->bind_param("s", $user_mail);
+                   $stmt->bind_param("s", $user_access_value);
                    $stmt->execute();
                    
                    // Get the result
@@ -86,7 +87,7 @@
                     <a href="address_book.php?edit=1" style="text-decoration: none; color:#f68b1e";><i class="fa-solid fa-pen"></i></a>
                 </h6>
                 <?php
-                   $user_mail = $_SESSION['emailAddress'];
+                   $user_access_value = $_SESSION['emailAddress'];
 
                    $usersSql = "SELECT * FROM client_addresses WHERE client_id = ?";
                    $stmt = $conn->prepare($usersSql);
@@ -141,11 +142,6 @@
                     // Fetch products in the current category
                     $productSql = "SELECT * FROM products WHERE category = '$currentCategory'";
                     $productResult = $conn->query($productSql);
-                    echo "
-                        <script>
-                            $('#productCarousel".$category_count."').carousel();
-                        </script>
-                    ";
             ?>
             <div class="product-cards row carousel slide" id="productCarousel<?php echo $category_count; ?>" data-ride="carousel" data-interval="false">
                 <div class="header-band">
@@ -232,6 +228,14 @@
 <script>
 $(document).ready(function(){
     $('#productCarousel').carousel();
+
+    <?php
+        if($category_count > 0){
+            echo "
+                $('#productCarousel".$category_count."').carousel();
+        ";
+        }
+    ?>
 
     // Toggle collapse state of additional categories when "More categories" is clicked
     $('[data-toggle="collapse"]').on('click', function() {

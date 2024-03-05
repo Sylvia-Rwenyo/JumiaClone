@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("si", $hashedPassword, $client_id);
             
             if ($stmt->execute()) {
-                header("Location: {$_SERVER['HTTP_REFERER']}");
+                 header("Location: {$_SERVER['HTTP_REFERER']}&success=1");
             } else {
                 // Update failed
                 echo "Error updating password: " . $conn->error;
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if ($stmt->execute()) {
         // Redirect 
-        header("Location: {$_SERVER['HTTP_REFERER']}");
+         header("Location: {$_SERVER['HTTP_REFERER']}&success=1");
         exit();
     } else {
         // Update failed

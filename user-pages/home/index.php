@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="home_page.css">
     <link rel="stylesheet" href="user_pages.css">
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <body class="product-page-body">
 <!-- nav bar -->

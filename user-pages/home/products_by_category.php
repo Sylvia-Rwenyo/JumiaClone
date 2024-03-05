@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="products_page.css">
     <link rel="stylesheet" href="home_page.css">
     <link rel="stylesheet" href="user_pages.css">
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <body class="home-page-body">
 

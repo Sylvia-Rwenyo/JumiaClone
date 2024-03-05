@@ -9,7 +9,7 @@ if(isset($_POST['accessAccount']))
 {	    
     //store values submitted in the  form in variables
 	 $accInput = htmlspecialchars($_POST['accInput']);
-     $_SESSION["emailAddress"]=$accInput;
+     $_SESSION["accInput"]=$accInput;
 
     // check if corresponding user record is in database
         $sql_a=mysqli_query($conn,"SELECT * FROM endusers where phoneNumber='$accInput' || emailAddress='$accInput'");
@@ -31,9 +31,23 @@ if(isset($_POST['logIn']))
     //store values submitted in the  form in variables
      $accInput = htmlspecialchars($_POST['accInput']);
      $password = htmlspecialchars($_POST['password']);
+
+     // Remove '254' if it exists among the first 4 characters
+     if(substr($accInput, 0, 3) === "254") {
+        // If yes, remove "254" from the accInput
+        $accInput = substr($accInput, 3); // Removes "254"
+    }
+    if(substr($accInput, 0, 3) === "+") {
+        // If yes, remove "+" from the accInput
+        $accInput = str_replace( "+", "",$accInput); // Removes "+"
+    }
+    if(substr($accInput, 0, 0) === "0") {
+        // If yes, remove "0" from the accInput
+        $accInput = str_replace( "0", "",$accInput); // Removes "0"
+    }
     
      // check if corresponding user record is in database
-        $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress='$accInput'");
+        $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress || phoneNumber='$accInput'");
         if(mysqli_num_rows($sql_a)>0)
         {
             $row  = mysqli_fetch_array($sql_a);

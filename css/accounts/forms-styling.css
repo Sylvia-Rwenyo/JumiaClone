@@ -1,9 +1,10 @@
 .account-form-body{
-    align-items: center;
     display: flex;
+    justify-content: center; 
+    align-items: center;
     flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+    /* justify-content: space-between; */
+    overflow: scroll;
     padding-bottom: 5vh;
     padding-top: 5vh;
 }
@@ -17,6 +18,7 @@
 .account-welcome-div{
     padding-top: 2.5%;
     text-align: center;
+    margin-bottom: 2em;
 }
 .account-welcome-div h5{
     font-size: 1.15em;
@@ -27,9 +29,9 @@
 }
 .account-form-body form{
     width: 40%;
-    height: 20vh;
+    height: fit-content;
     display: grid;
-    grid-template-rows: 45% 45%;
+    grid-template-rows: auto auto;
     row-gap: 10%;
     margin-bottom: 5%;
 }
@@ -46,6 +48,11 @@
     border: none;
     border-radius: 2px;
 }
+.btn:hover{
+    background-color:  #f68b1e;
+    transform: scale(1.05);
+    color: white 
+}
 .account-form-body form input{
     width: 95%;
 }
@@ -59,3 +66,90 @@
     border: none;
     background-color: #1877f2;
 }
+.input-group{
+    width: 100%; 
+    border: 1px solid gray; 
+    border-radius: 5px; 
+    height: 3em; 
+    display: flex; 
+    flex-direction: row;
+}
+.input-group:hover{
+    border: 2px solid #f68b1e;
+}
+.input-group .form-control{
+    height: 100%;
+    border: none;
+}
+.input-group .form-control:focus {
+    border: none !important;
+    outline: none !important;
+}
+.reset-pw-link{
+    text-decoration: none;
+    color: #f68b1e;
+}
+.input-group-append .input-group-text{
+    background: transparent;
+    border-radius: 0;
+    height: 100%;
+    text-decoration: none;
+    color: grey;
+    width: 3em;
+}
+.disabled{
+    background-color: rgba(211, 211, 211, 0.5);
+    cursor: not-allowed;
+}
+.signUp-form .mb-3{
+    margin-bottom: 0 !important;
+}
+.password-strength {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-strength {
+    width:100%;
+    height: 5px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 1em;
+
+  }
+  .dash{
+    height: 100%;
+    border-radius: 2px;
+  }
+  .dash-1 {
+    background-color: transparent;
+  }
+  
+  .dash-2 {
+    background-color: transparent;
+  }
+  
+  .dash-3 {
+    background-color: transparent;
+  }
+#strengthIndicator{
+    position: absolute;
+    right: 0;
+}
+
+@media (max-width: 740px) {
+    .form-control, .input-group, span, button, a{
+        font-size: 0.9em !important;
+    }
+}
+@media (max-width: 600px) {
+    .account-form-body form{
+        width: 50%;
+    }
+}
+@media (max-width: 600px) {
+    .account-form-body form{
+        width: 60%;
+    }
+}
+  
