@@ -19,7 +19,7 @@
 <section class="container main-container">
 
     <!-- CTA -->
-    <div class="CTA row">
+    <div class="CTA row" style="column-gap: auto;">
         <!-- categories list -->
         <div class="col-2  card categories-list" id="categories-list">
             <ul class="list-group">

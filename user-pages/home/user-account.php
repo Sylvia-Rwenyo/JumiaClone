@@ -57,11 +57,11 @@
             <div class="card">
                 <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Account Overview</h6>
                 <?php
-                   $user_access_value = $_SESSION['emailAddress'];
+                   $user_access_value = $_SESSION['accInput'];
                    $client_id = $_SESSION['user_id'];
 
                    // Prepare the SQL statement with a parameterized query
-                   $usersSql = "SELECT * FROM endusers WHERE emailAddress = ?";
+                   $usersSql = "SELECT * FROM endusers WHERE emailAddress || phoneNumber = ?";
                    $stmt = $conn->prepare($usersSql);
                    
                    // Bind the parameter and execute the statement
@@ -75,7 +75,11 @@
                        // Fetch the row from the result set
                        $row = $usersResult->fetch_assoc();
                        $client_id = $row['id'];
-                       echo "<p>" . $row['emailAddress'] . "</p>";
+                       if($row['emailAddress'] != ''){
+                            echo "<p>" . $row['emailAddress'] . "</p>";
+                       }else{
+                            echo "<p>" . $row['phoneNumber'] . "</p>";
+                       }
                    }
                    
                 ?>
@@ -87,7 +91,7 @@
                     <a href="address_book.php?edit=1" style="text-decoration: none; color:#f68b1e";><i class="fa-solid fa-pen"></i></a>
                 </h6>
                 <?php
-                   $user_access_value = $_SESSION['emailAddress'];
+                   $user_access_value = $_SESSION['accInput'];
 
                    $usersSql = "SELECT * FROM client_addresses WHERE client_id = ?";
                    $stmt = $conn->prepare($usersSql);
@@ -104,7 +108,7 @@
                        echo "<p>" . $row['area'] ."</p>";
                        echo "<p>" . $row['city'] ."</p>";
                        echo "<p>" . $row['address'] ."</p>";
-                       echo "<p>+254 " . $row['phone_number'] . " / +254 ". $row['additional_phone_number'] ."</p>";                       
+                       echo "<p>" . $row['phone_number'] . " / ". $row['additional_phone_number'] ."</p>";                       
                    }else{
                         echo '<a href="address_book.php?edit=1" style="text-decoration: none; color:#f68b1e";>Add an address</a>';
                    }

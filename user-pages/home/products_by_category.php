@@ -22,7 +22,7 @@
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
 
-<section class="container" style="margin-top: 10em;">
+<section class="container products-by-category" style="margin-top: 10em;">
 
     <!-- Display product categories and products -->
     <?php
@@ -57,7 +57,7 @@
                         ?>
                         <!-- Display product card -->
                         <div class="single-product-card card col-3" onclick="showDetails(<?php echo $productId; ?>)">
-                            <img src="../../admin/product-upload/<?php echo $imageUrl; ?>" alt="product"  tsyle="height: 60%"/>
+                            <img src="../../admin/product-upload/<?php echo $imageUrl; ?>" alt="product"  style="height: 60%"/>
                             <div class="product-details-lines">
                                 <p><?php echo $product['name']; ?></p>
                                 <p style="font-size: 0.8em">Ksh <?php echo $product['price']; ?></p>

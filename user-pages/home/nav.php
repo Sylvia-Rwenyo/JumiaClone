@@ -41,9 +41,8 @@ include_once '../../controls/conn.php';
             <a href="https://wa.me/+254745527698" target="_blank"><i class="fab fa-whatsapp"></i>0745 527 698</a>
         </div>
     </div>
-
     <!-- main nav content -->
-    <nav class="nav navbar" style="height: 6em; padding-top:0 ;">
+    <nav class="nav navbar">
     <!-- logo -->
         <div class="logo" >
             <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
@@ -105,12 +104,12 @@ include_once '../../controls/conn.php';
                 <i class='fa fa-question-circle-o'></i> Help
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a href="help-center.php" class="dropdown-item dp-link">Help Center</a>
+                <a href="" class="dropdown-item dp-link">Help Center</a>
                 <a href="checkout.php" class="dropdown-item dp-link">Place an order</a>
                 <a href="existing_orders.php" class="dropdown-item dp-link">Track your order</a>
                 <a href="existing_orders.php?cancel=1" class="dropdown-item dp-link">Order Cancellation</a>
-                <a href="help-center.php?create-return=1" class="dropdown-item dp-link">Returns and Refunds</a>
-                <a href="help-center.php?pay-for-order=1" class="dropdown-item dp-link">Payment and KShan Account</a>
+                <a href="?create-return=1" class="dropdown-item dp-link">Returns and Refunds</a>
+                <a href="?pay-for-order=1" class="dropdown-item dp-link">Payment and KShan Account</a>
                 <div class="dropdown-item dp-btn" style="border-bottom: none; border-top: 4px solid lightgray; padding-bottom: 1em;">
                     <a class="btn" href="" ><i class="fa-regular fa-message"></i> Live Chat</a>
                 </div>
@@ -118,7 +117,11 @@ include_once '../../controls/conn.php';
         </div>
 
         <!-- cart link -->
-        <a href="cart.php" class="cart"><span>
-            <i class="fa-solid fa-cart-shopping"></i><span class="badge"><?php echo $items_count ?></span></span> Cart</a>
+        <a href="cart.php" class="cart" id="cart" style="font-size: 1em;">
+            <span>
+                <i class="fa-solid fa-cart-shopping"></i><span class="badge"><?php echo $items_count ?>
+            </span>
+        </span> 
+        Cart</a>
     </nav>
     </div>

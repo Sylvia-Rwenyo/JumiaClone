@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2024 at 01:10 PM
+-- Generation Time: Mar 05, 2024 at 08:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `adminusers` (
 --
 
 INSERT INTO `adminusers` (`id`, `firstName`, `lastName`, `emailAddress`, `phoneNumber`, `password`, `sign_up_date`) VALUES
-(1, 'Kshan', 'Admin', 'kshan@admin.com', '+254111222333', '$2y$10$Z0ITTHCfSNBpUx841V8AyOGqJoZA52a4v2/QKIHuWEKbrVXKEkE4e', '2024-02-05 21:41:46');
+(4, 'New', 'Admin', 'newadmin@kshan.com', '+254111222333', '$2y$10$RTfOoPolG4u6BfOK8OklG.FgXsaac8jgBuNsS5VlBrkxDfEhnNz86', '2024-03-05 19:44:00');
 
 -- --------------------------------------------------------
 
@@ -261,7 +261,7 @@ ALTER TABLE `product_images`
 -- AUTO_INCREMENT for table `adminusers`
 --
 ALTER TABLE `adminusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `endusers`

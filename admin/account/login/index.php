@@ -1,3 +1,7 @@
+<?php
+// start session
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +46,7 @@
             </style>';
             ?>
             <form method="POST" action="processing.php">
-                <input placeholder="Email address or phone number" name="accInput" type="text"/>
+                <input placeholder="Email address or phone number" name="accInput" value="<?php echo $_SESSION["emailAddress"]; ?>" type="text"/>
                 <input placeholder="Password" name="password" type="password"/>
                 <button type="submit" name="logIn">Log In</button>
             </form>
