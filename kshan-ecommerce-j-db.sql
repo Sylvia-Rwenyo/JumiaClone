@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2024 at 09:53 PM
+-- Generation Time: Mar 05, 2024 at 01:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,7 +68,7 @@ CREATE TABLE `client_addresses` (
 --
 
 INSERT INTO `client_addresses` (`address_id`, `client_id`, `first_name`, `last_name`, `phone_number`, `additional_phone_number`, `address`, `additional_information`, `area`, `city`) VALUES
-(0, 8, 'Sylvia', 'Rwenyo', '111620385', '751839562', '12333', '', 'Langata', 'Nairobi');
+(0, 19, 'Sylvia', 'Rwenyo', '+254111620385', '+254751839562', '10233', '', 'Langata', 'Nairobi');
 
 -- --------------------------------------------------------
 
@@ -95,8 +95,11 @@ CREATE TABLE `endusers` (
 --
 
 INSERT INTO `endusers` (`id`, `firstName`, `middleName`, `lastName`, `gender`, `birthDate`, `emailAddress`, `phoneNumber`, `password`, `pin`, `sign_up_date`) VALUES
-(8, 'Sylvia', 'Kemunto', 'Rwenyo', 'female', '2002-02-17', 'rwenyosylvia@gmail.com', '751839562', '$2y$10$oRpzIQK5q2yDw273PO95O.voATbvrcFHtVF1KkJRLHmFNRqe2TjO2', '', '2024-02-28 10:24:20'),
-(11, '', '', '', '', '0000-00-00', 'user@user.com', '', '$2y$10$g2rvEJHqpFfirjZIPU5OnenpXtZI8bnaJUUZi/yt0YF/RZ8QP4mIK', '', '2024-03-04 20:49:52');
+(11, '', '', '', '', '0000-00-00', 'user@user.com', '', '$2y$10$g2rvEJHqpFfirjZIPU5OnenpXtZI8bnaJUUZi/yt0YF/RZ8QP4mIK', '', '2024-03-04 20:49:52'),
+(12, '', '', '', '', '0000-00-00', '', '', '$2y$10$Ub4BxKlz39kQ0BkdjPJPr.lbQjJRtAxy5jb9WEr5pzzo5QxqIjlLq', '', '2024-03-05 09:18:33'),
+(13, '', '', '', '', '0000-00-00', '', '', '$2y$10$mkSJpfnP/UC3ygARVvw9Ou/njRJsZxQ1SU7nn527IwQQeAW1XOU8i', '', '2024-03-05 10:11:48'),
+(18, '', '', '', '', '0000-00-00', '', '+254751839562', '$2y$10$vKtTVItTQTOIFgyMyYmkDOy6kUM3UboMnu/jp.wKMDMVpkMAbWTyC', '', '2024-03-05 11:15:45'),
+(19, 'Sylvia', 'Kemunto', 'Rwenyo', 'female', '2002-02-17', 'rwenyosylvia@gmail.com', '+254111620385', '$2y$10$6cdtrtpY6spkO.KJ3yOjoewskxx.wVKVWkva19O/1qFB4aqflzLKy', '', '2024-03-05 11:38:09');
 
 -- --------------------------------------------------------
 
@@ -116,13 +119,6 @@ CREATE TABLE `orders` (
   `status` varchar(30) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `mpesa_phone_number`, `merchant_rq_id`, `checkout_rq_id`, `client_id`, `total_price`, `total_items`, `created_at`, `status`) VALUES
-('ORDER65e450bc6cbf6', '254111620385', '0', '0', 8, 1, 1, '2024-03-03 10:28:13', 'pending');
-
 -- --------------------------------------------------------
 
 --
@@ -136,24 +132,6 @@ CREATE TABLE `order_items` (
   `quantity` int(11) DEFAULT NULL,
   `saved_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `order_items`
---
-
-INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `quantity`, `saved_at`) VALUES
-(10, 'ORDER65cde8283c345', 10, 1, '2024-03-03 10:16:25'),
-(11, 'ORDER65cde92c60168', 10, 1, '2024-03-03 10:16:25'),
-(13, 'ORDER65cf79552ca5a', 9, 1, '2024-03-03 10:16:25'),
-(14, 'ORDER65cf7e8c8d3cd', 9, 1, '2024-03-03 10:16:25'),
-(15, 'ORDER65e4493aaec0d', 9, 1, '2024-03-03 10:16:25'),
-(16, 'ORDER65e4495d81a2e', 10, 1, '2024-03-03 10:16:25'),
-(17, 'ORDER65e44a067889c', 15, 1, '2024-03-03 10:16:25'),
-(18, 'ORDER65e44a6222410', 15, 1, '2024-03-03 10:16:25'),
-(19, 'ORDER65e44aef55216', 15, 1, '2024-03-03 10:16:25'),
-(20, 'ORDER65e44d06789a7', 15, 1, '2024-03-03 10:16:25'),
-(21, 'ORDER65e44e1e17d65', 15, 1, '2024-03-03 10:17:02'),
-(22, 'ORDER65e450bc6cbf6', 15, 1, '2024-03-03 10:28:12');
 
 -- --------------------------------------------------------
 
@@ -289,7 +267,7 @@ ALTER TABLE `adminusers`
 -- AUTO_INCREMENT for table `endusers`
 --
 ALTER TABLE `endusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `order_items`
