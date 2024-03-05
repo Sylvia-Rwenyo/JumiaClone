@@ -10,7 +10,6 @@ Our E-Commerce Website is designed to provide users with an online platform to b
 - Product browsing and searching functionality.
 - Shopping cart management.
 - Admin dashboard with CMS (Content Management System) for managing products.
-- Responsive design for optimal viewing across devices.
 
 ## Technologies Used
 - HTML
