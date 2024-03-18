@@ -6,238 +6,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="user_pages.css">
-    <link rel="stylesheet" href="products_page.css">
-    <link rel="stylesheet" href="home_page.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>K-Shan</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- stylesheets and cdn links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="user_pages.css">
+    <link rel="stylesheet" href="products_page.css">
+    <link rel="stylesheet" href="home_page.css">
     <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
-<style>
-        #shop-now-carousel img{
-            width: 100%; 
-            height: auto; 
-        }
-        .logo{
-            height: 100%;
-            width: 4em;
-            align-self: center;
-        }
-        .logo img{
-            height: 100%;
-            width: 100%;
-        }
-        .dropdown-menu{
-           left: -20px;
-        }
-        .dropdown .btn-secondary.dropdown-toggle{
-            background:  transparent;
-            color: black;
-            border: none;
-        }
-        .dropdown .btn-secondary.dropdown-toggle:focus{
-            outline: none;
-            box-shadow: none;
-            color: #f68b1e;
-        }
-        .list-group-item {
-            border: none;
-            padding: 0.2em;
-            font-size: 0.85em;
-        }
-        .list-group-item:hover, .header-band span:hover{
-            color: #f68b1e;
-        }
-        .total-card{
-            height: 70%;
-            margin-bottom: 1em;
-        }
-        .total-card ul{
-            padding: 1em;
-            height: 100%;
-            width: 100%;
-            display:grid;
-            grid-template-rows: auto auto auto;
-            font-size: 1.1em;
-            font-weight: 700;
-        }
-        .total-card ul li{
-            display: grid;
-            grid-template-columns: 17.5% 80%;
-            column-gap: 2.5%;
-        }
-        .total-card ul li i{
-            font-size: 1.3em;
-            margin-top: 0.25em;
-            color: #f68b1e;
-        }
-        .total-card ul p{
-            font-size: 0.8em;
-            font-weight: initial;
-        }
-        .total-card ul  .list-group-item:hover{
-            color: black;
-        }
-        .call-CTA{
-            height: 45%;
-            width: 100%;
-            padding: 1em;
-            padding-top: 3em;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 1.1em;
-            font-weight: 400;
-            
-        }
-        .call-CTA p:nth-child(2){
-            font-weight: 700;
-        }
-        .product-cards{
-            padding: 1em;
-        }
-        .product-cards .header-band{
-            padding: 0.5em;
-            padding-left: 2.5%;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        .header-band span{
-            width: 7%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-size: 1em;
-        }
-        .header-band span:hover{
-            color: #f68b1e;
-        }
-        .header-band i{
-            margin-top: 0.25em;
-        }
-        .product-cards .carousel-inner{
-            width: 100%;
-            height:16em ;
-        }
-        .product-cards .carousel-item, .product-cards .carousel-item .row{
-            width: 100%;
-            height: 95%;
-        }
-        .carousel-item {
-            transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        .product-cards .card{
-            border: none;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .product-cards .card img{
-            width: 90%;
-            height: 80%;
-        }
-        .product-cards .card p:nth-child(1){
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .product-cards .card p:nth-child(2){
-            margin-top: 0rem;
-            margin-bottom: 0.5rem;
-        }
-        .product-cards .carousel-control-next-icon, .product-cards .carousel-control-prev-icon{
-            margin-bottom: 2em;
-            background-color: lightgray;
-            border-radius: 50%;
-
-        }
-        .product-cards .carousel-control-prev-icon{
-            padding-left: 0;
-        }
-        .product-cards .carousel-control-prev, .product-cards .carousel-control-next{
-            height:fit-content;
-            top: 130px;
-        }
-        .carousel-indicators li {
-            border-radius: 50%; 
-            width: 10px; 
-            height: 10px;
-            margin: 0 4px;
-            cursor: pointer;
-        }
-        footer{
-            margin-top: 2.5em;
-            padding: 2em;
-            color: white;
-            background-color: #000;
-            padding-left: 0;
-            padding-right: 0;
-
-        }
-        footer .container:nth-child(1) .row{
-            height: 10em;
-        }
-        .download-prompt h5{
-            font-size: 0.8em;
-        }
-        .download-prompt{
-            display: grid;
-            grid-template-columns: 20% 75%;
-            column-gap: 5%;
-            margin-bottom: 1.5em;
-            color: white;
-        }
-        .download-prompt-btns{
-            display: grid;
-            grid-template-columns: auto auto;
-            column-gap: 5%;
-        }
-        .download-prompt-btns .btn{
-            display: grid;
-            grid-template-columns: 30% 70%;
-            font-size: 0.8em;
-            border: 1px solid white;
-            text-align: left;
-            color: white;
-        }
-        .download-prompt-btns .btn i{
-            font-size:2.25em;
-        }
-        .newsletter-prompt .btn{
-            border: 1px solid white;
-            text-align: left;
-            color: white;
-            width: 100%;
-        }
-        .newsletter-prompt .input-group{
-            width: 90%;
-            height: 3em;
-            display: grid;
-            grid-template-columns: 55% 17.5% 17.5%;
-            column-gap: 3%;
-        }
-        .newsletter-prompt .input-group .form-control{
-            height: 100%;
-            width: 100%;
-        }
-        .input-group .form-control,
-        .input-group .btn, .card {
-            border-radius: 2px;
-        }
-
-    </style>
 <body class="home-page-body">
 
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
 
-<section class="container" style="margin-top: 12em;">
+<section class="container main-container" style="margin-top: 10em;">
 
     <!-- Display products in the cart -->
     <div class="show-product row" style="margin-right: 12.5px; margin-left: 12.5px;">
@@ -423,10 +208,13 @@
 <?php include_once 'footer.php'; ?>
 
 <!-- scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="nav_script.js"></script>
+
 <script>
 $(document).ready(function(){
     $('#productCarousel').carousel();

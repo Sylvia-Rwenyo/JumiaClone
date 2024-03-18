@@ -1,4 +1,8 @@
 /* product stying */
+.show-product.row{
+    height: fit-content;
+    margin-bottom: 2em;
+}
 .single-product-card{
     height: 75%
 }
@@ -28,7 +32,6 @@
     flex-direction: row;
     justify-content: space-between;
     padding-left: 5%;
-    padding-right: 35%;
 }
 .product-details-lines{
     width: 80%;

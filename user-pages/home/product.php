@@ -12,13 +12,13 @@ if(isset($_GET['id'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K-Shan</title>
     <!-- stylesheets and CDN links -->
-    <link rel="stylesheet" href="products_page.css">
-    <link rel="stylesheet" href="home_page.css">
-    <link rel="stylesheet" href="user_pages.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="products_page.css">
+    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="user_pages.css">
     <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
 <body class="home-page-body">
@@ -41,9 +41,9 @@ if(isset($_GET['id'])){
 <?php  include_once 'nav.php';?> 
 
 <!-- main-body-elements container -->
-<section class="container" style="margin-top: 12em;">
+<section class="container" style="margin-top: 10em;">
 
-    <!-- CTA -->
+    <!-- show product -->
     <div class="show-product row">
 
     <?php
@@ -288,6 +288,7 @@ if(isset($_GET['id'])){
 <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="nav_script.js"></script>
 <script>
 $(document).ready(function(){
     $('#productCarousel').carousel();

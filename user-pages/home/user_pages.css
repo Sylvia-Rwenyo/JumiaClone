@@ -513,7 +513,7 @@ footer .container:nth-child(1) .row{
     .product-cards .card .single-product-details{
         height: 50%;
     }
-    .product-cards .carousel-inner{
+    .product-cards .carousel-inner, .product-cards .card {
         height: 8em;
     }
 }
