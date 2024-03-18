@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="user_pages.css">
     <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
-<body class="product-page-body">
+<body class="product-page-body home-page">
 <!-- nav bar -->
 <?php include_once 'nav.php' ?>
 
@@ -19,9 +19,9 @@
 <section class="container main-container">
 
     <!-- CTA -->
-    <div class="CTA row" style="column-gap: auto;">
+    <div class="CTA row" id="CTA-row">
         <!-- categories list -->
-        <div class="col-2  card categories-list" id="categories-list">
+        <div class="col-2 card categories-list" id="categories-list">
             <ul class="list-group">
                 <li class="list-group-item show"><i class="fa-solid fa-bag-shopping"></i>Official Stores</li>
                 <li class="list-group-item show"><i class="fa-solid fa-mobile-screen"></i>Phone & Tablets</li>
@@ -34,24 +34,15 @@
                 <li class="list-group-item show"><i class="fa-solid fa-apple-whole"></i>Supermarket</li>
                 <li class="list-group-item show"><i class="fa-solid fa-baby-carriage"></i>Baby Products</li>
                 <li class="list-group-item show"><i class="fa-solid fa-dumbbell"></i>Sporting Goods</li>
-                <li class="list-group-item collapsed-items collapse">Automobile</li>
-                <li class="list-group-item collapsed-items collapse">Garden and Outdoors</li>
-                <li class="list-group-item collapsed-items collapse">Books, Music and Movies</li>
-                <li class="list-group-item collapsed-items collapse">Industrial and Scientific</li>
-                <li class="list-group-item collapsed-items collapse">Livestock</li>
-                <li class="list-group-item collapsed-items collapse">Pet Supplies</li>
-                <li class="list-group-item collapsed-items collapse">Musical Instruments</li>
-                <li class="list-group-item collapsed-items collapse">Services</li>
-                <li class="list-group-item collapsed-items collapse">Toys and Games</li>
-                <li class="list-group-item collapsed-items collapse">Miscellaneous</li>
-                <li class="list-group-item" data-toggle="collapse" data-target=".collapsed-items">
+                
+                <!-- <li class="list-group-item" data-toggle="collapse" data-target=".collapsed-items">
                     <i class="fa-solid fa-ellipsis" style="padding: 0.15em; border: 1px solid black; border-radius: 30%"></i>More categories
-                </li>
+                </li> -->
             </ul>
         </div>
 
         <!-- promo carousel -->
-        <div class="col-8 shop-now-carousel-div" id="shop-now-carousel-div">
+        <div class="col-6 shop-now-carousel-div  " id="shop-now-carousel-div">
             <div id="shop-now-carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#shop-now-carousel" data-slide-to="0" class="active"></li>
@@ -82,7 +73,7 @@
         </div>
 
         <!-- call and help CTA -->
-        <div class="col-2" id="home-CTA-Col2" >
+        <div class="col-2  " id="home-CTA-Col2" style="margin: 0">
             <div class="card call-help-CTA">
                 <ul class="list-group">
                     <li class="list-group-item"><i class='fa fa-question-circle-o'></i> <span style="font-size: 0.85em">HELP CENTER<p> Guide To Customer Care</p></span></li>
@@ -225,10 +216,10 @@ $(document).ready(function(){
             shopCarousel.style.height = '100%'
             helpCTA.style.height = '100%'
         } else{
-            helpCTA.style.height = '25em';
-            shopCarousel.style.height = '25em';
+            helpCTA.style.height = '20em';
+            shopCarousel.style.height = '20em';
             collapsedItems.classList.add('collapse');
-            categoriesList.style.height = '25em';
+            categoriesList.style.height = '20em';
         }
     });
 
@@ -256,6 +247,7 @@ $(document).ready(function(){
     function adjustColumns() {
         var targetSmallCol = $('.categories-list');
         var targetLargeCol = $('.shop-now-carousel-div');
+        var targetContainer = document.getElementById('CTA-row');
 
         if (window.innerWidth <= 1200) {
             helpCTA.style.display = 'none';
@@ -265,6 +257,8 @@ $(document).ready(function(){
             if (!targetLargeCol.hasClass('col-9')) {
                 targetLargeCol.removeClass('col-8').addClass('col-9');
             }
+           
+            targetContainer.style.gridTemplateColumns = '30% 67.5%';
         } else {
             helpCTA.style.display = 'block';
             if (!targetSmallCol.hasClass('col-2')) {
@@ -273,6 +267,7 @@ $(document).ready(function(){
             if (!targetLargeCol.hasClass('col-8')) {
                 targetLargeCol.removeClass('col-9').addClass('col-8');
             }
+            targetContainer.style.gridTemplateColumns = '20% 60% 20%';
         }
     }
 

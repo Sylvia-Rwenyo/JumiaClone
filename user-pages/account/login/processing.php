@@ -47,7 +47,7 @@ if(isset($_POST['logIn']))
     }
     
      // check if corresponding user record is in database
-        $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress || phoneNumber='$accInput'");
+        $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress='$accInput' || phoneNumber='$accInput'");
         if(mysqli_num_rows($sql_a)>0)
         {
             $row  = mysqli_fetch_array($sql_a);
@@ -60,16 +60,9 @@ if(isset($_POST['logIn']))
                     $_SESSION["user_id"] = $row['id'];
                     $_SESSION["user_password"] = $hashed_password;
 
-                    // redirect user to home page
-                    if(isset($_SESSION["referer"])){
-                        echo '<script> 
-                        window.location.href = "../../home'.$_SESSION["referer"] .'"
-                        </script>';
-                    }else{
                         echo '<script> 
                         window.location.href = "../../home"
                         </script>';   
-                    }
                 } else {
                     // show error related to password
                     echo '<script> 

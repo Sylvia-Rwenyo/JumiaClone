@@ -29,8 +29,8 @@
 >
 
 <!-- main-body-elements container -->
-<section class="container main-container">   
-    <div class="account-info CTA row" style="height: 40em; column-gap: 5%;">
+<section class="container main-container" style="margin-top: 6em">   
+    <div class="account-info CTA row" style="height: 40em; width: 100%">
         <!-- account links -->
         <div class="col-3  card" style="height: 100%; padding: 0;" >
             <ul class="list-group">
@@ -61,11 +61,11 @@
                    $client_id = $_SESSION['user_id'];
 
                    // Prepare the SQL statement with a parameterized query
-                   $usersSql = "SELECT * FROM endusers WHERE emailAddress || phoneNumber = ?";
+                   $usersSql = "SELECT * FROM endusers WHERE emailAddress = ? || phoneNumber = ?";
                    $stmt = $conn->prepare($usersSql);
                    
                    // Bind the parameter and execute the statement
-                   $stmt->bind_param("s", $user_access_value);
+                   $stmt->bind_param("ss", $user_access_value,$user_access_value);
                    $stmt->execute();
                    
                    // Get the result

@@ -37,7 +37,7 @@ include_once '../../controls/conn.php';
             </div>
         </div>
         <div class="delivery-call-prompt">
-            <p>Call Whatsapp to Order</p>
+            <p>Call or Whatsapp to Order</p>
             <a href="https://wa.me/+254745527698" target="_blank"><i class="fab fa-whatsapp"></i>0745 527 698</a>
         </div>
     </div>
@@ -62,7 +62,7 @@ include_once '../../controls/conn.php';
                 $username = '';
                 if(isset($_SESSION['user'])){
                     $access_value = $_SESSION['accInput'];
-                    $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress || phoneNumber = $access_value");
+                    $sql_a=mysqli_query($conn,"SELECT * FROM endusers where emailAddress || phoneNumber = '$access_value'");
                     if(mysqli_num_rows($sql_a)>0)
                     {
                         $row  = mysqli_fetch_array($sql_a);
@@ -117,11 +117,13 @@ include_once '../../controls/conn.php';
         </div>
 
         <!-- cart link -->
-        <a href="cart.php" class="cart" id="cart" style="font-size: 1em;">
-            <span>
-                <i class="fa-solid fa-cart-shopping"></i><span class="badge"><?php echo $items_count ?>
-            </span>
-        </span> 
-        Cart</a>
+        <div class="cart-div">
+            <a href="cart.php" class="cart" id="cart">
+                <span>
+                    <i class="fa-solid fa-cart-shopping"></i><span class="badge"><?php echo $items_count ?>
+                </span>
+            </span> 
+            Cart</a>
+        </div>
     </nav>
     </div>
