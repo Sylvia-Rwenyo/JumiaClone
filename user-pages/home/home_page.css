@@ -286,7 +286,7 @@
   }
   @media (max-width: 600px) {
     .single-product-details p {
-       font-size: 0.35em;
+       font-size: 0.75em;
       }
       .main-container{
         margin-top: 8em;

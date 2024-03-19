@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="home_page.css">
     <link rel="icon" type="image/png" href="../../images/favicon-16x16.png">
 </head>
+<style>
+    .order-item p{
+        font-size: 0.9em;
+    }
+    </style>
 <body class="home-page-body">
 
 <!-- nav bar -->
@@ -31,8 +36,8 @@
 <section class="container" style="margin-top: 12em;">
 
     <!-- Display products in the orders table -->
-    <div class="show-product row" style="height: 20em;">
-    <div class="col-12" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); height: 100%; overflow-y: scroll;">
+    <div class="show-product row" style="height: fit-content">
+    <div class="col-12" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); height: fit-content;">
         <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500; padding: 1em;">Your Orders</h5>
         <?php
         //database connection
@@ -76,47 +81,35 @@
                             }
 
                             ?>
-                            <div class="row" style="height: 8em; margin-bottom: 3em">
-                                <div class="col-3">
-                                    <div class="focused-img" style="width: 100%; height: 80%; padding: 1em;">
-                                        <img style="width: 100%; height: 100%;" src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
+                            <div class="row order-item" style="height:fit-content; margin-bottom: 2em; border-bottom: 1px solid lightgray;">
+                                <div class="col-3" style="height:90%; width: 25%">
+                                    <div class="focused-img" style="width: 100%; height: 80%; padding: 0.25em;">
+                                        <img style="width: 100%; height: 100%;  object-fit: contain;" src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
                                     </div>
                                 </div>
-                                <div class="product-details col-3" style="padding: 1em;">
-                                    <div style=" padding: 1em; margin-bottom: 1em; ">
-                                        <p><strong>Item: </strong><?php echo   $item['quantity'] .' '.$product['name']; ?></p>
-                                        <p><strong>Cost: </strong> Ksh <?php echo $product['price']; ?></p>
-                                    </div>
-                                </div>
-                                <div class="product-details col-3" style="padding: 1em;">
-                                    <div style="padding: 1em; margin-bottom: 1em;">
-                                        <p><strong>Payment: </strong><?php if($order['merchant_rq_id'] == 0){ echo 'on delivery';}else{'completed';}; ?></p>
-                                        <p><strong>Processing status: </strong><?php echo $order['status']; ?></p>
-                                    </div>
-                                </div>
-                                <div class="product-details col-3" style="padding: 1em;">
-                                    <div style="padding: 1em; margin-bottom: 1em">
-                                        <?php
-                                            $client_addressesSql = "SELECT * FROM client_addresses WHERE client_id = '$client_id'";
-                                            $addressResult = $conn->query($client_addressesSql);
+                                <div class="col-9">
+                                    <p><strong>Item: </strong><?php echo   $item['quantity'] .' '.$product['name']; ?>
+                                        @Ksh <?php echo $product['price']; ?> <br>Payment: </strong><?php if($order['merchant_rq_id'] == 0){ echo 'on delivery';}else{'completed';}; ?></p>
+                                    <p><strong>Processing status: </strong><?php echo $order['status']; ?></p>
+                                    <?php
+                                        $client_addressesSql = "SELECT * FROM client_addresses WHERE client_id = '$client_id'";
+                                        $addressResult = $conn->query($client_addressesSql);
 
-                                            if ($addressResult->num_rows > 0) {
-                                                while ($address = $addressResult->fetch_assoc()) {
-                                        ?>
-                                        <p><strong>Delivery date: </strong><?php echo date('Y-m-d', strtotime($order['created_at'] . ' +3 days')); ?></p>
-                                        <p><strong>To address: </strong><?php echo $address['area'] .', '.$address['city']?></p>
-                                        <br><br>
-                                        <?php if($order['status'] !== 'processed'){?>
-                                            <a data-toggle="modal" data-target="#delete-order"  style="text-decoration: none; color: darkblue; width: 100%; text-align:center;">Cancel order</a>
-                                        <?php }?>
-                                    </div>
+                                        if ($addressResult->num_rows > 0) {
+                                            while ($address = $addressResult->fetch_assoc()) {
+                                    ?>
+                                    <p><strong>Delivery: </strong> on<?php echo date('Y-m-d', strtotime($order['created_at'] . ' +3 days')); ?></p>
+                                    <p><strong>To address: </strong><?php echo $address['area'] .', '.$address['city']?></p>
                                 </div>
                             </div>
                             <?php
                              }}
                         }
                     }
-                }
+                  if($order['status'] !== 'processed'){?>
+                        <a data-toggle="modal" data-target="#delete-order"  style="text-decoration: none; color: darkblue; width: 100%; text-align:center; font-size: 0.8em">Cancel order</a>
+                  <?php
+                }}
             }
         } else {
             // If the cart is empty, display a message
@@ -191,7 +184,7 @@
                         <!-- Display product card -->
                         <div class="single-product-card card col-3" onclick="showDetails(<?php echo $productId; ?>)">
                             <img src="../../admin/product-upload/<?php echo $imageUrl; ?>" alt="product" />
-                            <div class="">
+                            <div class="single-product-details">
                                 <p><?php echo $product['name']; ?></p>
                                 <p>Ksh <?php echo $product['price']; ?></p>
                             </div>

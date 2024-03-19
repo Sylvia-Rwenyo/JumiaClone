@@ -71,7 +71,7 @@ if ($clientAddressResult->num_rows > 0) {
     
     if ($stmt->execute()) {
         // Redirect 
-        header("Location: {$_SERVER['HTTP_REFERER']}&success=1");
+        header("Location: {$_SERVER['HTTP_REFERER']}?success=1");
         exit();
     } else {
         // Update failed
@@ -89,7 +89,7 @@ if ($clientAddressResult->num_rows > 0) {
         // Execute the statement
         if ($insertClientStmt->execute()) {
             // Redirect 
-            header("Location: {$_SERVER['HTTP_REFERER']}&success=1");
+            header("Location: {$_SERVER['HTTP_REFERER']}?success=1");
             exit();
         } else {
             // Insert failed

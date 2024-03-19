@@ -60,9 +60,14 @@ if(isset($_POST['logIn']))
                     $_SESSION["user_id"] = $row['id'];
                     $_SESSION["user_password"] = $hashed_password;
 
-                        echo '<script> 
-                        window.location.href = "../../home"
-                        </script>';   
+                       // Check if $_SESSION["referer"] is set
+                    if (!empty($_SESSION["referer"])) {
+                        // Redirect to the referer using JavaScript
+                        echo '<script>window.location.href = "../../home/' . $_SESSION["referer"] . '";</script>';
+                    } else {
+                        // Redirect to a default location using JavaScript
+                        echo '<script>window.location.href = "../../home";</script>';
+                    }  
                 } else {
                     // show error related to password
                     echo '<script> 

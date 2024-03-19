@@ -3,7 +3,7 @@
 @session_start();
     if(!isset( $_SESSION["user"])){
         // Store the referring page URL in a session variable
-    $_SESSION["referer"] = $_SERVER['HTTP_REFERER'];
+    $_SESSION["referer"] = 'checkout.php';
         echo '
             <script>window.location.href = "../account/login/"</script>
         ';
@@ -237,6 +237,62 @@
         .floating-label{
             font-size: 14px;
         } 
+        .input-group-text{
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+        #delivery-info p{
+            margin-block-start: 0.25em;
+            margin-block-end: 0.25em;
+            font-size: 0.8em;
+        }
+        .shipment-products-details p, .payment-method-section p,  .payment-method-section .btn{
+            font-size: 1em
+        }
+        .payment-method-section p:nth-child(2){
+            font-size: 0.9em
+        }
+        @media (max-width: 960px) {
+            .form-control, .input-group-append{
+                font-size: 0.9em
+            }
+            .input-group-text{
+                padding:  0.175rem 0.55rem;
+            }
+        }
+        @media (max-width: 840px) {
+            .form-control, .input-group-text{
+                font-size: 0.8em
+            }
+            .floating-label{
+            font-size: 12px;
+        } 
+        }
+       
+        @media (max-width: 570px) {
+        #delivery-info p{
+            font-size: 0.6em;
+        }
+        .shipment-products-details p{
+            font-size: 1em;
+        }
+        .payment-method-section p,  .payment-method-section .btn{
+            font-size: 0.9em
+        }
+        .payment-method-section p:nth-child(2){
+            font-size: 0.8em
+        }
+        }
+
+
+        @media (max-width: 420px) {
+        .floating-label{
+            font-size: 8px;
+        } 
+        #delivery-info p{
+            font-size: 0.5em;
+        }
+        }
     </style>
 <body class="home-page-body">
 
@@ -245,11 +301,11 @@
 ?>
 
 <!-- main-body-elements container -->
-<section class="container" style="margin-top: 6em;">
+<section class="container" style="margin-top: 8em;">
 <div id="messageContainer"></div>
 
     <!-- get client info -->
-    <div class="col-10" style="height: fit-content">
+    <div class="col-12" style="height: fit-content">
             <?php
                     $client_id = $_SESSION['user_id'];
 
@@ -288,7 +344,7 @@
             </div>
             <div class="form-group mb-3" style="position: relative; display: flex;">
                 <div class="input-group">
-                    <div class="input-group-append" style="background: transparent; border-left-radius: 5px;">
+                    <div class="input-group-append" >
                         <span class="input-group-text" id="basic-addon2"> +254</span>
                     </div>
                     <input type="number" class="form-control" placeholder="<?php echo isset($row['phone_number']) ? $row['phone_number'] : 'Phone number'; ?>" 
@@ -296,10 +352,10 @@
                     <label class="floating-label" style="margin-left: 10px">Phone number*</label>
                 </div>
                 <div class="input-group" style="margin-left: 10px">
-                    <div class="input-group-append" style="background: transparent; margin-left: 20px;border-left-radius: 5px;">
+                    <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon2"> +254</span>
                     </div>
-                    <input type="number" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
+                    <input type="text" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
                         value="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : ''; ?>"  aria-label="Additional phone number" name="additional_phone_number" aria-describedby="additional phone number">
                         <label class="floating-label" style="margin-left: 20px">Additional phone number*</label>
                 </div>
@@ -341,14 +397,14 @@
         2. &nbsp;&nbsp;Delivery Details <a>Change <i class="fa fa-angle-right"></i></a></h6>
 
         <div style="margin-bottom: 1em;">
-            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em;">Door Delivery</p>
+            <p >Door Delivery</p>
             <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.9em; font-weight: 400;">Delivery scheduled on <strong>19 February</strong></p>
         </div>
         <div style="padding: 1em; border: 0.5px solid lightgray; border-radius: 5px; margin-bottom: 1em;">
             <div>
-                <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: bolder; display: flex; flex-direction: row; justify-content: space-between">
+                <p style="font-weight: bolder; display: flex; flex-direction: row; justify-content: space-between">
                     Switch to a pickup station starting from KSh 100 <a id="changeDelivery">Change <i class="fa fa-angle-right"></i></a></p>
-                <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
+                <p style="font-weight: 400;">
                     Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div>
@@ -363,7 +419,7 @@
             <div style="margin-top: 1.5em; padding-left: 1em">
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Pick-up Station</strong>(Ksh 100)</p>
-                <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
+                <p style="font-weight: 400;">
                 Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div>
@@ -375,7 +431,7 @@
                 <div style="margin-top: 0; padding-left: 1em">
                     <p style="margin-block-start:0; margin-block-end:0.25em;  font-size: 0.8em; font-weight: bolder;">
                     No Pickup Station Selected
-                    <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
+                    <p style="font-weight: 400;">
                     To use this option, you will need to add a pickup station near your location.</p>
                 </div>
             </div>
@@ -392,7 +448,7 @@
             <div style="margin-top: 1.5em; padding-left: 1em">
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Door Delivery</strong></p>
-                <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
+                <p style="font-weight: 400;">
                 Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div>
@@ -407,7 +463,7 @@
         <div style="padding: 1em; border: 0.5px solid lightgray; border-radius: 5px; margin-bottom: 1em;" >
             <p style="margin-bottom: 0; display: flex; flex-direction: row; justify-content: space-between">
            <strong>Door Delivery</strong></p>
-            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">Delivery scheduled on 19 February</p>
+            <p style="font-weight: 400;">Delivery scheduled on 19 February</p>
             <div>
             <?php
             //database connection
@@ -439,12 +495,12 @@
             ?>
         <!-- Product details -->
             <div class="row" style=" padding-top: 2em;height: 8em; box-shadow: none; border-top: 0.25px solid lightgray">
-                <div class="col-2">
+                <div class="col-3" style="height: 6em;">
                     <div class="focused-img" style="width: 100%; height:100%;">
-                        <img style="width: 100%; height: 100%;" src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
+                        <img style="width: 100%; height: 100%; object-fit: contain;" src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
                     </div>
                 </div>
-                <div class="product-details col-6" style="padding: 1em; font-size: 0.75em;">
+                <div class="product-details col-8 shipment-products-details" style="padding: 1em; font-size: 0.75em;">
                     <div style="padding: 1em; padding-top:2em; margin-bottom: 1em; ">
                         <p><?php echo $product['name']; ?></p>
                         <p><strong>QTY </strong><?php echo $quantity .' @Kes'. $product['price']. '/='; ?></p>
@@ -462,14 +518,14 @@
     </div>
 
     <!-- payment method -->
-    <div class="row">
+    <div class="row payment-method-section">
         <h6 style="border-bottom: 1px solid lightgray; margin-bottom: 2em; padding-bottom: 1em; display: flex; flex-direction: row; justify-content: space-between">
         3. &nbsp;&nbsp;PAYMENT METHOD 
     </h6>
 
         <div style="margin-bottom: 1em;">
-            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em;">KSHAN Pay Now (Mpesa)</p>
-            <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.9em; font-weight: 400;">Pay now fast and securely with JumiaPay, Mastercard or Visa</p>
+            <p >KSHAN Pay Now (Mpesa)</p>
+            <p style="font-weight: 400;">Pay now fast and securely with Mpesa</p>
         </div>
 
         <!-- <div style="display: flex; flex-direction: row;" class="shipping-options">
@@ -477,11 +533,11 @@
             <div style="margin-top: 1.5em; padding-left: 1em">
                 <p style="margin-block-start:1em; margin-block-end:1em;  font-size: 0.8em; font-weight: bolder;">
                     <strong>Pick-up Station</strong>(Ksh 100)</p>
-                <p style="margin-block-start: 0.25em;margin-block-end: 0.25em; font-size: 0.8em; font-weight: 400;">
+                <p style="font-weight: 400;">
                 Delivery scheduled on <strong>19 February</strong></p>
             </div>
         </div> -->
-        <a  data-toggle="modal" data-target="#confirm-payment" class="btn" style="background-color:  #f68b1e; width: 30%; align-self: flex-end; color: white;">CONFIRM PAYMENT METHOD</a>
+        <a  data-toggle="modal" data-target="#confirm-payment" class="btn" style="background-color:  #f68b1e; width: fit-content; padding: 0.5em; align-self: flex-end; color: white;">CONFIRM PAYMENT METHOD</a>
     </div>
     </div>
     <div class="modal fade" id="pickupModal" tabindex="-1" aria-labelledby="pickupModalLabel" aria-hidden="true">
@@ -529,7 +585,7 @@
                 <p>Input your M-Pesa number</p>
                 <form id="order-form" method="POST" action="create_order.php">
                     <div class="input-group mb-3">
-                        <div class="input-group-append" style="background: transparent; margin-left: 20px;border-left-radius: 5px;">
+                        <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2"> +254</span>
                         </div>
                         <input type="number" class="custom-select" name="mpesa_phoneNumber">

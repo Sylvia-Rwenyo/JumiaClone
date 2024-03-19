@@ -65,8 +65,8 @@ if(isset($_GET['id'])){
             while ($product = $productResult->fetch_assoc()) {
             ?>
         <!--  product details -->
-        <div class="col-9" style= "background-color: white;  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
-            <div class="row" style="padding: 2em; height: 80%">
+        <div class="col-8 single-product-display" id="single-product-display"style= "background-color: white;  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
+            <div class="row" style="height: 80%">
                 <div class="col-6">
                 <div class="product-images" style=" height: 80%">
                     <div class="focused-img" style=" height: 100%">
@@ -108,10 +108,11 @@ if(isset($_GET['id'])){
             </div>
                 <div class="product-details col-6" style=" height: 80%">
                     <div style="border-bottom: 1px solid lightgray; padding-bottom: 1em; margin-bottom: 1em;">
-                        <p><?php echo $product['name'] .' '.$product['description']; ?></p>
+                        <p><?php echo $product['name'];?></p>
+                        <p>Details: <?php echo $product['description']; ?></p>
                         <p ><?php echo $product['price']; ?></p>
                     </div>
-                    <a href="add_to_cart.php?id=<?php echo $product_id; ?>" class="btn"> <i class="fa-solid fa-cart-plus"></i> Add to cart</a>
+                    <a href="add_to_cart.php?id=<?php echo $product_id; ?>" class="product-add btn"> <i class="fa-solid fa-cart-plus"></i> Add to cart</a>
                 </div>
             </div>
         <!-- <div class="row">
@@ -124,8 +125,8 @@ if(isset($_GET['id'])){
         ?>
 
         <!-- call and help CTA -->
-        <div class="col-3" >
-            <div class="card delivery-CTA"  style= " border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
+        <div class="col-4 delivery-CTA-Col3" id="delivery-CTA-Col3">
+            <div class="card delivery-CTA "  style= " border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
             <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500; padding: 0.5em ">Deliveries & Returns</h5>
             <p style="margin: 0.5em">Choose your location</p>
             <div class="input-group mb-3">
@@ -189,7 +190,7 @@ if(isset($_GET['id'])){
                     <span>Return Policy<p> Easy Return, Quick Refund. <a href="" style="text-decoration: none; color: darkblue; font-size: 0.75em;">details</a></p></span></li>
                 </ul>   
             </div>
-            <div class="card call-CTA" style= " border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);">
+            <div class="card call-CTA" style= " border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); height: 30%;">
                 <p>Call or Whatsapp</p>
                 <p>0745 527 698</p> 
                 <p>TO ORDER</p>
@@ -246,7 +247,7 @@ if(isset($_GET['id'])){
                     ?>
                     <div class="single-product-card card col-3" onclick="showDetails(<?php echo $productId; ?>)">
                         <img src="../../admin/product-upload/<?php echo $imageUrl;?>"   alt="product" />
-                        <div class="">
+                        <div class="single-product-details">
                             <p><?php echo $product['name']; ?></p>
                             <p>Ksh <?php echo $product['price']; ?></p>
                         </div>
@@ -300,6 +301,34 @@ $(document).ready(function(){
         $('.categories-list').css('height', 'fit-content');
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    var targetSmallCol = document.querySelector('.delivery-CTA-Col3');
+    var targetLargeCol = document.querySelector('.single-product-display');
+
+    function handleWindowResize() {
+        if (window.innerWidth <= 720) {
+            targetSmallCol.style.display = 'none';
+            if (targetLargeCol.classList.contains('col-8')) {
+                targetLargeCol.classList.remove('col-8');
+                targetLargeCol.classList.add('col-12');
+            }
+        } else {
+            targetSmallCol.style.display = 'flex';
+            if (targetLargeCol.classList.contains('col-12')) {
+                targetLargeCol.classList.remove('col-12');
+                targetLargeCol.classList.add('col-8');
+            }
+        }
+    }
+
+    handleWindowResize(); // Call the function on page load
+
+    window.addEventListener("resize", function() {
+        handleWindowResize(); // Attach event listener for window resize
+    });
+});
+
 
 // Define sub-locations for each location
 const subLocations = {

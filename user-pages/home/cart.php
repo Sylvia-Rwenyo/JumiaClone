@@ -22,12 +22,12 @@
 <!-- nav bar -->
 <?php include_once 'nav.php'; ?>
 
-<section class="container main-container" style="margin-top: 10em;">
+<section class="container main-container" style="margin-top: 10em; row-gap: 1%;">
 
     <!-- Display products in the cart -->
-    <div class="show-product row" style="margin-right: 12.5px; margin-left: 12.5px;">
-        <div class="col-8" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; height: 100%;">
-        <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500;">
+    <div class="show-product show-cart-products row">
+        <div class="col-7 all-cart-products" style="background-color: white; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; height: 100%;">
+        <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500; padding: 1em">
             Cart <?php echo isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 ? '(' . count($_SESSION['cart']) . ')' : ''; ?>
         </h5>
             <?php
@@ -72,22 +72,22 @@
 
                         // Display product details
                         ?>
-                        <div class="row " style="height: 15em;  padding-bottom: 2.5em;">
+                        <div class="row " style="height: 15em;  padding-bottom: 2.5em; border-bottom: 2px solid lightgray">
                             <div class="col-3">
-                                <div class="focused-img" style="width: 100%; height: 80%; padding: 1em;">
-                                    <img style="width: 100%; height: 100%;" src="../../admin/product-upload/<?php echo $imageUrl; ?>" style="object-fit: contain;"/>
+                                <div class="focused-img" style="width: 100%; height: 80%;">
+                                    <img style="width: 100%; height: 100%; object-fit: contain;" src="../../admin/product-upload/<?php echo $imageUrl; ?>"/>
                                 </div>
                                 <a href="remove_from_cart.php?id=<?php echo $product['id']; ?>" style="text-decoration: none; color: #f68b1e"><i class="fa-solid fa-trash"></i></a>
                             </div>
                             <div class="product-details col-5" style="padding: 1em;">
-                                <div style=" padding: 1em; margin-bottom: 1em; ">
+                                <div style=" padding: 1em; margin-bottom: 1em; padding-left: 0; padding-right: 0;">
                                     <p><?php echo $product['name']; ?></p>
                                 </div>
                             </div>
                             <div class="product-details col-4" style="padding: 1em;">
-                                <div style="padding: 1em; margin-bottom: 1em;">
+                                <div style="padding: 1em; margin-bottom: 1em; padding-left: 0.5em; padding-right: 0.5em;">
                                     <p><?php echo $product['price']; ?></p>
-                                    <div style="display: flex; flex-direction: row; justify-content: space-between; font-size: 1.15em; width: 50%; margin-right: 20%; align-items: flex-start">
+                                    <div style="display: flex; flex-direction: row; justify-content: space-between; font-size: 1.15em; width: 100%; margin-right: 20%; align-items: flex-start">
                                         <i class="fa-solid fa-square-minus minus-quantity" data-productid="<?php echo $product['id']; ?>" style="color: #f68b1e; border-radius: 10px; font-size: 1.25em"></i>
                                         <span id="quantity-text"><?php echo $quantity; ?></span>
                                         <i class="fa-solid fa-square-plus add-quantity" data-productid="<?php echo $product['id']; ?>" style="color: #f68b1e; font-size: 1.25em"></i>
@@ -112,9 +112,9 @@
         <?php
             if($totalPrice > 0){
         ?>
-        <div class="col-3"  style="height: 100% ;border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; ">
+        <div class="col-4 cart-summary"  style="height: 100% ;border: none; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); background-color: white; ">
+            <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500; padding: 1em">Cart Summary</h5>
             <div class="card total-card" style="border: none; padding: 1em"  >
-                <h5 style="border-bottom: 0.5px solid lightgray; font-weight: 500;">Cart Summary</h5>
                 <p>Sub Total: <span><?php echo $totalPrice; ?></span></p>
                 <a href="checkout.php" class="btn"> Check Out (Ksh <?php echo $totalPrice; ?>)</a>
             </div>
@@ -170,7 +170,7 @@
                         <!-- Display product card -->
                         <div class="single-product-card card col-3" onclick="showDetails(<?php echo $productId; ?>)">
                             <img src="../../admin/product-upload/<?php echo $imageUrl; ?>" alt="product" />
-                            <div class="">
+                            <div class="single-product-details">
                                 <p><?php echo $product['name']; ?></p>
                                 <p>Ksh <?php echo $product['price']; ?></p>
                             </div>
@@ -274,6 +274,42 @@ $(document).ready(function(){
             }
         });
     }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var parentRow = document.querySelector('.show-cart-products');
+    var targetSmallCol = document.querySelector('.cart-summary');
+    var targetLargeCol = document.querySelector('.all-cart-products');
+
+    parentRow.marginBottom = 0;
+
+    function handleWindowResize() {
+        if (window.innerWidth <= 720) {
+            if (targetSmallCol.classList.contains('col-4')) {
+                targetSmallCol.classList.remove('col-4');
+                targetSmallCol.classList.add('col-12');
+            }
+            if (targetLargeCol.classList.contains('col-7')) {
+                targetLargeCol.classList.remove('col-7');
+                targetLargeCol.classList.add('col-12');
+            }
+        } else {
+            if (targetSmallCol.classList.contains('col-12')) {
+                targetSmallCol.classList.remove('col-12');
+                targetSmallCol.classList.add('col-4');
+            }
+            if (targetLargeCol.classList.contains('col-12')) {
+                targetLargeCol.classList.remove('col-12');
+                targetLargeCol.classList.add('col-7');
+            }
+        }
+    }
+
+    handleWindowResize(); // Call the function on page load
+
+    window.addEventListener("resize", function() {
+        handleWindowResize(); // Attach event listener for window resize
+    });
 });
 
 // redirect user to view a single product's details

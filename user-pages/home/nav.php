@@ -86,11 +86,11 @@ include_once '../../controls/conn.php';
                 }?>
                 <a class="dropdown-item dp-link" href="user-account.php"><i class="fa-regular fa-user"></i>My Account</a>
                 <a class="dropdown-item dp-link" href="existing_orders.php"><i class="ic-mrm fas fa-envelope"></i>Orders</a>
-                <a class="dropdown-item dp-link" href=""><i class="fa-regular fa-heart"></i>Saved Items</a>
+                <!-- <a class="dropdown-item dp-link" href=""><i class="fa-regular fa-heart"></i>Saved Items</a> -->
                 <?php
                 if(isset($_SESSION['user'])){
                 ?>
-                <a class="dropdown-item dp-link" href=""><i class="fa-solid fa-ticket"></i>Vouchers</a>
+                <!-- <a class="dropdown-item dp-link" href=""><i class="fa-solid fa-ticket"></i>Vouchers</a> -->
                 <a class="dropdown-item dp-link" style="color: #f68b1e; border-bottom: none; border-top: 4px solid lightgray; padding: 1em; padding-bottom: 2em; text-align: center;" href="../account/settings/logout.php">Log Out</a>
                 <?php
                 }
