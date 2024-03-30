@@ -89,7 +89,8 @@
                                 </div>
                                 <div class="col-9">
                                     <p><strong>Item: </strong><?php echo   $item['quantity'] .' '.$product['name']; ?>
-                                        @Ksh <?php echo $product['price']; ?> <br>Payment: </strong><?php if($order['merchant_rq_id'] == 0){ echo 'on delivery';}else{'completed';}; ?></p>
+                                        @Ksh <?php echo $product['price']; ?></p>
+                                    <p><strong>Payment: </strong><?php if($order['merchant_rq_id'] == 0){ echo 'on delivery';}else{'completed';}; ?></p>
                                     <p><strong>Processing status: </strong><?php echo $order['status']; ?></p>
                                     <?php
                                         $client_addressesSql = "SELECT * FROM client_addresses WHERE client_id = '$client_id'";
@@ -98,7 +99,7 @@
                                         if ($addressResult->num_rows > 0) {
                                             while ($address = $addressResult->fetch_assoc()) {
                                     ?>
-                                    <p><strong>Delivery: </strong> on<?php echo date('Y-m-d', strtotime($order['created_at'] . ' +3 days')); ?></p>
+                                    <p><strong>Delivery: </strong> on <?php echo date('Y-m-d', strtotime($order['created_at'] . ' +3 days')); ?></p>
                                     <p><strong>To address: </strong><?php echo $address['area'] .', '.$address['city']?></p>
                                 </div>
                             </div>

@@ -344,17 +344,25 @@
             </div>
             <div class="form-group mb-3" style="position: relative; display: flex;">
                 <div class="input-group">
+                <?php if(!isset($row['phone_number'])){ ?>
                     <div class="input-group-append" >
                         <span class="input-group-text" id="basic-addon2"> +254</span>
                     </div>
+                    <?php
+                        }
+                    ?>
                     <input type="number" class="form-control" placeholder="<?php echo isset($row['phone_number']) ? $row['phone_number'] : 'Phone number'; ?>" 
                         value="<?php echo isset($row['phone_number']) ? $row['phone_number'] : ''; ?>"  aria-label="phone number" aria-describedby="phone number" name="phone_number">
                     <label class="floating-label" style="margin-left: 10px">Phone number*</label>
                 </div>
                 <div class="input-group" style="margin-left: 10px">
-                    <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2"> +254</span>
-                    </div>
+                    <?php if(!isset($row['additional_phone_number'])){ ?>
+                        <div class="input-group-append" >
+                            <span class="input-group-text" id="basic-addon2"> +254</span>
+                        </div>
+                        <?php
+                            }
+                        ?>
                     <input type="text" class="form-control" placeholder="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : 'Additional phone number'; ?>" 
                         value="<?php echo isset($row['additional_phone_number']) ? $row['additional_phone_number'] : ''; ?>"  aria-label="Additional phone number" name="additional_phone_number" aria-describedby="additional phone number">
                         <label class="floating-label" style="margin-left: 20px">Additional phone number*</label>

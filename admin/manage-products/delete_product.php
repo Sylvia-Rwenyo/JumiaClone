@@ -30,11 +30,11 @@ if (isset($_GET["id"])) {
         $deleteImagesSql = "DELETE FROM product_images WHERE product_id = $productId";
         $conn->query($deleteImagesSql);
 
-        // Delete the actual image files from the server
-        while ($imageRow = $imageResult->fetch_assoc()) {
-            $filePath = "../product-upload/uploads/" . $imageRow["file_path"];
-            unlink($filePath);
-        }
+        // // Delete the actual image files from the server
+        // while ($imageRow = $imageResult->fetch_assoc()) {
+        //     $filePath = "../product-upload/uploads/" . $imageRow["file_path"];
+        //     unlink($filePath);
+        // }
 
         // redirect admin to products display page
         echo '

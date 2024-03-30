@@ -66,6 +66,14 @@ if (isset($_POST['signup'])) {
     $result_insert = mysqli_query($conn, $sql_insert);
 
     if ($result_insert) {
+        $sql_getID = "SELECT * FROM endusers WHERE phoneNumber = '$accInput' ||   emailAddress = '$accInput'";
+        $result_getID = mysqli_query($conn, $sql_getID);
+
+    // Check if any matching record is found
+    if (mysqli_num_rows($result_getID) > 0) {
+        $row  = mysqli_fetch_array($result_getID);
+        if(is_array($row)){
+        $_SESSION['user_id'] = $row['id'];
         $_SESSION["accInput"] = $accInput;
         $_SESSION["user"] = true;
         $_SESSION["user_password"] = $password;
@@ -74,6 +82,8 @@ if (isset($_POST['signup'])) {
         echo '<script> 
         window.location.href = "../../home/"
         </script>';
+        }
+    }
     } else {
         // Show error if registration fails
         echo '<script> 

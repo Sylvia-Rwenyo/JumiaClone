@@ -105,9 +105,9 @@
                        $row = $usersResult->fetch_assoc();
                        echo "<p><strong>Your default shipping address:</strong></p>
                             <p>" . $row['first_name'] ." " .  $row['last_name']."</p>";
-                       echo "<p>" . $row['area'] ."</p>";
-                       echo "<p>" . $row['city'] ."</p>";
-                       echo "<p>" . $row['address'] ."</p>";
+                       echo "<p>Area: " . $row['area'] ."</p>";
+                       echo "<p>City: " . $row['city'] ."</p>";
+                       echo "<p>Address: " . $row['address'] ."</p>";
                        echo "<p>" . $row['phone_number'] . " / ". $row['additional_phone_number'] ."</p>";                       
                    }else{
                         echo '<a href="address_book.php?edit=1" style="text-decoration: none; color:#f68b1e";>Add an address</a>';
