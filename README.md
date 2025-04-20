@@ -1,7 +1,7 @@
-# Kshan-Ecommerce-site-J
+# Jumia Clone Website
 
 ## Introduction
-Welcome to this Kshan E-Commerce Website ! This README will provide you with an overview of the project, its features, and how to set it up.
+Welcome to this Jumia Clone Website! This README will provide you with an overview of the project, its features, and how to set it up.
 
 ## Project Overview
 Our E-Commerce Website is designed to provide users with an online platform to browse, purchase, and manage products. It includes features such as:
@@ -27,7 +27,7 @@ To run the project locally, follow these steps:
    ```
 
 2. **Database Setup:**
-   - Import the provided SQL file (`kshan-ecommerce-j-db.sql`) into your MySQL database to set up the necessary tables.
+   - Import the provided SQL file (`ecommerce-j-db.sql`) into your MySQL database to set up the necessary tables.
    - Update the database configuration in `controls/conn.php` with the required MySQL database credentials.
 
 3. **Server Setup:**
@@ -42,10 +42,10 @@ To run the project locally, follow these steps:
    Otherwise, configure your server to serve the project files.
 
 5. **Access the Website:**
-   Open your web browser and navigate to `http://localhost:8000/Kshan-Ecommerce-site-J/` (or the appropriate URL if using a different port or server).
+   Open your web browser and navigate to `http://localhost:8000/JumiaClone/` (or the appropriate URL if using a different port or server).
 
 6. **Admin Access:**
-   - To access the admin dashboard, navigate to `http://localhost:8000/Kshan-Ecommerce-site-J/admin/account/login/`log in with these admin credentials:
+   - To access the admin dashboard, navigate to `http://localhost:8000/JumiaClone/admin/account/login/`log in with these admin credentials:
         - email address=`newadmin@kshan.com`
         - password `Newadmin123*`
    - Once logged in, you can add, edit, or delete products using the CMS functionality.
