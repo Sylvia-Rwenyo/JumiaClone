@@ -14,12 +14,10 @@
     <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../home/home_pages_forms_styling.css" />
     <link rel="stylesheet" href="../../../css/accounts/forms-styling.css" />
-    <title>KShan Log In</title>
+    <title>E-Shop Log In</title>
     <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body class="account-form-body">
-        <!-- logo w Company name-->
-        <img src="../../../images/logo.jpeg" style="width: 3em; height: 3em;" alt="Kshan Logo"/>
     <!-- warning messages -->
 
     <?php
@@ -47,7 +45,7 @@
                 <!-- welcome message with input prompt -->
             <div class="account-welcome-div">
                 <h5>Welcome back! </h5>
-                <p>Log in to your Kshan account.</p>
+                <p>Log in to your E-Shop account.</p>
             </div>
             <form method="POST" action="processing.php">
             <div class="form-group mb-3" style="position: relative;">
@@ -80,7 +78,7 @@
         ?>
     <!-- welcome message with input prompt -->
     <div class="account-welcome-div">
-        <h5>Welcome to K-Shan Shop </h5>
+        <h5>Welcome to Jumia Clone Shop </h5>
         <p>Type your email address or phone number to log in or create an account.</p>
     </div>
     <form method="POST" action="processing.php">

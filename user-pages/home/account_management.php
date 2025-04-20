@@ -117,9 +117,6 @@ if(isset($_SESSION['user'])){
 
 </style>
 <body class="account-form-body">
-    <!-- logo w Company name-->
-    <img src="../../images/logo.jpeg" style="width: 3em; height: 3em;" alt="Kshan Logo"/>
-
     <!-- welcome message with input prompt -->
     <div class="account-welcome-div">
         <h5>Hello <?php echo $username; ?> </h5>

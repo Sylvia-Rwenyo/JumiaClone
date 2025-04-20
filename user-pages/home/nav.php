@@ -45,7 +45,6 @@ include_once '../../controls/conn.php';
     <nav class="nav navbar">
     <!-- logo -->
         <div class="logo" >
-            <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
         </div>
     <!-- search bar -->
     <form action="search_results.php" method="get">
@@ -109,7 +108,7 @@ include_once '../../controls/conn.php';
                 <a href="existing_orders.php" class="dropdown-item dp-link">Track your order</a>
                 <a href="existing_orders.php?cancel=1" class="dropdown-item dp-link">Order Cancellation</a>
                 <a href="?create-return=1" class="dropdown-item dp-link">Returns and Refunds</a>
-                <a href="?pay-for-order=1" class="dropdown-item dp-link">Payment and KShan Account</a>
+                <a href="?pay-for-order=1" class="dropdown-item dp-link">Payment and E-Shop Account</a>
                 <div class="dropdown-item dp-btn" style="border-bottom: none; border-top: 4px solid lightgray; padding-bottom: 1em;">
                     <a class="btn" href="" ><i class="fa-regular fa-message"></i> Live Chat</a>
                 </div>

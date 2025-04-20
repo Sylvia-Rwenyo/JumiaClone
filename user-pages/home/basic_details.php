@@ -134,7 +134,6 @@ if(isset($_SESSION['user'])){
             <div class="col-3  card" style="padding: 0;" >
             <!-- welcome message -->
                 <div class="account-welcome-div">
-                    <img src="../../images/logo.jpeg" style="width: 3em; height: 3em;" alt="Kshan Logo"/>
                     <h5 style="margin-top: 1em">Hello <?php echo $username; ?> </h5>
                 </div>
                 <ul class="list-group" id="list-group">
@@ -188,7 +187,7 @@ if(isset($_SESSION['user'])){
                         <form method="POST" class="edit-details-form" action="save-user-info.php" style="padding: 1em; display: flex; flex-direction: column; position: relative;" id="pinForm">              
                             <div>
                                 <h5 style="text-align: center">Set your pin</h5>
-                                <p style="font-size: 1.1em">Set your pin for an easy and secure log in on K-Shan</p>
+                                <p style="font-size: 1.1em">Set your pin for an easy and secure log in on Jumia Clone</p>
                             </div>
                             <div class="form-group mb-3" style="position: relative; width:80%;margin-left:10%">
                                 <div class="input-group">

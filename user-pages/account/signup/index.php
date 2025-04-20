@@ -14,15 +14,14 @@
     <script src="https://kit.fontawesome.com/2751fbc624.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../home/home_pages_forms_styling.css" />
     <link rel="stylesheet" href="../../../css/accounts/forms-styling.css" />
-    <title>KShan  Sign Up</title>
+    <title>E-Shop  Sign Up</title>
     <link rel="icon" type="image/png" href="../../../images/favicon-16x16.png">
 </head>
 <body class="account-form-body">
-        <!-- logo w Company name-->
-        <img src="../../../images/logo.jpeg" style="width: 3em; height: 3em;" alt="Kshan Logo"/>
+
     <!-- welcome message with input prompt -->
     <div class="account-welcome-div">
-        <h5>Welcome to K-Shan Shop </h5>
+        <h5>Welcome to Jumia Clone Shop </h5>
         <p>Let's get started by creating your account.</p>
         <p>To keep your account safe, we need a strong password.</p>
     </div>

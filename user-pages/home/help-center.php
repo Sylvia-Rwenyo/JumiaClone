@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Shan</title>
+    <title>Jumia Clone</title>
     <!-- stylesheet files and CDN links -->
     <link rel="stylesheet" href="user_pages.css">
     <link rel="stylesheet" href="products_page.css">

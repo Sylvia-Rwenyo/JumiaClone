@@ -14,8 +14,8 @@ if(isset($mpesa_number)){
             "username"         => "apitest",
             "TransactionType"  => "CustomerPayBillOnline",
             "passkey"          => "MSBrScqgoDumkS5TCRgh3c63BOkoLcScFVuTrOnJr8nHZkrsbHpA0qPP1gMn5k4k7ghztZg0g5TikwIkkcELvEgE7UHZ/p7H5Yu+OSyLm0BLECh7E7z8dSwl1mYoXX5S5f4fSt6JUIFX0ZQvbXVixbXoV3KE/pa6KG09GAfeLnq7Y4H/ib5dfFHbbrSgIQJvYi7OUXqrjI8TMvQUEuaVCbIM5VAIep4NJXSsNmzxUQD0C2ZPhkXAIl7Ew94Chl1sEv3i4HVV2Uw7i9tWVcMML4r3D+ETA5JNkkA8bIMg19e1vG9RrlAocvksi+yObO091GTsOUxSeGf9e0WMJ6jvMw==", //Enter your passkey here
-            "CallBackURL"      => "https://3051-154-159-252-110.ngrok-free.app/work/kshan/userpages/home/callback.php", //Must have SSL When using localhost, Use Ngrok to forward the response to your Localhost
-            "AccountReference" => "K-Shan Central Agency",
+            "CallBackURL"      => "https://3051-154-159-252-110.ngrok-free.app/work/E-Shop/userpages/home/callback.php", //Must have SSL When using localhost, Use Ngrok to forward the response to your Localhost
+            "AccountReference" => "Jumia Clone Central Agency",
             "TransactionDesc"  => "Payment of order ",
         );
         

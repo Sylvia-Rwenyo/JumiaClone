@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Shan</title>
+    <title>Jumia Clone</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -78,7 +78,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"><i class='fa fa-question-circle-o'></i> <span style="font-size: 0.85em">HELP CENTER<p> Guide To Customer Care</p></span></li>
                     <li class="list-group-item"><i class="fa-solid fa-boxes-packing"></i> <span style="font-size: 0.85em">EASY RETURN<p> Quick Refund</p></span></li>
-                    <li class="list-group-item"><i class="fa-solid fa-money-bill-trend-up"></i><span style="font-size: 0.85em">SELL ON KSHAN<p>Millions Of Visitors</p></span></li>
+                    <li class="list-group-item"><i class="fa-solid fa-money-bill-trend-up"></i><span style="font-size: 0.85em">SELL ON E-Shop<p>Millions Of Visitors</p></span></li>
                 </ul>   
             </div>
             <div class="card call-CTA">

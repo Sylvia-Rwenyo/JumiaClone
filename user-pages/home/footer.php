@@ -4,13 +4,12 @@
             <!-- logo column -->
             <div class="col-2">
                 <div class="logo">
-                    <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
                 </div>
             </div>
 
             <!-- newsletter prompt column -->
             <div class="col-6 newsletter-prompt">
-                <h6>NEW TO KSHAN SHOP?</h6>
+                <h6>NEW TO E-Shop SHOP?</h6>
                 <p>Subscribe to our newsletter to get updates on our latest offers!</p>
                 <div class="input-group">
                     <input type="search" class="form-control rounded" placeholder="Enter E-mail Address" aria-label="Search" aria-describedby="search-addon" />
@@ -22,10 +21,9 @@
                 <div class="col-4">
                     <div class="download-prompt">
                         <div class="logo">
-                            <img src="../../images/logo.jpeg" alt="KShan Central Agency"/>
                         </div>
                         <div>
-                            <p style="font-size: 0.7em"><strong>DOWNLOAD KSHAN SHOP FREE APP</strong></p>
+                            <p style="font-size: 0.7em"><strong>DOWNLOAD E-Shop SHOP FREE APP</strong></p>
                             <p style="font-size: 0.9em">Get access to exclusive offers!</p>
                         </div>
                     </div>
@@ -59,39 +57,39 @@
                         <li><a href="">How to order?</a></li>
                         <li><a href="">Dispute Resolution Policy</a></li>
                         <li><a href="">Coorporate and Bulk purchase</a></li>
-                        <li><a href="">Advertise with Kshan</a></li>
+                        <li><a href="">Advertise with E-Shop</a></li>
                         <li><a href="">Report a product</a></li>
                         <li><a href="">Return policy</a></li>
-                        <li><a href="">Kshan Payment Information Guidelines</a></li>
+                        <li><a href="">E-Shop Payment Information Guidelines</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-4">
                 <div>
-                    <h6 style="font-size: 0.8em">ABOUT KSHAN</h6>
+                    <h6 style="font-size: 0.8em">ABOUT E-Shop</h6>
                     <ul>
                         <li><a href="">About us</a></li>
                         <li><a href="">Returns and Refunds Policy</a></li>
-                        <li><a href="">KSHAN Careers</a></li>
-                        <li><a href="">KSHAN Express</a></li>
+                        <li><a href="">E-Shop Careers</a></li>
+                        <li><a href="">E-Shop Express</a></li>
                         <li><a href="">Terms and Conditions</a></li>
                         <li><a href="">Store Credit Terms and Conditions</a></li>
                         <li><a href="">Privacy Notice</a></li>
                         <li><a href="">Cookies Notice</a></li>
                         <li><a href="">Flash Sales</a></li>
-                        <li><a href="">KSHAN Global</a></li>
+                        <li><a href="">E-Shop Global</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-4">
                 <div>
-                    <h6 style="font-size: 0.8em">MAKE MONEY WITH KSHAN</h6>
+                    <h6 style="font-size: 0.8em">MAKE MONEY WITH E-Shop</h6>
                     <ul>
-                        <li><a href="">Sell on KShan</a></li>
+                        <li><a href="">Sell on E-Shop</a></li>
                         <li><a href="">Vendor Hub</a></li>
                         <li><a href="">Become a Sales Consultant</a></li>
                         <li><a href="">Become a Logistics Service Partner</a></li>
-                        <li><a href="">KShan City Partner Program</a></li>
+                        <li><a href="">E-Shop City Partner Program</a></li>
                     </ul>
                 </div>
             </div>

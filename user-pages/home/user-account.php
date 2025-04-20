@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My K-Shan Account</title>
+    <title>My Jumia Clone Account</title>
     <!-- stylesheet files and CDN links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -117,7 +117,7 @@
             </div>
             <!-- credit info card -->
             <div class="card">
-                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">Kshan Store Credit</h6>
+                <h6 style="border-bottom: 1px solid lightgray; padding: 0.5em">E-Shop Store Credit</h6>
                 <p><strong>Balance:</strong> 0</p>
             </div>
 
